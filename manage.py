@@ -3,7 +3,7 @@
 import os
 import sys
 
-
+print(sys.path)
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'veganation_project.settings')
     try:
