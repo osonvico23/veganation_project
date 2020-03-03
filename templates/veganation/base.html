@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+	<head>
+		<style>
+			.centre {
+  				display: block;
+ 				margin-left: auto;
+  				margin-right: auto;
+  				width: 25%;
+			}
+			h1{
+			text-align:center;
+			}
+			
+			ul {
+  			list-style-type: none;
+ 			margin: 0;
+  			padding: 0;
+  			width: 60px;
+			}
+			li a {
+  			display: block;
+  			color: #000;
+  			padding: 8px 16px;
+  			text-decoration: none;
+			}
+		</style>
+		<title>
+			{% block title_block %}
+				VegaNation
+			{% endblock %}
+		</title>
+	</head>
+	
+	<body>
+		<div>
+			<img src="{% static 'images/dummy_logo.jpeg' %}" alt = "Logo" class = "centre"/>
+			<h1>VegaNation</h1>
+		</div>
+		
+		<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="restuarants.html">Restaurants</a></li>
+		<li><a href="protests.html">Protests</a></li>
+		</ul>
+		
+		<div>
+		{% block body_block %}
+		{% endblock %}
+		</div>
+			
+		
+		
+	</body>
+	
+</html>
