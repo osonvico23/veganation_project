@@ -4,6 +4,8 @@
 
 <html>
 	<head>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
 			.centre {
   				display: block;
@@ -12,20 +14,69 @@
   				width: 25%;
 			}
 			h1{
-			text-align:center;
+				text-align:center;
 			}
 			
-			ul {
-  			list-style-type: none;
- 			margin: 0;
-  			padding: 0;
-  			width: 60px;
+			.nav{
+    			list-style:none;
+    			margin:0;
+    			padding:0;
+    			text-align:center;
 			}
-			li a {
-  			display: block;
-  			color: #000;
-  			padding: 8px 16px;
-  			text-decoration: none;
+			.nav li{
+   				display:inline;
+			}
+			.nav a{
+    			display:inline-block;
+    			padding:10px;
+			}
+			
+			.fa {
+  				padding: 10px;
+  				font-size: 20px;
+  				width: 20px;
+  				text-align: center;
+  				text-decoration: none;
+  				margin: 5px 2px;
+  				border-radius: 50%;
+			}
+			
+			.fa-facebook {
+  				background: #3B5998;
+  				color: white;
+			}
+
+			.fa-twitter {
+  				background: #55ACEE;
+  				color: white;
+			}
+			
+			.fa-instagram {
+  				background: #125688;
+  				color: white;
+			}
+			
+			.topcorner{
+   				position:absolute;
+   				top:10px;
+   				right:10px;
+  			}
+			
+			#rightbox{ 
+                float:right; 
+                width:50%; 
+                height:280px; 
+            }
+            
+            #leftbox { 
+                float:left;  
+                width:50%; 
+                height:280px; 
+            }
+            
+            hr {
+    			margin: 20px 0;
+    			border: 1px solid #f00;
 			}
 		</style>
 		<title>
@@ -36,22 +87,39 @@
 	</head>
 	
 	<body>
-		<div>
-			<img src="{% static 'images/dummy_logo.jpeg' %}" alt = "Logo" class = "centre"/>
-			<h1>VegaNation</h1>
-		</div>
+		<img src="{% static 'images/dummy_logo.jpeg' %}" alt = "Logo" class = "centre"/>
+		<h1>VegaNation</h1>
+
 		
-		<ul>
-		<li><a href="index.html">Home</a></li>
-		<li><a href="restuarants.html">Restaurants</a></li>
-		<li><a href="protests.html">Protests</a></li>
+		<ul class = "nav">
+  			<li><a href="{% url 'veganation:index' %}">Home</a></li>
+  			<li><a href="{% url 'veganation:restaurants' %}">Restaurants</a></li>
+ 			<li><a href="{% url 'veganation:protests' %}">Protests</a></li>
+  			
 		</ul>
 		
 		<div>
-		{% block body_block %}
+		<a href="#" class="fa fa-facebook"></a>
+		<a href="#" class="fa fa-instagram"></a>
+		<a href="#" class="fa fa-twitter"></a>
+		</div>
+		
+		<form class="topcorner">
+		
+		</form>
+		
+		
+		<hr />
+		<div id = "rightbox">
+		{% block body_block_right %}
 		{% endblock %}
 		</div>
-			
+		
+		<div id = "leftbox">
+		{% block body_block_left %}
+		{% endblock %}
+		</div>
+		
 		
 		
 	</body>
