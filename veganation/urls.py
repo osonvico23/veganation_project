@@ -5,6 +5,7 @@ app_name = 'veganation'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('', views.restaurants, name ='restaurants'),
-    path('', views.protests, name = 'protests'),
+    path('', views.signup, name ='signup'),
+    path('restaurants/', views.restaurants, name='restaurants'),
+    path('protests/', views.protests, name='protests'),
     ]

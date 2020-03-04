@@ -1,6 +1,26 @@
 <!DOCTYPE html>
+
 {% extends 'veganation/base.html' %}
 {% load static %}
+
+<style>
+div.ex1 {
+  background-color: lightblue;
+  width: 110px;
+  height: 110px;
+  overflow: auto;
+}
+
+h4{
+	text-align:center;		
+	}
+	
+ul.a{
+	list-style-type: circle;
+}
+	
+</style>
+
 {% block title_block %}
 	HomePage
 {% endblock %}
@@ -10,5 +30,22 @@ Left stuff
 {% endblock %}
 
 {% block body_block_right%}
-RIght stuff
+<h4>Vegan Tips & Facts!</h4>
+<div class = "ex1">
+
+<ul class ="a">
+<li>Each vegan saves 30 animal lives per year!</li>
+<li>Pursuing a vegan diet can cut your carbon footprint in half - animal 
+agriculture is a huge contributor to the issue of climate change.</br></li>
+<li>On average, vegans have a longer life span - it can add up to 4 year onto 
+your life!</li>
+<li>A vegan saves approximately 1,1000 gallons of water per day - the meat industry watses
+1/3 of drinkable water!</li>
+<li>Vegans are less likely to have a stroke or get heart disease.</li>
+<li>A plant based diet increases your metabolism!</li>
+<li>The term 'Vegan' was coined less than 100 years go - animal rights activist
+David Watson created the word in the 1940s.</li>
+</ul>
+
+</div>
 {% endblock %}
