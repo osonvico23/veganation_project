@@ -32,13 +32,14 @@
 			
 			.fa {
   				padding: 10px;
-  				font-size: 20px;
-  				width: 20px;
+  				font-size: 15px;
+  				width: 15px;
   				text-align: center;
   				text-decoration: none;
   				margin: 5px 2px;
   				border-radius: 50%;
 			}
+			
 			
 			.fa-facebook {
   				background: #3B5998;
@@ -55,10 +56,12 @@
   				color: white;
 			}
 			
+			
 			.topcorner{
    				position:absolute;
-   				top:10px;
-   				right:10px;
+   				top:0;
+   				right:0;
+   				border: 1px solid gray;
   			}
   			
   			.container {
@@ -76,6 +79,15 @@
   				border: 1px solid gray; 
   				display: inline-block;
   				overflow:auto;
+            }
+            
+            #centerbox{
+            	float:center;
+            	width:80%;
+            	height 200px;
+            	display: block;
+ 				margin-left: auto;
+  				margin-right: auto;
             }
             
             #leftbox { 
@@ -113,16 +125,18 @@
 	</head>
 	
 	<body>
+		
+		<div id="centerbox">
 		<img src="{% static 'images/dummy_logo.jpeg' %}" alt = "Logo" class = "centre"/>
 		<h1>VegaNation</h1>
 
 		
-		<ul class = "nav">
-  			<li><a href="{% url 'veganation:index' %}">Home</a></li>
-  			<li><a href="{% url 'veganation:restaurants' %}">Restaurants</a></li>
- 			<li><a href="{% url 'veganation:protests' %}">Protests</a></li>
-  			
-		</ul>
+			<ul class = "nav">
+  				<li><a href="{% url 'veganation:index' %}">Home</a></li>
+  				<li><a href="{% url 'veganation:restaurants' %}">Restaurants</a></li>
+ 				<li><a href="{% url 'veganation:protests' %}">Protests</a></li>
+			</ul>
+		</div>
 		
 		<div>
 		<a href="#" class="fa fa-facebook"></a>
@@ -130,29 +144,41 @@
 		<a href="#" class="fa fa-twitter"></a>
 		</div>
 		
+		
+		<div id="container">       
 		<form class="topcorner">
-		
+			<label for="username">Username:</label>
+			<input type="text" id="username" name="username"></br>
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password">
+			<div id="lower">
+			<input type="submit" value="Sign In">
+			<input type="submit" value ="Forgotten Password"></br>
+			<label>Or sign in with:</label></br>
+			<div id="centerbox">
+			<a href="#" class="fa fa-facebook"></a>
+			<a href="#" class="fa fa-instagram"></a>
+			<a href="#" class="fa fa-twitter"></a>
+			</div>
+			<input type="button" onclick="{% url 'veganation:signup' %}" value="Sign Up!" />
+			</div>
 		</form>
-		
+
+		</div>
 		
 		<hr />
+		
 		<div class ="container">
-			<div id = "rightbox">
-				{% block body_block_right %}
-				{% endblock %}
-			</div>
-		
-			<div id = "leftbox">
-				{% block body_block_left %}
-				{% endblock %}
-			</div>
-		
+		{% block body_block %}
+		{% endblock %}
 		</div>
 		
 		<div>
 		<p class = "alignLeft">contact@veganation.com</p>
 		<p class = "alignRight">All Rights Reserved</p>
 		</div>
+		
+		
 	</body>
 	
 </html>
