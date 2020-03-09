@@ -9,30 +9,29 @@ from django.contrib.auth import authenticate, login
 def index(request):
     context_dict = {}
     return render(request, 'veganation/index.html', context=context_dict)
-    
+
 def restaurants(request):
     context_dict = {}
     return render(request, 'veganation/restaurants.html', context=context_dict)
-    
+
 def protests(request):
     context_dict = {}
     return render(request, 'veganation/protests.html', context=context_dict)
-    
-    
+
 def signup(request):
 
     registered = False
-    
+
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = UserProfileForm(request.POST)
-        
+
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
-            
+
             user.set_password(user.password)
             user.save()
-            
+
             profile = profile_form.save(commit=False)
             profile.user = user
         # Did the user provide a profile picture?
@@ -51,7 +50,7 @@ def signup(request):
                           context = {'user_form': user_form,
                                      'profile_form': profile_form,
                                      'registered': registered})
-                                     
+
 def user_login(request):
 # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
@@ -59,7 +58,7 @@ def user_login(request):
         password = request.POST.get('password')
 
         user = authenticate(username=username, password=password)
-        
+
         if user:
             if user.is_active:
                 login(request, user)
@@ -72,10 +71,9 @@ def user_login(request):
 
     else:
         return render(request, 'veganation/index.html')
-        
+
 
 @login_required
 def user_logout(request):
         logout(request)
         return redirect(reverse('veganation:index'))
-    

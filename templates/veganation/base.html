@@ -62,6 +62,7 @@
    				top:0;
    				right:0;
    				border: 1px solid gray;
+   				padding: 20px;
   			}
   			
   			.container {
@@ -69,6 +70,7 @@
     			top: 50%;
     			height: 100px;
     			text-align: center;
+    			
 			}
 			
 			#rightbox{ 
@@ -116,6 +118,18 @@
 				border: 1px solid black;
 			}
 			
+			.button {
+  				background-color: green;
+  				color: black;
+  				padding: 10px 16px;
+  				text-align: center;
+  				text-decoration: none;
+  				display: block;
+  				font-size: 16px;
+  				margin-left: auto;
+  				margin-right: auto;
+			}	
+			
 		</style>
 		<title>
 			{% block title_block %}
@@ -140,17 +154,20 @@
 		
 		<div>
 		<a href="#" class="fa fa-facebook"></a>
-		<a href="#" class="fa fa-instagram"></a>
+		<a href="https://www.instagram.com/veganation_2020/?hl=en" class="fa fa-instagram"></a>
 		<a href="#" class="fa fa-twitter"></a>
 		</div>
 		
-		
-		<div id="container">       
+		{% if user.is_authenticated %}
+		Logout
+		{% else %}
 		<form class="topcorner">
+		<div id="container">       
+		
 			<label for="username">Username:</label>
 			<input type="text" id="username" name="username"></br>
 			<label for="password">Password:</label>
-			<input type="password" id="password" name="password">
+			<input type="password" id="password" name="password"></br></br>
 			<div id="lower">
 			<input type="submit" value="Sign In">
 			<input type="submit" value ="Forgotten Password"></br>
@@ -160,11 +177,12 @@
 			<a href="#" class="fa fa-instagram"></a>
 			<a href="#" class="fa fa-twitter"></a>
 			</div>
-			<button onclick="{% url 'veganation:signup' %}">Sign up!</button>
+			<a href="{% url 'veganation:signup' %}" class="button">Sign Up!</a>
 			</div>
-		</form>
-
+			
 		</div>
+		</form>
+		{% endif %}
 		
 		<hr />
 		
