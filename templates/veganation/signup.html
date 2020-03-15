@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-
 {% extends 'veganation/base.html' %}
 {% load static %}
+
 {% block title_block %}
 	Sign Up
 {% endblock %}
 
-<div class="container">
-<form>
 
-<form>
-</div>
+<h2>Sign up for Veganation!</h2>
+{% block body_block %}
+
+<form id="user_form" method="post" action="{%url 'veganation:signup'%}" enctype="multipart/form-data">
+{% csrf_token %}
+{{ user_form.as_p }}
+{{ profile_form.as_p }}
+<input type="submit" name="submit" value="Register" />
+</form>
+
+{% endblock %}
