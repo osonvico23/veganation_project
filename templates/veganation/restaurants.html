@@ -11,13 +11,69 @@
 {% block body_block %}
 <style>
   /* Set the size of the div element that contains the map */
-  #map {
-    height: 100%;  /* The height is 400 pixels */
-    width: 100%;  /* The width is the width of the web page */
-   }
+    #map {
+        height: 100%;
+        width: 100%;  /* The width is the width of the web page */
+    }
+    table {
+        height: 100%;
+        width: 100%;
+        border-collapse: collapse;
+        text-align : left;
+    }
 </style>
 <div id = "rightbox">
-restaurants
+<table>
+    Choose a restaurant you wanna try with someone and we will pair you up in accordance with your preferences.
+  <tr>
+    <td>Pic</td>
+    <td>V&V Cafe</br>
+        Breakfast, desserts | ££</td>
+    <td>Choose</td>
+  </tr>
+  <tr>
+    <td>Pic</td>
+    <td>The 78</br>
+    Late-night food | ££</td>
+    <td>Choose</td>
+  </tr>
+  <tr>
+    <td>Pic</td>
+    <td>Serenity Now</br>
+    Brunch, lunch | ££</td>
+    <td>Choose</td>
+  </tr>
+  <tr>
+    <td>Pic</td>
+    <td>The Glasvegan</br>
+    Fast food | £</td></td>
+    <td>Choose</td>
+  </tr>
+  <tr>
+    <td>Pic</td>
+    <td>Picnic</br>
+    Health-conscious | ££</td>
+    <td>Choose</td>
+  </tr>
+  <tr>
+    <td>Pic</td>
+    <td>Puti Vegan Cafe</br>
+    Asian | ££</td>
+    <td>Choose</td>
+  </tr>
+  <tr>
+    <td>Pic</td>
+    <td>Hug and Pint</br>
+    Restaurant and bar | ££</td>
+    <td>Choose</td>
+  </tr>
+  <tr>
+    <td>Pic</td>
+    <td>Mono</br>
+    Late-night food | ££</td>
+    <td>Choose</td>
+  </tr>
+</table>
 </div>
 
 <div id = "leftbox">
@@ -32,7 +88,7 @@ restaurants
         var picnic = {lat: 55.859436,lng: -4.245578};
         var puti = {lat: 55.866367,lng: -4.259962};
         var hug = {lat: 55.872208,lng: -4.272356};
-        var smth = {lat: 55.855661,lng: -4.246107};
+        var mono = {lat: 55.855661,lng: -4.246107};
         // The map, centered at puti
         var map = new google.maps.Map(
                                       document.getElementById('map'), {zoom: 13, center: puti});
@@ -44,7 +100,7 @@ restaurants
         var marker5 = new google.maps.Marker({position: picnic, map: map, title: 'Picnic'});
         var marker6 = new google.maps.Marker({position: puti, map: map, title: 'Puti Vegan Cafe'});
         var marker7 = new google.maps.Marker({position: hug, map: map, title: 'The Hug and Pint'});
-        var marker8 = new google.maps.Marker({position: smth, map: map, title: 'smth'});
+        var marker8 = new google.maps.Marker({position: mono, map: map, title: 'Mono'});
 
         marker.addListener('click', function() {
           map.setZoom(15);
