@@ -44,11 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'veganation',
-<<<<<<< HEAD
-
-=======
     'django_google_maps',
->>>>>>> f2988e38a9b2e10d4570b3084fef97df7b681f21
 ]
 
 MIDDLEWARE = [

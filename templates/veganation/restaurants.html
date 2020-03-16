@@ -26,31 +26,255 @@ restaurants
         // Initialize and add the map
         function initMap() {
         var vandv = {lat: 55.8752869, lng: -4.28183};
-        var the78 = {lat: 55.865101, lng: -4.2889598};
-        // The map, centered at V&V
+        var the78 = {lat: 55.86506, lng: -4.2868};
+        var seren = {lat: 55.873813, lng: -4.276499};
+        var glasvegan = {lat: 55.857195, lng: -4.255798};
+        var picnic = {lat: 55.859436,lng: -4.245578};
+        var puti = {lat: 55.866367,lng: -4.259962};
+        var hug = {lat: 55.872208,lng: -4.272356};
+        var smth = {lat: 55.855661,lng: -4.246107};
+        // The map, centered at puti
         var map = new google.maps.Map(
-                                      document.getElementById('map'), {zoom: 13, center: vandv});
+                                      document.getElementById('map'), {zoom: 13, center: puti});
         // The marker, positioned at v&v
-        var marker = new google.maps.Marker({position: vandv, map: map});
-        var marker2 = new google.maps.Marker({position: the78, map: map});
-        map.addListener('center_changed', function() {
-          // 3 seconds after the center of the map has changed, pan back to the
-          // marker.
-          window.setTimeout(function() {
-            map.panTo(marker.getPosition());
-          }, 3000);
-            window.setTimeout(function() {
-            map.panTo(marker2.getPosition());
-            }, 3000);
-        });
+        var marker = new google.maps.Marker({position: vandv, map: map, title: 'V & V Cafe'});
+        var marker2 = new google.maps.Marker({position: the78, map: map, title: 'The 78'});
+        var marker3 = new google.maps.Marker({position: seren, map: map, title: 'Serenity Now'});
+        var marker4 = new google.maps.Marker({position: glasvegan, map: map, title: 'The Glasvegan'});
+        var marker5 = new google.maps.Marker({position: picnic, map: map, title: 'Picnic'});
+        var marker6 = new google.maps.Marker({position: puti, map: map, title: 'Puti Vegan Cafe'});
+        var marker7 = new google.maps.Marker({position: hug, map: map, title: 'The Hug and Pint'});
+        var marker8 = new google.maps.Marker({position: smth, map: map, title: 'smth'});
 
         marker.addListener('click', function() {
-          map.setZoom(16);
+          map.setZoom(15);
           map.setCenter(marker.getPosition());
+          infowindow.open(map, marker);
+          infowindow2.close();
+          infowindow3.close();
+          infowindow4.close();
+          infowindow5.close();
+          infowindow6.close();
+          infowindow7.close();
+          infowindow8.close();
         });
         marker2.addListener('click', function() {
-          map.setZoom(16);
+          map.setZoom(15);
           map.setCenter(marker2.getPosition());
+          infowindow2.open(map, marker2);
+          infowindow.close();
+          infowindow3.close();
+          infowindow4.close();
+          infowindow5.close();
+          infowindow6.close();
+          infowindow7.close();
+          infowindow8.close();
+        });
+        marker3.addListener('click', function() {
+          map.setZoom(15);
+          map.setCenter(marker3.getPosition());
+          infowindow3.open(map, marker3);
+          infowindow2.close();
+          infowindow.close();
+          infowindow4.close();
+          infowindow5.close();
+          infowindow6.close();
+          infowindow7.close();
+          infowindow8.close();
+        });
+        marker4.addListener('click', function() {
+          map.setZoom(15);
+          map.setCenter(marker4.getPosition());
+          infowindow4.open(map, marker4);
+          infowindow2.close();
+          infowindow.close();
+          infowindow3.close();
+          infowindow5.close();
+          infowindow6.close();
+          infowindow7.close();
+          infowindow8.close();
+        });
+        marker5.addListener('click', function() {
+          map.setZoom(15);
+          map.setCenter(marker5.getPosition());
+          infowindow5.open(map, marker5);
+          infowindow2.close();
+          infowindow.close();
+          infowindow3.close();
+          infowindow4.close();
+          infowindow6.close();
+          infowindow7.close();
+          infowindow8.close();
+        });
+        marker6.addListener('click', function() {
+          map.setZoom(15);
+          map.setCenter(marker6.getPosition());
+          infowindow6.open(map, marker6);
+          infowindow2.close();
+          infowindow.close();
+          infowindow3.close();
+          infowindow4.close();
+          infowindow5.close();
+          infowindow7.close();
+          infowindow8.close();
+        });
+        marker7.addListener('click', function() {
+          map.setZoom(15);
+          map.setCenter(marker7.getPosition());
+          infowindow7.open(map, marker7);
+          infowindow2.close();
+          infowindow.close();
+          infowindow3.close();
+          infowindow4.close();
+          infowindow5.close();
+          infowindow6.close();
+          infowindow8.close();
+        });
+        marker8.addListener('click', function() {
+          map.setZoom(15);
+          map.setCenter(marker8.getPosition());
+          infowindow8.open(map, marker8);
+          infowindow2.close();
+          infowindow.close();
+          infowindow3.close();
+          infowindow4.close();
+          infowindow5.close();
+          infowindow7.close();
+          infowindow6.close();
+        });
+        
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">V&V Café</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Address</b>: 481 Great Western Road, G12 8HL Glasgow</br>'+ '<a href="www.thevandv.com" target="_blank">'+
+            'Website</a>'+' | '+
+            '<a href="https://www.facebook.com/thevandvcafe/" target="_blank">'+
+            'Facebook</a>'+' | '+
+            '<a href="https://www.instagram.com/thevandvcafe/?hl=en" target="_blank">'+
+            'Instagram</a>'+
+            '</div>'+
+            '</div>';
+            
+        var contentString2 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">The 78</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Address</b>: 10-14 Kelvinhaugh Street, G3 8NU Glasgow</br>'+ '<a href="https://www.the78barandkitchen.com/" target="_blank">'+
+            'Website</a>'+' | '+
+            '<a href="https://www.facebook.com/the78barandkitchen/" target="_blank">'+
+            'Facebook</a>'+' | '+
+            '<a href="https://www.instagram.com/the78barandkitchen/?hl=en" target="_blank">'+
+            'Instagram</a>'+
+            '</div>'+
+            '</div>';
+        
+        var contentString3 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Serenity Now</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Address</b>: 380 Great Western Road, G4 9HT Glasgow</br>'+ '<a href="https://www.serenitynowcafe.com/" target="_blank">'+
+            'Website</a>'+' | '+
+            '<a href="http://www.facebook.com/serenitynowcafe" target="_blank">'+
+            'Facebook</a>'+' | '+
+            '<a href="https://instagram.com/serenitynowcafe" target="_blank">'+
+            'Instagram</a>'+
+            '</div>'+
+            '</div>';
+        
+        var contentString4 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">The Glasvegan</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Address</b>: 50 St Enoch Square, G1 4DH Glasgow</br>'+ '<a href="https://www.facebook.com/theglasvegan" target="_blank">'+
+            'Facebook</a>'+' | '+
+            '<a href="https://www.instagram.com/theglasveganfastfood/?hl=en" target="_blank">'+
+            'Instagram</a>'+
+            '</div>'+
+            '</div>';
+        
+        var contentString5 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Picnic</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Address</b>: 103 Ingram St, G1 1DX Glasgow</br>'+ '<a href="http://picnic-cafe.co.uk/" target="_blank">'+
+            'Website</a>'+' | '+
+            '<a href="https://www.facebook.com/picnic.glasgow" target="_blank">'+
+            'Facebook</a>'+' | '+
+            '<a href="https://www.instagram.com/picnic.glasgow/" target="_blank">'+
+            'Instagram</a>'+
+            '</div>'+
+            '</div>';
+        
+        var contentString6 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Puti Vegan Cafe</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Address</b>: 65 Cambridge Street, G11 5JY Glasgow</br>'+ '<a href="https://putivegancafe.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">'+
+            'Website</a>'+' | '+
+            '<a href="https://www.facebook.com/PutiVeganCafe/" target="_blank">'+
+            'Facebook</a>'+' | '+
+            '<a href="https://www.instagram.com/putivegan/" target="_blank">'+
+            'Instagram</a>'+
+            '</div>'+
+            '</div>';
+            
+        var contentString7 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">The Hug and Pint</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Address</b>: 171 Great Western Road, G4 9AW Glasgow</br>'+ '<a href="https://www.thehugandpint.com/" target="_blank">'+
+            'Website</a>'+' | '+
+            '<a href="https://facebook.com/TheHugandPint" target="_blank">'+
+            'Facebook</a>'+' | '+
+            '<a href="https://instagram.com/thehugandpint" target="_blank">'+
+            'Instagram</a>'+
+            '</div>'+
+            '</div>';
+        var contentString8 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Mono</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Address</b>: 12 Kings Court, G1 5RB Glasgow</br>'+ '<a href="http://www.monocafebar.com/" target="_blank">'+
+            'Website</a>'+' | '+
+            '<a href="https://www.facebook.com/stevenmcseveney2" target="_blank">'+
+            'Facebook</a>'+' | '+
+            '<a href="https://www.instagram.com/monoglasgow/?hl=en" target="_blank">'+
+            'Instagram</a>'+
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        var infowindow2 = new google.maps.InfoWindow({
+          content: contentString2
+        });
+        var infowindow3 = new google.maps.InfoWindow({
+          content: contentString3
+        });
+        var infowindow4 = new google.maps.InfoWindow({
+          content: contentString4
+        });
+        var infowindow5 = new google.maps.InfoWindow({
+          content: contentString5
+        });
+        var infowindow6 = new google.maps.InfoWindow({
+          content: contentString6
+        });
+        var infowindow7 = new google.maps.InfoWindow({
+          content: contentString7
+        });
+        var infowindow8 = new google.maps.InfoWindow({
+          content: contentString8
         });
         }
     </script>
