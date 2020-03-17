@@ -12,9 +12,9 @@
 
 <form id="user_form" method="post" action="{%url 'veganation:signup'%}" enctype="multipart/form-data">
 {% csrf_token %}
-{{ user_form.as_p }}
-{{ profile_form.as_p }}
+{{ user_form.as_ul }}
+{{ profile_form.as_ul }}
 <input type="submit" name="submit" value="Register" />
 </form>
-
+<hr />
 {% endblock %}

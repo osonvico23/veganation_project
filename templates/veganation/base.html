@@ -159,7 +159,9 @@
 		</div>
 		
 		{% if user.is_authenticated %}
-		Logout
+		<div class="topcorner">
+		<a href="{% url 'veganation:signup' %}" class="button">Log Out!</a>
+		</div>
 		{% else %}
 		<form class="topcorner">
 		<div id="container">       

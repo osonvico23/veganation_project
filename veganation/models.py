@@ -1,13 +1,22 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django_google_maps import fields as map_fields
 # Create your models here.
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    picture = models.ImageField(upload_to='profile_images', blank=True)
+    firstName = models.CharField(max_length=30, blank = true)
+    lastName = modes.CharField(max_length=40, blank = true)
+    email = models.EmailField()
+    veganSince = models.DateTimeField(blank = True)
+    isVegan = models.BooleanField(blank = True)
+    profilePic = models.ImageField(upload_to='profile_images', blank=True)
+    quote = models.TextField(max_length=100, blank=True)
+    occupation = models.CharField(max_length=50, blank = True)
+    city = models.CharField(max_length=40, blank=True)
 
     def __str__(self):
         return self.user.username
