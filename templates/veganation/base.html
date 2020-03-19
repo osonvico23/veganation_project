@@ -191,9 +191,6 @@
 	</head>
 	
 	<body>
-		<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
-		<div>
 		<div id="centerbox">
 		<img src="{% static 'images/logo.jpeg' %}" alt = "Logo" class = "logo"/>
 			
@@ -212,13 +209,12 @@
 		
 		{% if user.is_authenticated %}
 		<div class="topcorner">
-		Hi there, {{ user.username }}!
 		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
 		</div>
 		{% else %}
 		<form class="topcorner">
 		<div id="container">       
-			<form id="login_form" method="post" action="{% url 'veganation:login' %}">
+			<form id="login_form" method="post" action=".">
 			
 			{% csrf_token %}
 			<p class="centreHeader">Login</p>
