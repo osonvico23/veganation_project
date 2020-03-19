@@ -18,6 +18,11 @@ def protests(request):
     context_dict = {}
     return render(request, 'veganation/protests.html', context=context_dict)
 
+def myaccount(request):
+    context_dict = {}
+    return render(request, 'veganation/myaccount.html', context=context_dict)
+
+
 def signup(request):
     registered = False
 
