@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.timezone import now
+
 from django_google_maps import fields as map_fields
 # Create your models here.
 
@@ -10,9 +12,13 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     firstName = models.CharField(max_length=30, blank = True)
     lastName = models.CharField(max_length=40, blank = True)
+<<<<<<< HEAD
     email = models.EmailField()
+=======
+    email = models.EmailField(default = 'veganation@gmail.com')
+>>>>>>> 743661b8ccee8b567c81f294db1fe5a0dff6d157
     veganSince = models.DateTimeField(blank = True)
-    isVegan = models.BooleanField(blank = True)
+    isVegan = models.BooleanField(blank = True, default=False)
     profilePic = models.ImageField(upload_to='profile_images', blank=True)
     quote = models.TextField(max_length=100, blank=True)
     occupation = models.CharField(max_length=50, blank = True)

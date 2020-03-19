@@ -3,6 +3,7 @@ from veganation.models import UserProfile
 # Register your models here.
 
 admin.site.register(UserProfile)
+
 from django_google_maps import widgets as map_widgets
 from django_google_maps import fields as map_fields
 
