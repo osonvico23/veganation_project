@@ -5,6 +5,7 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from veganation.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login
+from django.urls import reverse
 
 def index(request):
     context_dict = {}
@@ -19,7 +20,6 @@ def protests(request):
     return render(request, 'veganation/protests.html', context=context_dict)
 
 def signup(request):
-
     registered = False
 
     if request.method == 'POST':
@@ -34,22 +34,23 @@ def signup(request):
 
             profile = profile_form.save(commit=False)
             profile.user = user
-        # Did the user provide a profile picture?
-        # If so, we need to get it from the input form and #put it in the UserProfile model.
+
             if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture'] #
-                profile.save()
-                registered = True
+                profile.picture = request.FILES['picture']
+
+            profile.save()
+
+            registered = True
         else:
             print(user_form.errors, profile_form.errors)
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
-            # Render the template depending on the context.
+
     return render(request, 'veganation/signup.html',
-                          context = {'user_form': user_form,
-                                     'profile_form': profile_form,
-                                     'registered': registered})
+                  context = {'user_form': user_form,
+                             'profile_form': profile_form,
+                             'registered':registered})
 
 def user_login(request):
 # If the request is a HTTP POST, try to pull out the relevant information.
@@ -62,9 +63,9 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return redirect(reverse('veganation:home'))
+                return redirect(reverse('veganation:index'))
             else:
-                return HttpResponse("Your Rango account is disabled.")
+                return HttpResponse("Your Veganation account is disabled.")
         else:
             print(f"Invalid login details: {username}, {password}")
             return HttpResponse("Invalid login details supplied.")
@@ -72,8 +73,9 @@ def user_login(request):
     else:
         return render(request, 'veganation/index.html')
 
-
 @login_required
 def user_logout(request):
-        logout(request)
-        return redirect(reverse('veganation:index'))
+# Since we know the user is logged in, we can now just log them out.
+    logout(request)
+# Take the user back to the homepage.
+    return redirect(reverse('veganation:index'))

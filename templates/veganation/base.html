@@ -12,7 +12,7 @@
   				margin-right: auto;
   				width: 15%;
 			}
-			h1{
+			.centreHeader{
 				text-align:center;
 			}
 			
@@ -62,9 +62,10 @@
    				top:0;
    				right:0;
    				border: 1px solid gray;
-   				padding: 20px;
+   				padding: 8px;
   			}
   			
+  		
   			.container {
     			position: relative;
     			top: 50%;
@@ -108,10 +109,12 @@
 			
 			.alignLeft{
 				float:left;
+				bottom:0;
 			}
 			
 			.alignRight{
 				float:right;
+				bottom:0;
 			}
 			
 			.boxed{
@@ -125,11 +128,15 @@
   				text-align: center;
   				text-decoration: none;
   				display: block;
-  				font-size: 16px;
+  				font-size: 14px;
   				margin-left: auto;
   				margin-right: auto;
 			}	
 			
+			.foot{
+			position:absolute;
+			bottom : 5px;
+			}
 		</style>
 		<title>
 			{% block title_block %}
@@ -139,12 +146,10 @@
 	</head>
 	
 	<body>
-		
+		<div>
 		<div id="centerbox">
 		<img src="{% static 'images/logo.jpeg' %}" alt = "Logo" class = "centre"/>
-		
-
-		
+			<h2 class = "centreHeader"> Welcome to Veganation </h2>
 			<ul class = "nav">
   				<li><a href="{% url 'veganation:index' %}">Home</a></li>
   				<li><a href="{% url 'veganation:restaurants' %}">Restaurants</a></li>
@@ -154,51 +159,55 @@
 		
 		<div>
 		<a href="#" class="fa fa-facebook"></a>
-		<a href="https://www.instagram.com/veganation_2020/?hl=en" class="fa fa-instagram"></a>
+		<a href="https://www.instagram.com/veganation2020/?hl=en" class="fa fa-instagram"></a>
 		<a href="#" class="fa fa-twitter"></a>
 		</div>
 		
 		{% if user.is_authenticated %}
 		<div class="topcorner">
-		<a href="{% url 'veganation:signup' %}" class="button">Log Out!</a>
+		Hi there, {{user.username }}!
+		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
 		</div>
 		{% else %}
 		<form class="topcorner">
 		<div id="container">       
-		
-			<label for="username">Username:</label>
-			<input type="text" id="username" name="username"></br>
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="password"></br></br>
-			<div id="lower">
-			<input type="submit" value="Sign In">
-			<input type="submit" value ="Forgotten Password"></br>
-			<label>Or sign in with:</label></br>
+			<h4 class = "centreHeader">Login</h4>
+			<form id="login_form" method="post" action="{% url 'veganation:login' %}">
+			{% csrf_token %}
+			Username: <input type="text" name="username" value="" />
+			<br />
+			Password: <input type="password" name="password" value="" />
+			<br />
+			<input type="submit" value="submit" />
+			</form>
+			<br>
+			<label class = "centreHeader">Or sign in with:</label></br>
 			<div id="centerbox">
 			<a href="#" class="fa fa-facebook"></a>
 			<a href="#" class="fa fa-instagram"></a>
 			<a href="#" class="fa fa-twitter"></a>
 			</div>
-			<a href="{% url 'veganation:signup' %}" class="button">Sign Up!</a>
+
+			<a href="{% url 'veganation:signup' %}" class="button">Dont't have an account? Sign up!</a>
 			</div>
 			
 		</div>
 		</form>
 		{% endif %}
-		
-		<hr />
+		</div>
 		
 		<div class ="container">
+		<hr/>
 		{% block body_block %}
 		{% endblock %}
 		</div>
 		
 		</br>
+		
 		<div>
 		<p class = "alignLeft">contact@veganation.com</p>
 		<p class = "alignRight">All Rights Reserved</p>
 		</div>
-		
 		
 	</body>
 	

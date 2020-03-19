@@ -6,15 +6,19 @@
 	Sign Up
 {% endblock %}
 
-
-<h2>Sign up for Veganation!</h2>
 {% block body_block %}
-
+<div>
+{% if registered %}
+Veganation says: <strong>thank you for registering!</strong>
+<a href="{% url 'veganation:index' %}">Return to the homepage.</a><br />
+{% else %}
+<h2>Sign up for Veganation!</h2>
 <form id="user_form" method="post" action="{%url 'veganation:signup'%}" enctype="multipart/form-data">
 {% csrf_token %}
 {{ user_form.as_ul }}
 {{ profile_form.as_ul }}
-<input type="submit" name="submit" value="Register" />
+<input type="submit" name="submit" value="Sign Up" />
 </form>
-<hr />
+{% endif %}
+</div>
 {% endblock %}
