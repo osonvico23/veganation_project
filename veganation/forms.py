@@ -8,10 +8,16 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
+        fields = ('username', 'email','password')
+
+    def save(self, commit=True):
+        user = super(UserCreateForm, self).save(commit=False)
+
         fields = ('username', 'email', 'password',)
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('firstName', 'lastName', 'veganSince',
+        #fields taken out firstName and lastName
+        fields = ('veganSince',
         'isVegan', 'profilePic', 'quote', 'occupation', 'city',)
