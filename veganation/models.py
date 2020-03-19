@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.timezone import now
 
-#from django_google_maps import fields as map_fields
+from django_google_maps import fields as map_fields
 # Create your models here.
 
 
@@ -23,6 +23,6 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
-#class Rental(models.Model):
-#    address = map_fields.AddressField(max_length=200)
-#    geolocation = map_fields.GeoLocationField(max_length=100)
+class Rental(models.Model):
+    address = map_fields.AddressField(max_length=200)
+    geolocation = map_fields.GeoLocationField(max_length=100)
