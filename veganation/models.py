@@ -8,8 +8,8 @@ from django_google_maps import fields as map_fields
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    firstName = models.CharField(max_length=30, blank = true)
-    lastName = modes.CharField(max_length=40, blank = true)
+    firstName = models.CharField(max_length=30, blank = True)
+    lastName = models.CharField(max_length=40, blank = True)
     email = models.EmailField()
     veganSince = models.DateTimeField(blank = True)
     isVegan = models.BooleanField(blank = True)

@@ -7,11 +7,11 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'firstName', 'lastName','email',
-        'password',)
+        fields = ('username','firstName','lastName','email',
+        'password')
 
-    def save(self, commit=True)
-    user = super(UserCreateForm, self).save(commit=False);
+    def save(self, commit=True):
+        user = super(UserCreateForm, self).save(commit=False);
 
 
 class UserProfileForm(forms.ModelForm):
