@@ -128,6 +128,9 @@ USE_TZ = True
 STATICFILES_DIRS = [STATIC_DIR, ]
 STATIC_URL = '/static/'
 LOGIN_URL = 'veganation:login'
+LOGIN_REDIRECT_URL = 'veganation:index'
+LOGOUT_URL = 'veganation:logout'
+LOGOUT_REDIRECT_URL = 'veganation:index'
 #password hasher
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',

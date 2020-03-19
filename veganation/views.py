@@ -8,8 +8,7 @@ from django.contrib.auth import authenticate, login
 from django.urls import reverse
 
 def index(request):
-    context_dict = {}
-    return render(request, 'veganation/index.html', context=context_dict)
+    return render(request, 'veganation/index.html')
 
 def restaurants(request):
     context_dict = {}
