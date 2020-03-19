@@ -3,7 +3,7 @@
 {% load static%}
 <html>
 	<head>
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
 			.centre {
@@ -76,7 +76,7 @@
 			
 			#rightbox{ 
                 float:right; 
-                width:45%; 
+                width:48%; 
                 height:300px;
                 padding: 10px;
   				border: 1px solid gray; 
@@ -95,7 +95,7 @@
             
             #leftbox { 
                 float:left;  
-                width:45%; 
+                width:48%; 
                 height:300px; 
                 padding: 10px;
   				border: 1px solid gray;
@@ -137,11 +137,42 @@
 			position:absolute;
 			bottom : 5px;
 			}
-		</style>
-		<title>
-			{% block title_block %}
-				VegaNation
-			{% endblock %}
+			
+			* {
+  			box-sizing: border-box;
+			}
+
+/* Create two equal columns that floats next to each other */
+			.column {
+ 			float: left;
+  			width: 50%;
+  			padding: 10px;
+  			border: 1px solid black;
+  			height:300px;
+  			overflow: auto;
+			}
+
+/* Clear floats after the columns */
+			.row:after {
+  				content: "";
+  				display: table;
+  				clear: both;
+				}
+				
+			.footer {
+  				position: fixed;
+  				left: 0;
+  				bottom: 0;
+  				width: 100%;
+ 				background-color: red;
+  				color: white;
+  				text-align: center;
+			}
+</style>
+<title>
+	{% block title_block %}
+		VegaNation
+	{% endblock %}
 		</title>
 	</head>
 	
@@ -165,7 +196,7 @@
 		
 		{% if user.is_authenticated %}
 		<div class="topcorner">
-		Hi there, {{user.username }}!
+		Hi there, {{ user.username }}!
 		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
 		</div>
 		{% else %}
