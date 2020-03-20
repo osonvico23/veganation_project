@@ -206,18 +206,17 @@
 		<a href="#" class="fa fa-facebook"></a>
 		<a href="https://www.instagram.com/veganation2020/?hl=en" class="fa fa-instagram"></a>
 		<a href="https://twitter.com/veganation4" class="fa fa-twitter"></a>
-		
 		</div>
+		
 		{% if user.is_authenticated %}
 		<div class="topcorner">
-		<a href="{% url 'veganation:myaccount' %}" class="button">Go to My Account</a>
 		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
 		</div>
 		{% else %}
 		<form class="topcorner">
 		<div id="container">       
-			<a href="{% url 'veganation:login' %}" class="button">Login Here!</a>
 			<br>
+			<a href="{% url 'veganation:login' %}" class="button">Login Here!</a>
 			<label class = "centreHeader">Or sign in with:</label></br>
 			<a href="{% url 'veganation:signup' %}" class="button">Dont't have an account? Sign up!</a>
 			</div>
@@ -225,6 +224,9 @@
 		</div>
 		</form>
 		{% endif %}
+		<br>
+		</div>
+	
 		<div class ="bod">		
 		{% block body_block %}
 		{% endblock %}
