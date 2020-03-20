@@ -39,8 +39,8 @@ def signup(request):
             profile = profile_form.save(commit=False)
             profile.user = user
 
-            if 'profilePic' in request.FILES:
-                profile.picture = request.FILES['profilePic']
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
 
             profile.save()
 

@@ -16,7 +16,7 @@ class UserProfile(models.Model):
     email = models.EmailField(default = 'veganation@gmail.com')
     veganSince = models.DateTimeField(blank = True)
     isVegan = models.BooleanField(blank = True, default=False)
-    profilePic = models.ImageField(upload_to='profile_images', blank=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
     quote = models.TextField(max_length=100, blank=True)
     occupation = models.CharField(max_length=50, blank = True)
     city = models.CharField(max_length=40, blank=True)
