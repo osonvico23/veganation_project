@@ -1,0 +1,25 @@
+{% extends 'veganation/base.html' %}
+{% block title_block %}
+    Login
+{% endblock %}
+
+{% block body_block %}
+	<div id="container">       
+		<form id="login_form" method="post" action=".">
+			
+			{% csrf_token %}
+			<p class="centreHeader">Login</p>
+			Username: <input type="text" name="username" value="" />
+			<br />
+			Password: <input type="password" name="password" value="" />
+			<br />
+			<input type="submit" value="Login" />
+			</form>
+			<br>
+			<label class = "centreHeader">Or sign in with:</label></br>
+			
+
+			<a href="{% url 'veganation:signup' %}" class="button">Dont't have an account? Sign up!</a>
+			</div>
+		</div>
+{% endblock %}

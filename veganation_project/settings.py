@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'veganation',
     'django_google_maps',
-    
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -128,13 +128,7 @@ USE_TZ = True
 #https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATICFILES_DIRS = [STATIC_DIR, ]
 STATIC_URL = '/static/'
-# If True, users can register.
-REGISTRATION_OPEN = True
-# If True, the user will be automatically logged in after registering.
-REGISTRATION_AUTO_LOGIN = True
-# The URL that Django redirects users to after logging in.
-LOGIN_REDIRECT_URL = 'veganation:index'
-LOGIN_URL = 'auth_login'
+
 #password hasher
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',

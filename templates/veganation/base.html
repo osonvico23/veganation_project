@@ -208,7 +208,6 @@
 		<a href="https://twitter.com/veganation4" class="fa fa-twitter"></a>
 		
 		</div>
-		
 		{% if user.is_authenticated %}
 		<div class="topcorner">
 		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
@@ -216,29 +215,15 @@
 		{% else %}
 		<form class="topcorner">
 		<div id="container">       
-			<form id="login_form" method="post" action=".">
-			
-			{% csrf_token %}
-			<p class="centreHeader">Login</p>
-			Username: <input type="text" name="username" value="" />
-			<br />
-			Password: <input type="password" name="password" value="" />
-			<br />
-			<input type="submit" value="Login" />
-			</form>
+			<a href="{% url 'veganation:login' %}" class="button">Login Here!</a>
 			<br>
 			<label class = "centreHeader">Or sign in with:</label></br>
-			
-
 			<a href="{% url 'veganation:signup' %}" class="button">Dont't have an account? Sign up!</a>
 			</div>
 			
 		</div>
 		</form>
 		{% endif %}
-		<br>
-		</div>
-	
 		<div class ="bod">		
 		{% block body_block %}
 		{% endblock %}

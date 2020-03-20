@@ -75,7 +75,7 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")
 
     else:
-        return render(request, 'veganation/index.html')
+        return render(request, 'veganation/login.html')
 
 @login_required
 def user_logout(request):
