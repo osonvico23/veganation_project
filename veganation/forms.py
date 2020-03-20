@@ -10,10 +10,6 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email','password')
 
-    def save(self, commit=True):
-        user = super(UserCreateForm, self).save(commit=False)
-
-        fields = ('username', 'email', 'password',)
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
