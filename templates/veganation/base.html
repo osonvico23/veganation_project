@@ -210,6 +210,7 @@
 		</div>
 		{% if user.is_authenticated %}
 		<div class="topcorner">
+		<a href="{% url 'veganation:myaccount' %}" class="button">Go to My Account</a>
 		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
 		</div>
 		{% else %}
