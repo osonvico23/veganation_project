@@ -25,4 +25,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('veganation/', include('veganation.urls')),
     path('admin/', admin.site.urls),
+    path('ratings/', include('star_ratings.urls', namespace='ratings'), name='ratings'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -1,156 +1,129 @@
 <!DOCTYPE html>
 
-
-
 {% extends 'veganation/base.html' %}
-
 {% load static %}
 
-
-
 {% block title_block %}
-
     Restaurants
-
 {% endblock %}
 
 
-
-
-
 {% block body_block %}
-
 <style>
-
-  /* Set the size of the div element that contains the map */
-
-    #googlemap {
-
-        height: 100%;
-
-        width: 100%;  /* The width is the width of the div */
-
-    }
-
     table {
-
         height: 100%;
-
         width: 100%;
-
         border-collapse: collapse;
-
         text-align : left;
-
     }
 
 </style>
 <script src="https://maps.google.com/maps/api/js"></script>
 <div id = "rightbox">
 
-<table>
+    <table>
 
-    Choose a restaurant you wanna try with someone and we will pair you up in accordance with your preferences.
+        Choose a restaurant you wanna try with someone and we will pair you up in accordance with your preferences.
 
-  <tr>
+      <tr>
 
-    <td><img src="{% static 'images/vandv.jpeg' %}" style="width:100px" /></td>
+        <td><img src="{% static 'images/vandv.jpeg' %}" style="width:100px" /></td>
 
-    <td><a href="#" onclick="myClick(0);">V&V Café</a></br>
+        <td><a href="#" onclick="myClick(0);">V&V Café</a></br>
 
-        Breakfast, desserts | ££</td>
+            Breakfast, desserts | ££</td>
 
-    <td>Choose</td>
+        <td>Choose</td>
 
-  </tr>
+      </tr>
 
-  <tr>
+      <tr>
 
-    <td><img src="{% static 'images/the78.jpeg' %}" style="width:100px" /></td>
+        <td><img src="{% static 'images/the78.jpeg' %}" style="width:100px" /></td>
 
-    <td><a href="#" onclick="myClick(1);">The 78</a></br>
+        <td><a href="#" onclick="myClick(1);">The 78</a></br>
 
-    Late-night food | ££</td>
+        Late-night food | ££</td>
 
-    <td>Choose</td>
+        <td>Choose</td>
 
-  </tr>
+      </tr>
 
-  <tr>
+      <tr>
 
-    <td><img src="{% static 'images/seren.jpeg' %}" style="width:100px" /></td>
+        <td><img src="{% static 'images/seren.jpeg' %}" style="width:100px" /></td>
 
-    <td><a href="#" onclick="myClick(2);">Serenity Now</a></br>
+        <td><a href="#" onclick="myClick(2);">Serenity Now</a></br>
 
-    Brunch, lunch | ££</td>
+        Brunch, lunch | ££</td>
 
-    <td>Choose</td>
+        <td>Choose</td>
 
-  </tr>
+      </tr>
 
-  <tr>
+      <tr>
 
-    <td><img src="{% static 'images/glas.jpeg' %}" style="width:100px" /></td>
+        <td><img src="{% static 'images/glas.jpeg' %}" style="width:100px" /></td>
 
-    <td><a href="#" onclick="myClick(3);">The Glasvegan</a></br>
+        <td><a href="#" onclick="myClick(3);">The Glasvegan</a></br>
 
-    Fast food | £</td></td>
+        Fast food | £</td></td>
 
-    <td>Choose</td>
+        <td>Choose</td>
 
-  </tr>
+      </tr>
 
-  <tr>
+      <tr>
 
-    <td><img src="{% static 'images/picnic.jpeg' %}" style="width:100px" /></td>
+        <td><img src="{% static 'images/picnic.jpeg' %}" style="width:100px" /></td>
 
-    <td><a href="#" onclick="myClick(4);">Picnic</a></br>
+        <td><a href="#" onclick="myClick(4);">Picnic</a></br>
 
-    Health-conscious | ££</td>
+        Health-conscious | ££</td>
 
-    <td>Choose</td>
+        <td>Choose</td>
 
-  </tr>
+      </tr>
 
-  <tr>
+      <tr>
 
-    <td><img src="{% static 'images/puti.jpeg' %}" style="width:100px" /></td>
+        <td><img src="{% static 'images/puti.jpeg' %}" style="width:100px" /></td>
 
-    <td><a href="#" onclick="myClick(5);">Puti Vegan Cafe</a></br>
+        <td><a href="#" onclick="myClick(5);">Puti Vegan Cafe</a></br>
 
-    Asian | ££</td>
+        Asian | ££</td>
 
-    <td>Choose</td>
+        <td>Choose</td>
 
-  </tr>
+      </tr>
 
-  <tr>
+      <tr>
 
-    <td><img src="{% static 'images/hug.jpeg' %}" style="width:100px" /></td>
+        <td><img src="{% static 'images/hug.jpeg' %}" style="width:100px" /></td>
 
-    <td><a href="#" onclick="myClick(6);">Hug and Pint</a></br>
+        <td><a href="#" onclick="myClick(6);">Hug and Pint</a></br>
 
-    Restaurant and bar | ££</td>
+        Restaurant and bar | ££</td>
 
-    <td>Choose</td>
+        <td>Choose</td>
 
-  </tr>
+      </tr>
 
-  <tr>
+      <tr>
 
-    <td><img src="{% static 'images/mono.jpeg' %}" style="width:100px" /></td>
+        <td><img src="{% static 'images/mono.jpeg' %}" style="width:100px" /></td>
 
-    <td><a href="#" onclick="myClick(7);">Mono</a></br>
+        <td><a href="#" onclick="myClick(7);">Mono</a></br>
 
-    Late-night food | ££</td>
+        Late-night food | ££</td>
 
-    <td>Choose</td>
+        <td>Choose</td>
 
-  </tr>
+      </tr>
 
-</table>
+    </table>
 
-</div>
+    </div>
 
 
 
@@ -323,7 +296,5 @@
 
     </script>
     <div id="googlemap" style="width: 100%; height: 100%;"></div>
-
+         </div>
 {% endblock %}
-
-
