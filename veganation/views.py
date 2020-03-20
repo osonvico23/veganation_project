@@ -7,6 +7,7 @@ from veganation.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
 
+
 def index(request):
     return render(request, 'veganation/index.html')
 

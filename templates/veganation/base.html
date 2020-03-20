@@ -169,7 +169,6 @@
 			}
 			
 
-/* Create two equal columns that floats next to each other */
 			.column {
  			float: left;
   			width: 50%;
@@ -179,7 +178,6 @@
   			overflow: auto;
 			}
 
-/* Clear floats after the columns */
 			.row:after {
   				content: "";
   				display: table;
@@ -229,14 +227,14 @@
 		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
 		</div>
 		{% else %}
-		<form class="topcorner">
-		<div id="container">       
+		<div class="topcorner">
+		      
 			<br>
 			<a href="{% url 'veganation:login' %}" class="button">Login Here!</a><br>
 			<a href="{% url 'veganation:signup' %}" class="button">Dont't have an account? Sign up!</a>
 			</div>
+		
 		</div>
-		</form>
 		{% endif %}
 		</div>
 	
