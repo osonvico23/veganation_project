@@ -16,4 +16,4 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         #fields taken out firstName and lastName
         fields = ('veganSince',
-        'isVegan', 'picture', 'quote', 'occupation', 'city',)
+        'isVegan', 'firstName', 'lastName','picture', 'quote', 'occupation', 'city',)

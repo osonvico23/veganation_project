@@ -20,7 +20,8 @@ class UserProfile(models.Model):
     quote = models.TextField(max_length=100, blank=True)
     occupation = models.CharField(max_length=50, blank = True)
     city = models.CharField(max_length=40, blank=True)
-
+    firstName = models.CharField(max_length=30, blank=True)
+    lastName = models.CharField(max_length=40, blank=True)
     def __str__(self):
         return self.user.username
 
