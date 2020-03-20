@@ -3,6 +3,8 @@
 {% extends 'veganation/base.html' %}
 {% load static %}
 
+
+
 {% block title_block %}
 	My Account
 {% endblock %}
@@ -14,6 +16,7 @@ My restaurants
 </div>
 
 <div id = "leftbox">
-My Account
+<!--print out the current user's username when logged in -->
+    <h1>{{ user.username }}</h1>
 </div>
 {% endblock %}
