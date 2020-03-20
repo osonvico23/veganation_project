@@ -64,8 +64,7 @@
    				position:absolute;
    				top:0;
    				right:0;
-   				border: 1px solid gray;
-   				padding: 8px;
+   				padding: 5px;
   			}
   			
   		
@@ -127,13 +126,13 @@
 			.button {
   				background-color: #33ccff;
   				color: black;
-  				padding: 7px 12px;
+  				padding: 5px 10px;
   				text-align: center;
   				text-decoration: none;
-  				display: block;
   				font-size: 14px;
   				margin-left: auto;
   				margin-right: auto;
+  				float:center;
 			}	
 			
 			.foot{
@@ -151,9 +150,24 @@
 			}
 			
 			.bod{
-			margin-top:5%;
+			margin-top:3%;
 			position:relative;
 			}
+			
+			.login{
+  				margin: auto;
+  				width: 50%;
+  				border: 3px solid green;
+  				padding: 10px;
+			}
+			
+			.signup{
+  				margin: auto;
+  				width: 75%;
+  				border: 3px solid green;
+  				padding: 10px;
+			}
+			
 
 /* Create two equal columns that floats next to each other */
 			.column {
@@ -173,13 +187,15 @@
 				}
 				
 			.footer {
-  				position:absolute;
-  				left: 0;
-  				bottom: 0;
-  				width: 100%;
- 				background-color: red;
-  				color: white;
-  				text-align: center;
+  				background-color: #efefef;
+  				flex: 0 0 50px;/*or just height:50px;*/
+  				margin-top: auto;
+			}
+			
+			body {
+  				display: flex;
+  				flex-direction: column;
+  				min-height: 100vh;
 			}
 </style>
 
@@ -216,15 +232,12 @@
 		<form class="topcorner">
 		<div id="container">       
 			<br>
-			<a href="{% url 'veganation:login' %}" class="button">Login Here!</a>
-			<label class = "centreHeader">Or sign in with:</label></br>
+			<a href="{% url 'veganation:login' %}" class="button">Login Here!</a><br>
 			<a href="{% url 'veganation:signup' %}" class="button">Dont't have an account? Sign up!</a>
 			</div>
-			
 		</div>
 		</form>
 		{% endif %}
-		<br>
 		</div>
 	
 		<div class ="bod">		

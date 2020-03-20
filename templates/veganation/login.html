@@ -4,22 +4,19 @@
 {% endblock %}
 
 {% block body_block %}
-	<div id="container">       
+
+	<div class="login">    
+	<p class="centreHeader">Login to Veganation</p>   
 		<form id="login_form" method="post" action=".">
-			
 			{% csrf_token %}
-			<p class="centreHeader">Login</p>
 			Username: <input type="text" name="username" value="" />
 			<br />
 			Password: <input type="password" name="password" value="" />
 			<br />
-			<input type="submit" value="Login" />
+			<input type="submit" value="Login" class="button"/>
 			</form>
 			<br>
 			<label class = "centreHeader">Or sign in with:</label></br>
-			
-
-			<a href="{% url 'veganation:signup' %}" class="button">Dont't have an account? Sign up!</a>
 			</div>
 		</div>
 {% endblock %}
