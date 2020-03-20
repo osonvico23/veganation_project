@@ -7,7 +7,6 @@ from veganation.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
 
-
 def index(request):
     return render(request, 'veganation/index.html')
 
@@ -19,7 +18,6 @@ def protests(request):
     context_dict = {}
     return render(request, 'veganation/protests.html', context=context_dict)
 
-@login_required
 def myaccount(request):
     context_dict = {}
     return render(request, 'veganation/myaccount.html', context=context_dict)
