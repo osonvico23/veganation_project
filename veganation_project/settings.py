@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'veganation',
     'django_google_maps',
-    'registration',
+    
 ]
 
 MIDDLEWARE = [
