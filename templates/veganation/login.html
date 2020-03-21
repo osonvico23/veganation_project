@@ -8,7 +8,8 @@
 {% endblock %}
 
 {% block body_block %}
-
+	<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0&appId=2741257989256616&autoLogAppEvents=1"></script>
 	<div class="login">    
 	<p class="centreHeader">Login to Veganation</p>   
 		<form id="login_form" method="post" action=".">
@@ -21,10 +22,10 @@
 			</form>
 			<br>
 			<label class = "centreHeader">Or sign in with:</label></br>
-			<a href="{% provider_login_url "facebook" method="js_sdk" %}" class="btn btn-block btn-social btn-facebook" style="background-color:#3b5998;text-align:center">
-  			<span class="fa fa-facebook"></span>
-               Sign in with Facebook
- 					</a>
+			
+  			<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
+  			<a href="{% provider_login_url "facebook" method="js_sdk" %}"></a>
+  			</div>
 			</div>
 		</div>
 		

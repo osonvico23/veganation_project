@@ -152,11 +152,11 @@ GOOGLE_MAPS_API_KEY = 'AIzaSyAoNRWUpgV13IJT_BZzCd9nIzHRylESdLU'
 #for facebook authentification
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend'
+    'allauth.account.auth_backends.AuthenticationBackend',
+
 ]
 
-SOCIALACCOUNT_PROVIDERS = \
-    {'facebook':
+SOCIALACCOUNT_PROVIDERS = {'facebook':
        {'METHOD': 'oauth2',
         'SCOPE': ['email','public_profile', 'user_friends'],
         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
