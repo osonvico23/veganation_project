@@ -43,10 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'veganation',
     'django_google_maps',
     'star_ratings',
-    'social_django',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -147,13 +151,38 @@ GOOGLE_MAPS_API_KEY = 'AIzaSyAoNRWUpgV13IJT_BZzCd9nIzHRylESdLU'
 
 #for facebook authentification
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.linkedin.LinkedinOAuth2',
-    'social_core.backends.instagram.InstagramOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
 ]
 
-LOGIN_URL = 'veganation:login'
+SOCIALACCOUNT_PROVIDERS = \
+    {'facebook':
+       {'METHOD': 'oauth2',
+        'SCOPE': ['email','public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time'],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': lambda request: 'kr_KR',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.4'}}
+
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'veganation:index'
-LOGOUT_URL = 'veganation:logout'
-LOGOUT_REDIRECT_URL = 'veganation:login'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+#facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '2741257989256616'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET ='bd8194b6d94d624fd8b319549f51210b' #app key
+
+SITE_ID=2

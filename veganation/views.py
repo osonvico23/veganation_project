@@ -23,6 +23,8 @@ def myaccount(request):
     context_dict = {}
     return render(request, 'veganation/myaccount.html', context=context_dict)
 
+def socialsLogin(request):
+    return render(request, 'veganation/socialsLogin.html')
 
 def signup(request):
     registered = False

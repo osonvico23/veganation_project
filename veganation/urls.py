@@ -1,6 +1,6 @@
-from django.urls import path
+from django.urls import path,include
 from veganation import views
-
+from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -14,6 +14,9 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
     path('myaccount/', views.myaccount, name='myaccount'),
+    path('admin/', admin.site.urls),
+    path(r'^accounts/',include('allauth.urls')),
+    path('socialsLogin/', views.socialsLogin, name='socialsLogin')
     ]
 #serving files uploaded by user during development
 if settings.DEBUG:
