@@ -2,38 +2,47 @@
 
 {% extends 'veganation/base.html' %}
 {% load static %}
+<style>
+.wrapper {
+	margin: 0 auto;
+	width: 110px;
+	height: auto;
+	position:absolute;
+}
 
+.fb-page, 
+.fb-page span, 
+.fb-page span iframe[style] { 
+    width: 100%; 
+    
+}
+</style>
 {% block title_block %}
 	Protests
 {% endblock %}
 
 
 {% block body_block %}
-<style>
 
-</style>
-<div id = "rightbox">
-	<div id="fb-root"></div>
-	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
-	<div class="fb-page"
-		data-href="https://www.facebook.com/VegaNation-102804628030447"
-		data-tabs="events"
-		data-width="100%"
-		data-height=""
-		data-small-header="true"
-		data-adapt-container-width="false"
-		data-hide-cover="true"
-		data-show-facepile="true"><blockquote
-		cite="https://www.facebook.com/VegaNation-102804628030447"
-		class="fb-xfbml-parse-ignore">
+<div class = "row">
+<div class = "column">
+	<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23C0CA33&amp;ctz=Europe%2FLondon&amp;src=dmVnYW5hdGlvbmdsYXNnaXJsczIwQGdtYWlsLmNvbQ&amp;src=YmMwdWs3aTU3cG1ubWpvdTMwYWlraTRqaHJ1MnY2aGVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5&amp;color=%23B39DDB&amp;showPrint=0&amp;title=Calendar&amp;showNav=1&amp;showCalendars=0" style="border:solid 1px #777" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+</div>
+<div class="column">
+		<div id="fb-root"></div>
+			<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
+		<div class="fb-page"
+			data-href="https://www.facebook.com/VegaNation-102804628030447"
+			data-tabs="events"
+			data-small-header="true"
+			data-adapt-container-width="true"
+			data-hide-cover="true"
+			data-show-facepile="true"><blockquote
+			cite="https://www.facebook.com/VegaNation-102804628030447"
+			class="fb-xfbml-parse-ignore">
 		<a href="https://www.facebook.com/VegaNation-102804628030447">VegaNation</a> </blockquote>
 	</div>
 
-</div>
-
-
-
-<div id = "leftbox">
-<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23C0CA33&amp;ctz=Europe%2FLondon&amp;src=dmVnYW5hdGlvbmdsYXNnaXJsczIwQGdtYWlsLmNvbQ&amp;src=YmMwdWs3aTU3cG1ubWpvdTMwYWlraTRqaHJ1MnY2aGVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5&amp;color=%23B39DDB&amp;showPrint=0&amp;title=Calendar&amp;showNav=1&amp;showCalendars=0" style="border:solid 1px #777" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+</div>		
 </div>
 {% endblock %}
