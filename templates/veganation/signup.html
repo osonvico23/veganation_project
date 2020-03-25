@@ -12,11 +12,15 @@
 Veganation says: <strong>thank you for registering!</strong>
 <a href="{% url 'veganation:index' %}">Return to the homepage.</a><br />
 {% else %}
+{% if invalid %}
+<p><strong>Your username and password didn't match. Please try again.<strong></p>
+{% endif %}
 <h2>Sign up for Veganation!</h2>
 <form id="user_form" method="post" action="{%url 'veganation:signup'%}" enctype="multipart/form-data">
 {% csrf_token %}
 {{ user_form.as_p }}
 {{ profile_form.as_p}}
+{{ invalid }}
 <input type="submit" name="submit" value="Sign Up" />
 </form>
 {% endif %}

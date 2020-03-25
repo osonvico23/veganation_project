@@ -8,11 +8,13 @@
 {% endblock %}
 
 {% block body_block %}
-	<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0&appId=2741257989256616&autoLogAppEvents=1"></script>
+
 	<div class="login">    
-	<p class="centreHeader">Login to Veganation</p>   
-		<form id="login_form" method="post" action=".">
+	<p class="centreHeader">Login to Veganation</p>
+	{% if invalid %}
+	<p><strong>Your username and password didn't match. Please try again.</strong></p>
+	{% endif %}   
+		<form id="login_form" method="post" action="{% url 'veganation:login' %}">
 			{% csrf_token %}
 			Username: <input type="text" name="username" value="" />
 			<br />

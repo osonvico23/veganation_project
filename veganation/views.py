@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from veganation.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
-
+from django.shortcuts import render_to_response
 
 def index(request):
     return render(request, 'veganation/index.html')
@@ -74,8 +74,9 @@ def user_login(request):
             else:
                 return HttpResponse("Your Veganation account is disabled.")
         else:
-            print(f"Invalid login details: {username}, {password}")
-            return HttpResponse("Invalid login details supplied.")
+            context_dict = {}
+            context_dict['invalid'] = True
+            return render(request, 'veganation/login.html', context = context_dict)
 
     else:
         return render(request, 'veganation/login.html')
