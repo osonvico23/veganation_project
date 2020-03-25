@@ -48,9 +48,7 @@ INSTALLED_APPS = [
     'django_google_maps',
     'star_ratings',
     'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -181,8 +179,7 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'veganation:index'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
-#facebook
-SOCIAL_AUTH_FACEBOOK_KEY = '2741257989256616'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET ='bd8194b6d94d624fd8b319549f51210b' #app key
 
-SITE_ID=2
+RECAPTCHA_PUBLIC_KEY = '6LfRB-QUAAAAACp71U1kBP9zRZMr_GxnVFnpc_3X'
+RECAPTCHA_PRIVATE_KEY = '6LfRB-QUAAAAADveAHeGULVn-oeHUSyefB5vuS6X'
+NOCAPTCHA = True
