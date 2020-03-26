@@ -103,10 +103,7 @@
   				display: inline-block;
             }
             
-            hr {
-    			margin: 20px 0;
-    			border: 1px solid #f00;
-			}
+           
 			
 			.alignLeft{
 				float:left;
@@ -122,16 +119,15 @@
 				border: 1px solid black;
 			}
 			
-			.button {
+			.signInButton {
   				background-color: #33ccff;
-  				color: black;
+  				color: yellow;
   				padding: 5px 10px;
   				text-align: center;
-  				text-decoration: none;
   				font-size: 14px;
   				margin-left: auto;
   				margin-right: auto;
-  				float:center;
+  				display : in-line block;
 			}	
 			
 			.foot{
@@ -167,12 +163,11 @@
   				padding: 10px;
 			}
 			
-
 			.column {
  			float: left;
   			width: 50%;
   			padding: 10px;
-  			border: 1px solid black;
+  			border: 1px solid green;
   			height:400px;
   			overflow: auto;
 			}
@@ -194,6 +189,7 @@
   				flex-direction: column;
   				min-height: 100vh;
 			}
+			
 </style>
 
 <title>
@@ -225,6 +221,7 @@
 	
 		<div class ="bod">		
 		{% block body_block %}
+		
 		{% endblock %}
 		</div>
 		
