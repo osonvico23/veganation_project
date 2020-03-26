@@ -20,11 +20,13 @@ from django.urls import include
 from veganation import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('veganation/', include('veganation.urls')),
     path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
+    path('oauth/', include('social_django.urls', namespace='social')),
     path('ratings/', include('star_ratings.urls', namespace='ratings'), name='ratings'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

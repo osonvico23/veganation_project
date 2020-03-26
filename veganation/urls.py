@@ -15,7 +15,9 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('myaccount/', views.myaccount, name='myaccount'),
     path('admin/', admin.site.urls),
-     path('accounts/', include('allauth.urls')),
+    #path('accounts/', include('allauth.urls')),
+
+
     ]
 #serving files uploaded by user during development
 if settings.DEBUG:

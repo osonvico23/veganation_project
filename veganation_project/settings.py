@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'star_ratings',
     'allauth',
     'captcha',
+    #fb login
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +62,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
-
 ]
 
 ROOT_URLCONF = 'veganation_project.urls'
@@ -150,8 +151,8 @@ GOOGLE_MAPS_API_KEY = 'AIzaSyAoNRWUpgV13IJT_BZzCd9nIzHRylESdLU'
 #for facebook authentification
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {'facebook':
@@ -175,11 +176,14 @@ SOCIALACCOUNT_PROVIDERS = {'facebook':
         'VERIFIED_EMAIL': False,
         'VERSION': 'v2.4'}}
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'veganation:index'
-LOGOUT_URL = 'logout'
-LOGOUT_REDIRECT_URL = 'login'
+
+
+#fb
+SOCIAL_AUTH_FACEBOOK_KEY =  '2741257989256616'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'bd8194b6d94d624fd8b319549f51210b'
 
 RECAPTCHA_PUBLIC_KEY = '6LfRB-QUAAAAACp71U1kBP9zRZMr_GxnVFnpc_3X'
 RECAPTCHA_PRIVATE_KEY = '6LfRB-QUAAAAADveAHeGULVn-oeHUSyefB5vuS6X'
 NOCAPTCHA = True
+
+SITE_ID=2

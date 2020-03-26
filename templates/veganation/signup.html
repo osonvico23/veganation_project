@@ -28,6 +28,8 @@ Veganation says: <strong>thank you for registering!</strong>
 
 <input type="submit" name="submit" value="Sign Up" />
 </form>
+<p><strong>--OR--</strong></p>
+<a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
 {% endif %}
 </div>
 {% endblock %}
