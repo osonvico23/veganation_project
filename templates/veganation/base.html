@@ -202,7 +202,8 @@
 	{% endblock %}
 		</title>
 	</head>
-	
+	{% block login_buttons %}
+	{% endblock %}
 	<body>
 		<div id="centerbox">
 		<img src="{% static 'images/logo.jpeg' %}" alt = "Logo" class = "logo"/>
@@ -220,22 +221,7 @@
 		<a href="https://www.instagram.com/veganation2020/?hl=en" class="fa fa-instagram"></a>
 		<a href="https://twitter.com/veganation4" class="fa fa-twitter"></a>
 		</div>
-		
-		{% if user.is_authenticated %}
-		<div class="topcorner">
-		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
-		</div>
-		{% else %}
-		<div class="topcorner">
-		      
-			<br>
-			<a href="{% url 'veganation:login' %}" class="button">Login Here!</a><br>
-			<a href="{% url 'veganation:signup' %}" class="button">Dont't have an account? Sign up!</a>
-			
-		
-		</div>
-		{% endif %}
-		</div>
+	
 	
 		<div class ="bod">		
 		{% block body_block %}

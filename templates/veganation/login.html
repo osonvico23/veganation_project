@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 {% extends 'veganation/base.html' %}
 
-{% load socialaccount %}
-{% providers_media_js %}
+
 {% block title_block %}
     Login
 {% endblock %}
+<div id = "leftbox">
+
+{% block login_buttons %}
+	<div class="topcorner">
+		<a href="{% url 'veganation:signup' %}" class="button">Dont't have an account? Sign up!</a>
+	</div>
+{% endblock %}
+
 
 {% block body_block %}
 
@@ -23,11 +30,6 @@
 			<input type="submit" value="Login" class="button"/>
 			</form>
 			<br>
-			<label class = "centreHeader">Or sign in with:</label></br>
-			
-  			<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
-  			<a href="{% provider_login_url "facebook" method="js_sdk" %}"></a>
-  			</div>
 			</div>
 		</div>
 		

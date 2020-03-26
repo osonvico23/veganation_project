@@ -7,6 +7,23 @@
     Restaurants
 {% endblock %}
 
+{% block login_buttons %}
+{% if user.is_authenticated %}
+		<div class="topcorner">
+		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
+		</div>
+		{% else %}
+		<div class="topcorner">
+		      
+			<br>
+			<a href="{% url 'veganation:login' %}" class="button">Login Here!</a><br>
+			<a href="{% url 'veganation:signup' %}" class="button">Dont't have an account? Sign up!</a>
+			
+		
+		</div>
+		{% endif %}
+		</div>
+{% endblock %}
 
 {% block body_block %}
 <style>
