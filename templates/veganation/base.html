@@ -73,6 +73,13 @@
    				padding: 5px;
   			}
   			
+  			.socialLinks{
+   				position:absolute;
+   				top:0;
+   				left:0;
+   				padding: 5px;
+  			}
+  			
   		
   			.container {
     			position: relative;
@@ -137,17 +144,6 @@
   				display : in-line block;
 			}	
 			
-			.funFactButton {
-  				background-color: #33ccff;
-  				color: yellow;
-  				padding: 5px 10px;
-  				text-align: center;
-  				font-size: 14px;
-  				margin-left: auto;
-  				margin-right: 0;
-  				display : in-line block;
-  				
-			}
 			
 			.foot{
 			position:absolute;
@@ -170,9 +166,9 @@
 			
 			.login{
   				margin: auto;
-  				width: 50%;
+  				width: 400px;
   				border: 3px solid green;
-  				padding: 10px;
+  				padding: 5px;
 			}
 			
 			.signup{
@@ -181,7 +177,6 @@
   				border: 3px solid green;
   				padding: 10px;
 			}
-			
 			
 			
 			.column {
@@ -211,6 +206,46 @@
   				min-height: 100vh;
 			}
 			
+			
+			.funFact{
+  				margin: auto;
+  				width: 98%;
+  				border: 3px solid green;
+  				padding: 3px;
+  				text-align: center;
+  				font-size: 14px;
+			}
+
+			
+			.funfactBox{
+  				margin: auto;
+  				width: 50%;
+  				padding: 3px;
+  				border: 3px solid white;
+  				font-size: 14px;
+  				text-align: center;
+			}	
+			
+			.funFactButton {
+  				background-color:#f5b5ed;
+  				color: #13cfa8;
+  				padding: 5px 10px;
+  				text-align: center;
+  				font-size: 14px;
+  				margin-left: auto;
+  				margin-right: 0;
+  				display : in-line block;
+  				
+			}
+			
+			.weelogo{
+  		margin: auto;
+  		
+  		width: 50px;
+  		height:50px;
+		display:block;
+		}
+			
 </style>
 
 <title>
@@ -219,9 +254,10 @@
 	{% endblock %}
 		</title>
 	</head>
+	
+	<body>
 	{% block login_buttons %}
 	{% endblock %}
-	<body>
 		<div id="centerbox">
 		<img src="{% static 'images/logo.jpeg' %}" alt = "Logo" class = "logo"/>
 			
@@ -233,7 +269,7 @@
 			</ul>
 		</div>
 		
-		<div>
+		<div class ="socialLinks">
 		<a href="#" class="fa fa-facebook"></a>
 		<a href="https://www.instagram.com/veganation2020/?hl=en" class="fa fa-instagram"></a>
 		<a href="https://twitter.com/veganation4" class="fa fa-twitter"></a>
@@ -242,7 +278,6 @@
 	
 		<div class ="bod">		
 		{% block body_block %}
-		
 		{% endblock %}
 		</div>
 		

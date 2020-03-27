@@ -6,11 +6,7 @@
 	Sign Up
 {% endblock %}
 
-{% block login_buttons %}
-	<div class="topcorner">
-		<a href="{% url 'veganation:login' %}" class="signInButton">Already have an account? Login Here!</a>
-	</div>
-{% endblock %}
+
 
 
 {% block body_block %}
@@ -19,7 +15,10 @@
 Veganation says: <strong>thank you for registering!</strong>
 <a href="{% url 'veganation:index' %}">Return to the homepage.</a><br />
 {% else %}
-
+<div>
+<p align="center">
+<a href="{% url 'veganation:login' %}" class="signInButton">Already have an account? Login Here!</a>
+	</p></div>
 <h2>Sign up for Veganation!</h2>
 <form id="user_form" method="post" action="{%url 'veganation:signup'%}" enctype="multipart/form-data">
 {% csrf_token %}

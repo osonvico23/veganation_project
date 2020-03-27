@@ -7,11 +7,7 @@
 {% endblock %}
 <div id = "leftbox">
 
-{% block login_buttons %}
-	<div class="topcorner">
-		<a href="{% url 'veganation:signup' %}" class="signInButton">Dont't have an account? Sign up!</a>
-	</div>
-{% endblock %}
+
 
 
 {% block body_block %}
@@ -23,14 +19,18 @@
 	{% endif %}   
 		<form id="login_form" method="post" action="{% url 'veganation:login' %}">
 			{% csrf_token %}
-			Username: <input type="text" name="username" value="" />
-			<br />
-			Password: <input type="password" name="password" value="" />
-			<br />
-			<input type="submit" value="Login" class="button"/>
+			<p align="center">Username: <input type="text" name="username" value="" /></p>
+		
+			<p align="center">Password: <input type="password" name="password" value="" /></p>
+			
+			<p align="center"><input type="submit" value="Login" class="button" /></p>
 			</form>
+		<p align="center"><a href="{% url 'veganation:signup' %}" class="signInButton"">Dont't have an account? Sign up!</a></p>
+	
 			<br>
 			</div>
+			
+		
 		</div>
 		
 {% endblock %}
