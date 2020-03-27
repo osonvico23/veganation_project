@@ -28,33 +28,48 @@ position:absolute;
   		width: 98%;
   		border: 3px solid green;
   		padding: 3px;
-  		text-align : center;
+  		text-align: center;
 }
 
+.funfactButtonBox{
+  	margin: auto;
+  	width: 50%;
+  	float: center;
+  	padding: 10px;
+  	border: border: 3px solid green;
+}
+			
+			
+.funfactBox{
+  	margin: auto;
+  	width: 85%;
+  	padding: 10px;
+  	border: 3px solid green;
+}
 
-
+.funfactBoxB{
+  	margin: auto;
+  	width: 85%;
+  	padding: 10px;
+  	border: 3px solid green;
+}
 </style>
 
 
-
 {% block title_block %}
-	HomePage
+	Home Page
 {% endblock %}
 
 {% block login_buttons %}
 {% if user.is_authenticated %}
 		<div class="topcorner">
-		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
+		<a href="{% url 'veganation:logout' %}" class="signInButton">Log Out!</a>
 		</div>
 		{% else %}
 		<div class="topcorner">
-		      
 			<br>
 			<a href="{% url 'veganation:login' %}" class="signInButton ">Login Here!</a><br>
-			
 			<a href="{% url 'veganation:signup' %}" class="signInButton ">Dont't have an account? Sign up!</a>
-			
-		
 		</div>
 		{% endif %}
 		</div>
@@ -69,34 +84,50 @@ position:absolute;
 </div>
 
 <div class="column">
-		<h4>Veganation's top tips</h4>
-		<div class="">
+		<div>
+		<h3 align="center">Veganation's top tips</h3>
 			<ul>
 			<li>A great alternative for vegan cheese is violife cheese slices!</li>
 			<li>To make sure you're getting the right vitamins, take a vegan multivitamin once a day.</li>
 			<li>An excellent source of protein is kidney beans, with 24g of protein per 100g!</li>
 			<li>Sick of supermarket vegan chocolate? Cadbury Bourneville chocolate is vegan, and is a great alternative to cadburys dairymilk!</li>
 			<li>Gym bunny? Many companies offer vegan protein powder, a great place to look is Protein World!</li>
-			
+			<li>Craving ice cream? Brands such as Ben&Jerrys as well as Halo Top (who offer low cal options) have created vegan ice cream ranges which are almost as good as the real thing!</li>
 			</ul>
-		</div
-
+		</div>
 		
 		<div>
-		<button class = "signInButton" id = "factButton" onclick="myFunction()">Click here for the fun fact of the day!</button>
+		<h4 align="center">Veganation's Favourite Brands</h4>
+		<ul>
+		<li>Makeup : NYX, Jeffree Star Cosmetics and Elf Cosmetics!</li>
+		<li>Food: Linda McCartney's range, Greggs Vegan Range, and Violife!</li>
+		<li>Clothing: Lucy&Yak, Depop and Levi's!</li>
+		<li>Restaurants: Check out our restaurants <a href="{% url 'veganation:restaurants' %}">Here!</a></li> 
+		</ul>
+		</div>
+		
+		
+		
+		<div class ="funfactButtonBox">
+		<button class = "funFactButton" id = "factButton" onclick="myFunction()">Click here for the fun fact of the day!</button>
+		<div class = "funfactBoxB" id ="factBorder">
 		<p id="fact"></p>
 		</div>
+		</div>
+		
+		
 </div>		
 
-
+</div>
 
 <script>
 function myFunction() {
   var d = new Date();
   var n = d.getDay()
- 
+  document.getElementById("factBorder").style.borderColor = "yellow";
+  
   if(n == 1){
-  		document.getElementById("fact").innerHTML = "<span class = 'funFact'>Happy Monday! Did you know that living a vegan lifestyle saves 30 animal lives per year? <br> <br> Come back tomorrow for Tuesdays fun fact of the day! <br> This information has been found on chooseveg.com </span>";
+  		document.getElementById("fact").innerHTML = "Happy Monday! Did you know that living a vegan lifestyle saves 30 animal lives per year? <br> <br> Come back tomorrow for Tuesdays fun fact of the day! <br> This information has been found on chooseveg.com";
 		document.getElementById("factButton").style.display ="none";
 	} else if( n == 2) {
   		document.getElementById("fact").innerHTML = "Happy Tuesday! Did you know that the term 'Vegan' was coined less than 100 years go - animal rights activist David Watson created the word in the 1940s? <br><br> Come back tomorrow for Wednesday's fun fact of the day! <br> This information has been found on chooseveg.com";
@@ -105,7 +136,7 @@ function myFunction() {
 		document.getElementById("fact").innerHTML = "Happy Wednesday! Did you know that a vegan diet can cut your carbon footprint in half - animal agriculture is a huge contributor to the issue of climate change? <br> <br> Come back tomorrow for Thursday's fun fact of the day!  <br> This information has been found on chooseveg.com";
 		document.getElementById("factButton").style.display ="none";
 	} else if (n == 4){
-		document.getElementById("fact").innerHTML = '<span class = "funFact">Happy Thursday! <br> Did you know that a vegan saves approximately 1,1000 gallons of water per day - the meat industry wastes 1/3 of drinkable water? <br> <br> Come back tomorrow for Fridays fun fact of the day!  <br> This information has been found on chooseveg.com </span>';
+		document.getElementById("fact").innerHTML = 'Happy Thursday! <br> Did you know that a vegan saves approximately 1,1000 gallons of water per day - the meat industry wastes 1/3 of drinkable water? <br> <br> Come back tomorrow for Fridays fun fact of the day!  <br> This information has been found on chooseveg.com';
 		document.getElementById("factButton").style.display ="none";
 	} else if (n == 5){
 		document.getElementById("fact").innerHTML = "TGIF! Did you know that vegans are less likely to have a stroke or get heart disease? <br> <br> Come back tomorrow for Saturday's fun fact of the day! <br>  This information has been found on chooseveg.com";
