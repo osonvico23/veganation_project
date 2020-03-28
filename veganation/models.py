@@ -17,7 +17,7 @@ class UserProfile(models.Model):
     email = models.EmailField(default = 'veganation@gmail.com')
     veganSince = models.DateTimeField(blank = True)
     isVegan = models.BooleanField(blank = True, default=False)
-    picture = models.ImageField(default='default.jpg', upload_to='profile_images', blank=True)
+    image = models.ImageField(default='default.jpg', upload_to='profile_images', blank=True)
     quote = models.TextField(max_length=100, blank=True)
     occupation = models.CharField(max_length=50, blank = True)
     city = models.CharField(max_length=40, blank=True)
@@ -29,7 +29,7 @@ class UserProfile(models.Model):
     def save(self):
         super().save()
 
-        img = Image.open(self.picture.path)
+        img = Image.open(self.image.path)
 
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
