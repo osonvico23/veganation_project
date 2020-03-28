@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
@@ -55,6 +55,7 @@ def signup(request):
 
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
+            
 
             user.set_password(user.password)
             user.save()
@@ -69,6 +70,8 @@ def signup(request):
             profile.save()
 
             registered = True
+            messages.success(request, f'Account created for {user} !')
+            return redirect('index')
         else:
             print(user_form.errors, profile_form.errors)
     else:
