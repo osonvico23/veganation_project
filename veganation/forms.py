@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from veganation.models import UserProfile
 from django import forms
-from .models import 
+
 
 
 class UserForm(forms.ModelForm):

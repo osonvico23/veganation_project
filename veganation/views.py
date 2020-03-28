@@ -58,6 +58,7 @@ def signup(request):
 
             user.set_password(user.password)
             user.save()
+            
 
             profile = profile_form.save(commit=False)
             profile.user = user
