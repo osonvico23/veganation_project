@@ -14,27 +14,22 @@
 		</div>
 		{% else %}
 		<div class="topcorner">
-		      
 			<br>
 			<a href="{% url 'veganation:login' %}" class="signInButton ">Login Here!</a><br>
 			<a href="{% url 'veganation:signup' %}" class="signInButton ">Dont't have an account? Sign up!</a>
-			
-		
 		</div>
 		{% endif %}
 		</div>
 {% endblock %}
 
 {% block body_block %}
-<div id = "rightbox">
-My restaurants
-</div>
+<div class = "row">
 
-<div id = "leftbox">
-{% block content %}
+
+<div class = "column">
     <div class="content-section">
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.image.url }}">
+        <img class="rounded-circle account-img" src="{{ user.profile.picture.url }}">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           <p class="text-secondary">{{ user.email }}</p>
@@ -44,10 +39,15 @@ My restaurants
           <p class="text-secondary">{{ user.quote }}</p>
           <p class="text-secondary">{{ user.occupation }}</p>
           <p class="text-secondary">{{ user.city }}</p>
-          
         </div>
       </div>
       
     </div>
-{% endblock content %}
+    </div>
+<div class = "column">
+My restaurants
+</div>
+
+
+</div>
 {% endblock %}
