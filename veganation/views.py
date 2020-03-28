@@ -3,10 +3,11 @@ from django.shortcuts import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import redirect
-from veganation.forms import UserForm, UserProfileForm
+from veganation.forms import UserForm, UserProfileForm, ProfileUpdateForm
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from django.shortcuts import render_to_response
+from django.contrib import messages
 
 def index(request):
     return render(request, 'veganation/index.html')
@@ -19,8 +20,27 @@ def protests(request):
     context_dict = {}
     return render(request, 'veganation/protests.html', context=context_dict)
 
-def myaccount(request):
-    context_dict = {}
+def myaccount(request): 
+    if request.method == 'POST':
+        u_form = UserProfileForm(request.POST, instance= request.user)
+        p_form = ProfileUpdateForm(request.POST, 
+                                   request.FILES, 
+                                   instance = request.user.myaccount)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Your account has been updated!')
+            return redirect('myaccount')
+    else:
+        u_form = UserProfileForm(instance= request.user)
+        p_form = ProfileUpdateForm(instance = request.user.myaccount)
+
+
+    context_dict = {
+        'u_form' : u_form,
+        'p_form' : p_form
+    }
+
     return render(request, 'veganation/myaccount.html', context=context_dict)
 
 def socialsLogin(request):
@@ -38,12 +58,13 @@ def signup(request):
 
             user.set_password(user.password)
             user.save()
+            
 
             profile = profile_form.save(commit=False)
             profile.user = user
 
-            if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture']
+            if 'image' in request.FILES:
+                profile.image = request.FILES['image']
 
             profile.save()
 
