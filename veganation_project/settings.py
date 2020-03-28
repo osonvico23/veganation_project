@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'captcha',
     #fb login
     'social_django',
+    'crispy_forms', 
+    
 ]
 
 MIDDLEWARE = [
@@ -187,3 +189,5 @@ RECAPTCHA_PRIVATE_KEY = '6LfRB-QUAAAAADveAHeGULVn-oeHUSyefB5vuS6X'
 NOCAPTCHA = True
 
 SITE_ID=2
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
