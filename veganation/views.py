@@ -88,7 +88,7 @@ def signup(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
+            messages.success(request, f'Account created for {username}! Now you can login from the top right corner Login Here!')
             return redirect('index')
     else:
         form = UserRegisterForm()
