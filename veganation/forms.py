@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from veganation.models import UserProfile
 from django import forms
-from captcha.fields import CaptchaField
-from django.conf import settings
+from .models import 
+
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -13,10 +13,13 @@ class UserForm(forms.ModelForm):
 
 
 class UserProfileForm(forms.ModelForm):
-    captcha = CaptchaField()
     class Meta:
         model = UserProfile
         #fields taken out firstName and lastName
         fields = ('veganSince',
-        'isVegan', 'firstName', 'lastName','picture', 'quote', 'occupation', 'city',
-        'captcha')
+        'isVegan', 'firstName', 'lastName', 'quote', 'occupation', 'city',)
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['picture']

@@ -3,7 +3,7 @@ from django.shortcuts import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import redirect
-from veganation.forms import UserForm, UserProfileForm
+from veganation.forms import UserForm, UserProfileForm, ProfileUpdateForm
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from django.shortcuts import render_to_response
@@ -20,7 +20,14 @@ def protests(request):
     return render(request, 'veganation/protests.html', context=context_dict)
 
 def myaccount(request):
-    context_dict = {}
+    u_form = UserProfileForm()
+    p_form = ProfileUpdateForm()
+
+    context_dict = {
+        'u_form' : u_form,
+        'p_form' : p_form
+    }
+
     return render(request, 'veganation/myaccount.html', context=context_dict)
 
 def socialsLogin(request):
