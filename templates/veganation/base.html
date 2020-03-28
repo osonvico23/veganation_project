@@ -255,13 +255,7 @@
 		</title>
 	</head>
 
-	{% if messages %}
-	  {% for message in messages %}
-	    <div class="alert alert-{{ message.tags }}">
-		  {{ message }}
-	    </div>
-	  {% endfor %}
-      {% endif %}
+
 	
 	<body>
 	{% block login_buttons %}
@@ -283,6 +277,14 @@
 		<a href="https://www.instagram.com/veganation2020/?hl=en" class="fa fa-instagram"></a>
 		<a href="https://twitter.com/veganation4" class="fa fa-twitter"></a>
 		</div>
+
+		{% if messages %}
+		{% for message in messages %}
+		  <div class="alert alert-{{ message.tags }}">
+			{{ message }}
+		  </div>
+		{% endfor %}
+		{% endif %}
 	
 	
 		<div class ="bod">		
