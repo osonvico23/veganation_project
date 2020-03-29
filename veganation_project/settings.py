@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django_google_maps',
     'star_ratings',
     'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'captcha',
     #fb login
     'social_django',
@@ -152,9 +154,13 @@ GOOGLE_MAPS_API_KEY = 'AIzaSyAoNRWUpgV13IJT_BZzCd9nIzHRylESdLU'
 
 #for facebook authentification
 AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {'facebook':
@@ -193,3 +199,5 @@ SITE_ID=2
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'index'
+
+LOGIN_URL = 'login'
