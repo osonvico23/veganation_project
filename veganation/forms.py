@@ -24,6 +24,16 @@ class UserRegisterForm(UserCreationForm):
     occupation = forms.CharField(required = False)
     city = forms.CharField()
 
+    def signup(self, request, user):
+        user.firstName = self.cleaned_data['firstName']
+        user.lastName = self.cleaned_data['lastName']
+        user.veganSince = self.cleaned_data['veganSince']
+        user.quote = self.cleaned_data['quote']
+        user.occupation = self.cleaned_data['occupation']
+        user.city = self.cleaned_data['city']
+        user.save()
+
+
 
     class Meta:
         model = User

@@ -10,7 +10,7 @@ from django_google_maps import fields as map_fields
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True, related_name = "myaccount")
     #firstName = models.CharField(max_length=30, blank = True)
     #lastName = models.CharField(max_length=40, blank = True)
     #username = models.CharField(max_length=40, blank = True)
