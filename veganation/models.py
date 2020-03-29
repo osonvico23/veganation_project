@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.timezone import now
 from PIL import Image
+import datetime
 
 from django_google_maps import fields as map_fields
 # Create your models here.
@@ -15,8 +16,8 @@ class UserProfile(models.Model):
     #lastName = models.CharField(max_length=40, blank = True)
     #username = models.CharField(max_length=40, blank = True)
     email = models.EmailField(default = 'veganation@gmail.com')
-    veganSince = models.DateTimeField(blank = True)
-    isVegan = models.BooleanField(blank = True, default=False)
+    veganSince = models.DateTimeField(blank = True, default=datetime.date.today)
+    birth_date= models.DateField(blank = True, default=datetime.date.today)
     image = models.ImageField(default='default.jpg', upload_to='profile_images', blank=True)
     quote = models.TextField(max_length=100, blank=True)
     occupation = models.CharField(max_length=50, blank = True)

@@ -8,7 +8,7 @@ from .forms import UserRegisterForm, UserProfileForm
 
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ["user", "email", "firstName", "lastName", 'veganSince',
-        'isVegan',  'quote', 'occupation', 'city']
+        'birth_date',  'quote', 'occupation', 'city']
 
 # Register your models here.
 
