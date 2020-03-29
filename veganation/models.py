@@ -56,12 +56,11 @@ def save(self):
 
 
 class Location(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True, related_name = "myaccount")
-	Date1 = models.DateField(default=date.today)
-	Time1 = models.DateTimeField()
+   
+    Date1 = models.DateField()
+    Time1 = models.DateTimeField()
 
-    def __str__(self):
-        return f'{self.user.username} UserProfile'
+ 
 
 
 class Rental(models.Model):
