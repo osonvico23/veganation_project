@@ -19,6 +19,10 @@ def restaurants(request):
 def protests(request):
     context_dict = {}
     return render(request, 'veganation/protests.html', context=context_dict)
+    
+def location(request):
+    context_dict = {}
+    return render(request, 'veganation/location.html', context=context_dict)
 
 @login_required
 def myaccount(request): 
