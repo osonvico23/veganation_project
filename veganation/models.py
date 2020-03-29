@@ -32,6 +32,7 @@ class UserProfile(models.Model):
 def create_profile(sender, **kwargs):
     if kwargs['created']:
         user_profile = UserProfile.objects.create(user = kwargs['instance'])
+
 post_save.connect(create_profile, sender = User)
 
 def save(self):

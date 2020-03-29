@@ -22,28 +22,27 @@ def protests(request):
 
 @login_required
 def myaccount(request): 
-    #if request.method == 'POST':
-     #   u_form = UserProfileForm(request.POST, instance= request.user)
-      #  p_form = ProfileUpdateForm(request.POST, 
-       #                            request.FILES, 
-        #                           instance = request.user.myaccount)
-        #if u_form.is_valid() and p_form.is_valid():
-         #   u_form.save()
-          #  p_form.save()
-           # messages.success(request, f'Your account has been updated!')
-           # return redirect('myaccount')
-    #else:
-     #   u_form = UserProfileForm(instance= request.user)
-      #  p_form = ProfileUpdateForm(instance = request.user.myaccount)
+    if request.method == 'POST':
+        u_form = UserProfileForm(request.POST, instance= request.user)
+        p_form = ProfileUpdateForm(request.POST, 
+                                   request.FILES, 
+                                   instance = request.user.myaccount)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Your account has been updated!')
+            return redirect('myaccount')
+    else:
+        u_form = UserProfileForm(instance= request.user)
+        p_form = ProfileUpdateForm(instance = request.user.myaccount)
 
 
-    #context_dict = {
-     #   'u_form' : u_form,
-      #  'p_form' : p_form
-    #}
+    context_dict = {
+        'u_form' : u_form,
+        'p_form' : p_form
+    }
 
-    return render(request, 'veganation/myaccount.html')
-    #context=context_dict)
+    return render(request, 'veganation/myaccount.html',context=context_dict)
 
 def socialsLogin(request):
     return render(request, 'veganation/socialsLogin.html')

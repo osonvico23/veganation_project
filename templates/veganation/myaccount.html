@@ -30,17 +30,13 @@
 <div class = "column">
     <div class="content-section">
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ veganation.UserProfile.image.url }}">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           <p class="text-secondary">{{ user.email }}</p>
-          <p class="text-secondary">{{ user.veganSince }}</p>
-          <p class="text-secondary">{{ user.isVegan}}</p>
-          <p class="text-secondary">{{ user.veganSince }}</p>
-          <p class="text-secondary">{{ user.quote }}</p>
-          <p class="text-secondary">{{ user.occupation }}</p>
-          <p class="text-secondary">{{ user.city }}</p>
-          <p class="text-secondary">{{ user.city }}</p>  
+          <p class="text-secondary">{{ user.UserProfile.veganSince }}
+          
+          
 
         </div>
       </div>
@@ -49,8 +45,16 @@
           {% csrf_token %}
           <fieldset class="form-group">
               <legend class="border-bottom mb-4">Profile Info</legend>
-              {{ u_form|crispy }}
-              {{ p_form|crispy }}
+              <p class="text-secondary">{{ user.isVegan}}</p>
+              <p class="text-secondary">{{ user.veganSince }}</p>
+              <p class="text-secondary">{{ user.quote }}</p>
+              <p class="text-secondary">{{ user.occupation }}</p>
+              <p class="text-secondary">{{ user.city }}</p>
+              <!--{{ u_form|crispy }}
+              {{ p_form|crispy }} -->
+
+
+              
           </fieldset>
           <div class="form-group">
               <button class="btn btn-outline-info" type="submit">Update</button>

@@ -32,4 +32,7 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('oauth/', include('social_django.urls', namespace='social')),
     path('ratings/', include('star_ratings.urls', namespace='ratings'), name='ratings'),
-] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+] 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
