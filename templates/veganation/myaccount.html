@@ -33,12 +33,14 @@
         <img class="rounded-circle account-img" src="{{ user.myaccount.image.url }}">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
-          <p class="text-secondary">{{ user.myaccount.veganSince }}
-            <p class="text-secondary">{{ user.myaccount.birth_date}}</p>
-              <p class="text-secondary">{{ user.myaccount.quote }}</p>
-              <p class="text-secondary">{{ user.myaccount.occupation }}</p>
-              <p class="text-secondary">{{ user.myaccount.city }}</p>
+          <p class="text-secondary">First Name: {{ user.myaccount.firstName }}</p>
+          <p class="text-secondary">Last Name: {{ user.myaccount.lastName }}</p>
+          <p class="text-secondary"> Email:    {{ user.email }}</p>
+          <p class="text-secondary">Vegan since{{ user.myaccount.veganSince }}
+            <p class="text-secondary">Birth date {{ user.myaccount.birth_date}}</p>
+              <p class="text-secondary">Quote: {{ user.myaccount.quote }}</p>
+              <p class="text-secondary">Occupation: {{ user.myaccount.occupation }}</p>
+              <p class="text-secondary">City: {{ user.myaccount.city }}</p>
           
           
 
