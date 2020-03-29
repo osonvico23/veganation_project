@@ -13,7 +13,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     #firstName = models.CharField(max_length=30, blank = True)
     #lastName = models.CharField(max_length=40, blank = True)
-
+    username = models.CharField(max_length=40, blank = True)
     email = models.EmailField(default = 'veganation@gmail.com')
     veganSince = models.DateTimeField(blank = True)
     isVegan = models.BooleanField(blank = True, default=False)
