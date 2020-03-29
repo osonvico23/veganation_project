@@ -10,6 +10,7 @@
 {% block login_buttons %}
 {% if user.is_authenticated %}
 		<div class="topcorner">
+    <a href="{% url 'veganation:myaccount' %}" class="button">My Account</a> 
 		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
 		</div>
 		{% else %}
