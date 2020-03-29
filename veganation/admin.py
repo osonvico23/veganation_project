@@ -6,6 +6,10 @@ from veganation.models import UserProfile
 from django.contrib.auth.admin import UserAdmin
 from .forms import UserRegisterForm, UserProfileForm
 
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ["user", "email", "firstName", "lastName", 'veganSince',
+        'isVegan',  'quote', 'occupation', 'city']
+
 # Register your models here.
 
 #class CustomUserAdmin(admin.ModelAdmin):
@@ -28,7 +32,7 @@ from .forms import UserRegisterForm, UserProfileForm
         #)
     
 
-admin.site.register(UserProfile)
+admin.site.register(UserProfile, UserProfileAdmin )
 
 from django_google_maps import widgets as map_widgets
 from django_google_maps import fields as map_fields
