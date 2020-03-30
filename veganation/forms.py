@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 import datetime
 from django.utils import timezone
-
+from .models import Location
 from datetime import date
 
 
@@ -78,3 +78,37 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = ['image']
 
 
+
+
+class Location(forms.ModelForm):
+
+	class meta:
+		model = Location
+		fields = ['date1','time1',
+		'date2','time2',
+		'date3','time3',
+		'age','gender'
+		]
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

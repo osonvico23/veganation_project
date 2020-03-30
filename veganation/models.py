@@ -67,3 +67,13 @@ class Rental(models.Model):
 	geolocation = map_fields.GeoLocationField(max_length=100)
 
 
+class Location(models.Model):
+	meetupID = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
+	date1 = models.DateField(default=datetime.date.today)
+	time1 = models.TimeField(default=timezone.now)
+	date2 = models.DateField(default=datetime.date.today)
+	time2 = models.TimeField(default=timezone.now)
+	date3 = models.DateField(default=datetime.date.today)
+	time3 = models.TimeField(default=timezone.now)
+	age = models.IntegerField(default=20)
+	gender = models.IntegerField(default=2)
