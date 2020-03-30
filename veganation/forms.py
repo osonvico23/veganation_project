@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 import datetime
 from django.utils import timezone
-from veganation.models import Location
+
 from datetime import date
 
 
@@ -17,8 +17,6 @@ CHOICES = (
     (3, ('prefer not to say'))
     )
 
-AGE_CHOICES=((18,25),(25,35),(35,45),(45,55),(55,65),(65,75),(75,85),(95,100))
-GENDER_CHOICES=(('MALE','male'),('FEMALE','female'),('NO PREFERENCE','no preference'))
 
 
 
@@ -80,16 +78,3 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = ['image']
 
 
-
-class Location(forms.Form):
-	date1 = forms.DateField()
-	time1 = forms.TimeField(required= False)
-	date2 = forms.DateField()
-	time2 = forms.TimeField(required= False)
-	date3 = forms.DateField()
-	time3 = forms.TimeField(required= False)
-	age = forms.IntegerField(
-        widget=forms.Select(choices=AGE_CHOICES),)
-	gender = forms.IntegerField( widget=forms.Select(choices=GENDER_CHOICES),)
-	
-	
