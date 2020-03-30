@@ -27,7 +27,11 @@ class UserProfile(models.Model):
 	city = models.CharField(max_length=40, blank=True)
 	firstName = models.CharField(max_length=30, blank=True)
 	lastName = models.CharField(max_length=40, blank=True)
-    
+	age = models.IntegerField(default = 20)
+
+
+
+
 
 
 

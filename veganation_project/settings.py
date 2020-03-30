@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'captcha',
     'crispy_forms',
+    'social_django'
 
 ]
 
