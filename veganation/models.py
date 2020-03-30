@@ -67,6 +67,7 @@ GENDER_CHOICES=(('MALE','male'),('FEMALE','female'),('NO PREFERENCE','no prefere
 
 
 class Location(models.Model):
+	meetupID = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
 	date1 = models.DateField(default=datetime.date.today)
 	time1 = models.TimeField(default=timezone.now)
 	date2 = models.DateField(default=datetime.date.today)
@@ -75,8 +76,12 @@ class Location(models.Model):
 	time3 = models.TimeField(default=timezone.now)
 	age = models.IntegerField( choices=AGE_CHOICES)
 	gender = models.CharField(max_length=7, choices= GENDER_CHOICES)
+	
+	
 
 
 class Rental(models.Model):
 	address = map_fields.AddressField(max_length=200)
 	geolocation = map_fields.GeoLocationField(max_length=100)
+
+

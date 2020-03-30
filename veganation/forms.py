@@ -54,7 +54,7 @@ class UserRegisterForm(UserCreationForm):
         user.gender = self.cleaned_data['gender']
         user.age = self.calculate_age['age']
         user.save()
-
+	
     
     
     #def calculate_age(self):
@@ -83,7 +83,6 @@ class ProfileUpdateForm(forms.ModelForm):
 
 
 class Location(forms.Form):
-	
 	date1 = forms.DateField()
 	time1 = forms.TimeField(required= False)
 	date2 = forms.DateField()
