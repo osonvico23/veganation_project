@@ -47,7 +47,6 @@ class UserRegisterForm(UserCreationForm):
         user.firstName = self.cleaned_data['firstName']
         user.lastName = self.cleaned_data['lastName']
         user.veganSince = self.cleaned_data['veganSince']
-        user.birth_date = self.cleaned_data['birth_date']
         user.quote = self.cleaned_data['quote']
         user.occupation = self.cleaned_data['occupation']
         user.city = self.cleaned_data['city']
