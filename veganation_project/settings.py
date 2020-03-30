@@ -51,10 +51,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'captcha',
-    #fb login
-    'social_django',
-    'crispy_forms', 
-    
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -65,7 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
+    #'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'veganation_project.urls'
@@ -82,9 +80,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                #used for facebook login
-                'social_django.context_processors.backends',  # <--
-                'social_django.context_processors.login_redirect', # <--
             ],
         },
     },
@@ -158,37 +153,10 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
-
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-SOCIALACCOUNT_PROVIDERS = {'facebook':
-       {'METHOD': 'oauth2',
-        'SCOPE': ['email','public_profile', 'user_friends'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'FIELDS': [
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time'],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': lambda request: 'kr_KR',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.4'}}
-
-
-
-#fb
-SOCIAL_AUTH_FACEBOOK_KEY =  '2741257989256616'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'bd8194b6d94d624fd8b319549f51210b'
 
 RECAPTCHA_PUBLIC_KEY = '6LfRB-QUAAAAACp71U1kBP9zRZMr_GxnVFnpc_3X'
 RECAPTCHA_PRIVATE_KEY = '6LfRB-QUAAAAADveAHeGULVn-oeHUSyefB5vuS6X'
