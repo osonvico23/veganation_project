@@ -24,6 +24,7 @@
 {% block login_buttons %}
 {% if user.is_authenticated %}
 		<div class="topcorner">
+		<a href="{% url 'veganation:myaccount' %}" class="button">My Account</a> 
 		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
 		</div>
 		{% else %}
@@ -32,8 +33,7 @@
 			<br>
 			<a href="{% url 'veganation:login' %}" class="signInButton">Login Here!</a><br>
 			<a href="{% url 'veganation:signup' %}" class="signInButton">Dont't have an account? Sign up!</a>
-			
-		
+  			
 		</div>
 		{% endif %}
 		</div>
@@ -51,6 +51,8 @@
 		<div class="fb-page"
 			data-href="https://www.facebook.com/VegaNation-102804628030447"
 			data-tabs="events"
+			width="500"
+			height="100%"
 			data-small-header="true"
 			data-adapt-container-width="true"
 			data-hide-cover="true"

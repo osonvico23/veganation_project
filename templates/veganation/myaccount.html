@@ -10,7 +10,7 @@
 
 {% block login_buttons %}
 {% if user.is_authenticated %}
-		<div class="topcorner">
+		<div class="topcorner">  
 		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
 		</div>
 		{% else %}
@@ -30,32 +30,39 @@
 <div class = "column">
     <div class="content-section">
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.picture.url }}">
+        <img class="rounded-circle account-img" src="{{ user.myaccount.image.url }}"width = '240'>
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
-          <p class="text-secondary">{{ user.veganSince }}</p>
-          <p class="text-secondary">{{ user.isVegan}}</p>
-          <p class="text-secondary">{{ user.veganSince }}</p>
-          <p class="text-secondary">{{ user.quote }}</p>
-          <p class="text-secondary">{{ user.occupation }}</p>
-          <p class="text-secondary">{{ user.city }}</p>
-          <p class="text-secondary">{{ user.city }}</p>  
+          <p class="text-secondary">First Name: {{ user.myaccount.firstName }}</p>
+          <p class="text-secondary">Last Name: {{ user.myaccount.lastName }}</p>
+          <p class="text-secondary"> Email:    {{ user.email }}</p>
+          <p class="text-secondary">Vegan since{{ user.myaccount.veganSince }}
+            <p class="text-secondary">Birth date {{ user.myaccount.birth_date}}</p>
+              <p class="text-secondary">Quote: {{ user.myaccount.quote }}</p>
+              <p class="text-secondary">Occupation: {{ user.myaccount.occupation }}</p>
+              <p class="text-secondary">City: {{ user.myaccount.city }}</p>
+          
+          
 
         </div>
       </div>
-
+      <!-- 
       <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
-          <fieldset class="form-group">
-              <legend class="border-bottom mb-4">Profile Info</legend>
+          <fieldset class="form-group"></fieldset>
+              
+              
               {{ u_form|crispy }}
-              {{ p_form|crispy }}
+              {{ p_form|crispy }} 
+
+
+              
           </fieldset>
           <div class="form-group">
               <button class="btn btn-outline-info" type="submit">Update</button>
           </div>
       </form>
+      -->
     </div>
     </div>
 <div class = "column">

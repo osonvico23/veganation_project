@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% extends 'veganation/base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block title_block %}
@@ -13,13 +14,33 @@
 <div class = "signup">
 {% if registered %}
 Veganation says: <strong>thank you for registering!</strong>
+
 <a href="{% url 'veganation:index' %}">Return to the homepage.</a><br />
 {% else %}
 <div>
 <p align="center">
 <a href="{% url 'veganation:login' %}" class="signInButton">Already have an account? Login Here!</a>
 	</p></div>
+
 <h2>Sign up for Veganation!</h2>
+
+<form method="POST">
+	{% csrf_token %}
+	<fieldset class="form-group">
+		<legend class="border-bottom mb-4">Join Today</legend>
+		{{ form|crispy }}
+	</fieldset>
+	<div class="form-group">
+		<button class="btn btn-outline-info" type="submit">Sign Up</button>
+	</div>
+</form>
+
+{% endif %}
+
+
+
+<!-- Just for now
+
 <form id="user_form" method="post" action="{%url 'veganation:signup'%}" enctype="multipart/form-data">
 {% csrf_token %}
 {{ user_form.as_p }}
@@ -27,8 +48,8 @@ Veganation says: <strong>thank you for registering!</strong>
 
 <input type="submit" name="submit" value="Sign Up" />
 </form>
-<p><strong>--OR--</strong></p>
-<a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
-{% endif %}
-</div>
+-->
+
+
+
 {% endblock %}
