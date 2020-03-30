@@ -10,6 +10,9 @@ from veganation.models import Location
 
 YEARS= [x for x in range(1940,2010)]
 
+AGE_CHOICES=((18,25),(25,35),(35,45),(45,55),(55,65),(65,75),(75,85),(95,100))
+GENDER_CHOICES=(('MALE','male'),('FEMALE','female'),('NO PREFERENCE','no preference'))
+
 
 
 #class UserRegisterForm(forms.ModelForm):
@@ -70,8 +73,7 @@ class Location(forms.Form):
 	date3 = forms.DateField()
 	time3 = forms.TimeField(required= False)
 	age = forms.IntegerField(
-        max_length=7,
         widget=forms.Select(choices=AGE_CHOICES),)
-	gender = forms.IntegerField( max_length=7, widget=forms.Select(choices=GENDER_CHOICES),)
+	gender = forms.IntegerField( widget=forms.Select(choices=GENDER_CHOICES),)
 	
 	

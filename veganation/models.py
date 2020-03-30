@@ -67,7 +67,7 @@ class Location(models.Model):
 	time2 = models.TimeField(default=timezone.now)
 	date3 = models.DateField(default=datetime.date.today)
 	time3 = models.TimeField(default=timezone.now)
-	age = models.IntegerField(max_length=7, choices=AGE_CHOICES)
+	age = models.IntegerField( choices=AGE_CHOICES)
 	gender = models.CharField(max_length=7, choices= GENDER_CHOICES)
 
 
