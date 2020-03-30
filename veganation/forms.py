@@ -3,6 +3,10 @@ from django.contrib.auth.forms import UserCreationForm
 from veganation.models import UserProfile
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelForm
+import datetime
+from django.utils import timezone
+from veganation.models import Location
 
 YEARS= [x for x in range(1940,2010)]
 
@@ -54,3 +58,20 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['image']
+
+
+
+class Location(forms.Form):
+	
+	date1 = forms.DateField()
+	time1 = forms.TimeField(required= False)
+	date2 = forms.DateField()
+	time2 = forms.TimeField(required= False)
+	date3 = forms.DateField()
+	time3 = forms.TimeField(required= False)
+	age = forms.IntegerField(
+        max_length=7,
+        widget=forms.Select(choices=AGE_CHOICES),)
+	gender = forms.IntegerField( max_length=7, widget=forms.Select(choices=GENDER_CHOICES),)
+	
+	
