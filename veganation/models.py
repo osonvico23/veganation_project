@@ -17,6 +17,7 @@ class UserProfile(models.Model):
 	#firstName = models.CharField(max_length=30, blank = True)
 	#lastName = models.CharField(max_length=40, blank = True)
 	#username = models.CharField(max_length=40, blank = True)
+	gender = models.IntegerField(blank = True, default = 3)
 	email = models.EmailField(default = 'veganation@gmail.com')
 	veganSince = models.DateTimeField(blank = True, default=datetime.date.today)
 	birth_date= models.DateField(blank = True, default=datetime.date.today)
@@ -26,6 +27,7 @@ class UserProfile(models.Model):
 	city = models.CharField(max_length=40, blank=True)
 	firstName = models.CharField(max_length=30, blank=True)
 	lastName = models.CharField(max_length=40, blank=True)
+    
 
 
 
