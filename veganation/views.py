@@ -100,13 +100,16 @@ def signup(request):
     
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-        if form.is_valid():
+        profile_form = UserProfileForm(request.POST)
+        if form.is_valid() and profile_form.is_valid():
             form.save()
+            profile_form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Your account has been created! You are now able to log in!')
             return redirect('veganation:login')
     else:
         form = UserRegisterForm()
+        profile_form = UserProfileForm()
     return render(request, 'veganation/signup.html', {'form': form})
 def user_login(request):
 # If the request is a HTTP POST, try to pull out the relevant information.

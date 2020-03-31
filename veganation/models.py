@@ -8,17 +8,18 @@ from django.utils.timezone import now
 from PIL import Image
 import datetime
 
+
 from django_google_maps import fields as map_fields
 # Create your models here.
 
 class UserProfile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True, related_name = "myaccount")
+	user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True, related_name = "myaccount", null=True)
 	#firstName = models.CharField(max_length=30, blank = True)
 	#lastName = models.CharField(max_length=40, blank = True)
 	#username = models.CharField(max_length=40, blank = True)
 	gender = models.IntegerField(blank = True, default = 3)
 	email = models.EmailField(default = 'veganation@gmail.com')
-	veganSince = models.DateField(blank = True, default=timezone.now)
+	veganSince = models.DateField(blank = True, default=datetime.date.today)
 	image = models.ImageField(default='default.jpg', upload_to='profile_images', blank=True)
 	quote = models.TextField(max_length=100, blank=True)
 	occupation = models.CharField(max_length=50, blank = True)
@@ -62,11 +63,11 @@ class Rental(models.Model):
 
 class Location(models.Model):
 	meetupID = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
-	date1 = models.DateField(default=timezone.now)
+	date1 = models.DateField(default=datetime.date.today)
 	time1 = models.TimeField(default=timezone.now)
-	date2 = models.DateField(default=timezone.now)
+	date2 = models.DateField(default=datetime.date.today)
 	time2 = models.TimeField(default=timezone.now)
-	date3 = models.DateField(default=timezone.now)
+	date3 = models.DateField(default=datetime.date.today)
 	time3 = models.TimeField(default=timezone.now)
 	age = models.IntegerField(default=5)
 	gender = models.IntegerField(default=2)
