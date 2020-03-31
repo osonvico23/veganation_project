@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from django.utils.timezone import now
 from PIL import Image
 import datetime
+import uuid
 
 from django_google_maps import fields as map_fields
 # Create your models here.
@@ -61,17 +62,12 @@ class Rental(models.Model):
 
 
 class Location(models.Model):
-	meetupID = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
-	date1 = models.DateField(default=timezone.now)
-	time1 = models.TimeField(default=timezone.now)
-	date2 = models.DateField(default=timezone.now)
-	time2 = models.TimeField(default=timezone.now)
-	date3 = models.DateField(default=timezone.now)
-	time3 = models.TimeField(default=timezone.now)
-	age = models.IntegerField(default=5)
-	gender = models.IntegerField(default=2)
+    date1 = models.DateField(default=timezone.now)
+    date2 = models.DateField(default=timezone.now)
+    date3 = models.DateField(default=timezone.now)
+    age = models.IntegerField(default=5)
+    gender = models.IntegerField(default=2)
 
-	def __str__(self):
-		return f'{self.meetupID} meetupID'
+
 	
 	
