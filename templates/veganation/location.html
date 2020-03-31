@@ -2,45 +2,67 @@
 
 {% extends 'veganation/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 <style>
 .wrapper {
-	margin: 0 auto;
-	width: 110px;
-	height: auto;
-	position:absolute;
+margin: 0 auto;
+width: 110px;
+height: auto;
+position:absolute;
 }
 
+
+
+.alert-success {
+	position: relative;
+	height: 38px;
+	border-radius: 5px;
+	}
 </style>
 {% block title_block %}
-	Protests
+Protests
 {% endblock %}
 
 {% block login_buttons %}
 {% if user.is_authenticated %}
-		<div class="topcorner">
-		<a href="{% url 'veganation:myaccount' %}" class="button">My Account</a> 
-		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
-		</div>
-		{% else %}
-		<div class="topcorner">
-		      
-			<br>
-			<a href="{% url 'veganation:login' %}" class="signInButton">Login Here!</a><br>
-			<a href="{% url 'veganation:signup' %}" class="signInButton">Dont't have an account? Sign up!</a>
-  			
-		</div>
-		{% endif %}
-		</div>
+<div class="topcorner">
+	<a href="{% url 'veganation:myaccount' %}" class="button">My Account</a> 
+	<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
+</div>
+{% else %}
+<div class="topcorner">
+     
+<br>
+	<a href="{% url 'veganation:login' %}" class="signInButton">Login Here!</a><br>
+	<a href="{% url 'veganation:signup' %}" class="signInButton">Dont't have an account? Sign up!</a>
+ 
+</div>
+{% endif %}
+</div>
 {% endblock %}
 
 {% block body_block %}
 
 <div class = "row">
 <div class = "column">
-	Hello
+Lets find you a buddy!
+<form method="POST" action="{% url 'veganation:location' %}" class="form" enctype="multipart/form-data" class="form" id="form1">
+<div id="form-main">
+ 	<div id="form-div">
+       	<hr>
+       	{% csrf_token %}
+       	{{location|crispy}} 
+       	<hr>
+     	<div class="submit">
+       	<input type="submit" value="SEND" id="button-blue" onclick="alertFunc()"/>
+     	</div>
+ 	</div>
 </div>
-<div class="column">
-		
-</div>		
+</form>
+<script>
+	function alertFunc() {
+		alert("Thank you for your feedback!")
+	}
+</script>
 </div>
 {% endblock %}

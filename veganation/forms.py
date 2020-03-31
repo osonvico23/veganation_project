@@ -8,6 +8,10 @@ import datetime
 from django.utils import timezone
 from .models import Location
 from datetime import date
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
+from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
+
 
 
 YEARS= [x for x in range(1940,2010)]
@@ -19,6 +23,8 @@ CHOICES = (
 
 
 
+AGE_CHOICES=((18,25),(25,35),(35,45),(45,55),(55,65),(65,75),(75,85),(95,100))
+GENDER_CHOICES=((1,'Male'),(2,'Female'),(3,'No Preference'))
 
 #class UserRegisterForm(forms.ModelForm):
     #password = forms.CharField(widget=forms.PasswordInput())
@@ -81,7 +87,16 @@ class ProfileUpdateForm(forms.ModelForm):
 
 
 class Location(forms.ModelForm):
-
+	date1 = forms.DateField(widget=forms.DateInput())
+	time1 = forms.TimeField(widget=forms.TimeInput())
+	date2 = forms.DateField(widget=forms.DateInput())
+	time2 = forms.TimeField(widget=forms.TimeInput())
+	date3 = forms.DateField(widget=forms.DateInput())
+	time3 = forms.TimeField(widget=forms.TimeInput())
+	age = forms.ChoiceField(choices = AGE_CHOICES, required = False)
+	gender = forms.ChoiceField(choices = GENDER_CHOICES, required = False)
+	
+	
 	class meta:
 		model = Location
 		fields = ['date1','time1',
@@ -90,7 +105,11 @@ class Location(forms.ModelForm):
 		'age','gender'
 		]
 		
-		
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.helper = FormHelper()
+		self.helper.form_method = 'post'
+		self.helper.add_input(Submit('submit', 'Save'))
 		
 		
 		

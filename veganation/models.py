@@ -27,12 +27,6 @@ class UserProfile(models.Model):
 	lastName = models.CharField(max_length=40, blank=True)
 	age = models.IntegerField(default = 20)
 
-
-
-
-
-
-
 	def __str__(self):
 		return f'{self.user.username} UserProfile'
 
