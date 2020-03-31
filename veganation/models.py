@@ -27,12 +27,6 @@ class UserProfile(models.Model):
 	lastName = models.CharField(max_length=40, blank=True)
 	age = models.IntegerField(default = 20)
 
-
-
-
-
-
-
 	def __str__(self):
 		return f'{self.user.username} UserProfile'
 
@@ -74,5 +68,7 @@ class Location(models.Model):
 	time2 = models.TimeField(default=timezone.now)
 	date3 = models.DateField(default=datetime.date.today)
 	time3 = models.TimeField(default=timezone.now)
-	age = models.IntegerField(default=20)
+	age = models.IntegerField(default=5)
 	gender = models.IntegerField(default=2)
+	
+	
