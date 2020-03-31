@@ -2,6 +2,9 @@
 
 {% extends 'veganation/base.html' %}
 {% load static %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 div.ex1 {
   background-color: white;
@@ -20,7 +23,26 @@ div.ex1 {
     position: absolute;
 }
 
+* {
+  box-sizing: border-box;
+}
 
+.columnI {
+ 			float: left;
+  			width: 50%;
+  			padding: 20px;
+  			height:400px;
+  			padding: 10px;
+  			border: 1px solid green;
+  			height:450px;
+  			overflow: auto;
+			}
+
+.rowI:after {
+  				content: "";
+  				display: table;
+  				clear: both;
+				}
 
 </style>
 
@@ -52,21 +74,20 @@ div.ex1 {
  <div class ="funfactBox">
 		<button class = "funFactButton" id = "factButton" onclick="myFunction()">Click here for the fun fact of the day!</button>
 		</div>
-		<font color = "#ffffe0">
 		<div class = "funfactBox" id ="factBorder">
 		<p id="fact"></p>
-		</div>
-		</font>
+	</div>
 </div>
-
-<div class = "row">
-<div class = "column">
+<br>
+<div class = "rowI">
+<div class = "columnI">
+	<a class="twitter-timeline" href="https://twitter.com/veganation4" data-tweet-limit=10 data-width="100%" data-height="100%"></a>
 	<a class="twitter-timeline" href="https://twitter.com/veganation4" data-tweet-limit=5 data-width="100%" data-height="100%"></a>
 	<script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
-<div class="row">
-		<font color = "#ffffe0"></font>
+<div class="columnI">
+		<font color = "#ffffe0">
 		<div>
 		<h3 align="center">Veganation's Top Tips</h3>
 			<ul>
@@ -77,7 +98,7 @@ div.ex1 {
 			<li>Gym bunny? Many companies offer vegan protein powder, a great place to look is Protein World!</li>
 			<li>Craving ice cream? Brands such as Ben&Jerrys as well as Halo Top (who offer low cal options) have created vegan ice cream ranges which are almost as good as the real thing!</li>
 			</ul>
-		
+
 		</div>
 		<img class="weelogo" src="{% static 'images/green-leaf.png' %}" />
 		<div>
@@ -89,18 +110,18 @@ div.ex1 {
 		<li>Restaurants: Check out our favourite restaurants <a href="{% url 'veganation:restaurants' %}">Here!</a></li> 
 		</ul>
 		</div>
+
 		</font>
-		
+
 </div>		
 
-
+</div>
 
 <script>
 function myFunction() {
   var d = new Date();
   var n = d.getDay()
   document.getElementById("factBorder").style.borderColor = "#ffffe0";
-  
   if(n == 1){
   		document.getElementById("fact").innerHTML = "Happy Monday! <br>Did you know that living a vegan lifestyle saves 30 animal lives per year? <br> Come back tomorrow for Tuesdays fun fact of the day! <br> This information has been found on chooseveg.com";
 		document.getElementById("factButton").style.display ="none";
