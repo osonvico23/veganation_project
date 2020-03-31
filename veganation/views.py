@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from veganation.forms import UserRegisterForm, UserProfileForm, ProfileUpdateForm
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.contrib import messages
 
 def index(request):

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 {% load static%}
 <html>
 	<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
 			body {
 				background-image: url("{% static 'images/backg.jpeg' %}");
@@ -22,13 +23,6 @@
   				width: 100px;
   				height:100px;
 				border-radius: 50%;
-			}
-			.centre{
-  				display: block;
- 				margin-left: auto;
-  				margin-right: auto;
-  				width: 45%;
-  				text-align: center;
 			}
 			.centreHeader{
 				text-align:center;
@@ -101,9 +95,6 @@
 				background-color:rgba(255, 255, 255, 0.4);
 				border-radius: 5px;
 				text-align: center;
-   				top:0;
-   				right:0;
-   				padding: 5px;
   			}
   			
   			.socialLinks{
@@ -150,7 +141,10 @@
 				margin-bottom: 20px;
             }
             
-           
+            hr {
+    			margin: 20px 0;
+    			border: 1px solid #f00;
+			}
 			
 			.alignLeft{
 				float:left;
@@ -165,7 +159,6 @@
 				color:white;
 			}
 			
-
 			.button {
 				background-color:rgba(206,171,158,0.9);
   				color: white;
@@ -236,15 +229,8 @@
   				border: 3px solid #CEAB9E;
   				padding: 5px;
 			}
-			
-			.signup{
-  				margin: auto;
-  				width: 75%;
-  				border: 3px solid green;
-  				padding: 10px;
-			}
-			
-			
+
+/* Create two equal columns that floats next to each other */
 			.column {
  			float: left;
   			width: 50%;
@@ -256,6 +242,7 @@
   			overflow: auto;
 			}
 
+/* Clear floats after the columns */
 			.row:after {
   				content: "";
   				display: table;
@@ -274,7 +261,6 @@
   				text-align: center;
 				opacity: 80%;
 				border-radius: 5px;
-  				background-color: #efefef;
   				flex: 0 0 50px;/*or just height:50px;*/
   				margin-top: auto;
 			}
@@ -336,12 +322,8 @@
 	{% endblock %}
 		</title>
 	</head>
-
-
 	
 	<body>
-	{% block login_buttons %}
-	{% endblock %}
 		<div id="centerbox">
 		<img src="{% static 'images/logo.jpeg' %}" alt = "Logo" class = "logo"/>
 			
@@ -349,12 +331,10 @@
   				<li><a href="{% url 'veganation:index' %}">Home</a></li>
   				<li><a href="{% url 'veganation:restaurants' %}">Restaurants</a></li>
 				 <li><a href="{% url 'veganation:protests' %}">Protests</a></li>
-				 <!-- <li><a href="{% url 'veganation:myaccount' %}">My Account</a></li> -->
-				 
 			</ul>
 		</div>
 		
-		<div class ="socialLinks">
+		<div>
 		<a href="#" class="fa fa-facebook"></a>
 		<a href="https://www.instagram.com/veganation2020/?hl=en" class="fa fa-instagram"></a>
 		<a href="https://twitter.com/veganation4" class="fa fa-twitter"></a>
@@ -376,11 +356,8 @@
 		</div>
 		<br>
 		<div class="footer">
-		<p class = "alignLeft" style="margin-left: 2%;" > contact@veganation.com</p>
+		<p class = "alignLeft" style="margin-left: 2%;" >veganationglasgirls20@gmail.com</p>
 		<p class = "alignRight" style="margin-right: 2%;">All Rights Reserved ©</p>
-
-		<p class = "alignLeft"> veganationglasgirls20@gmail.com</p>
-		<p class = "alignRight">All Rights Reserved </p>
 
 		</div>
 		

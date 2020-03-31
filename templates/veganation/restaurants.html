@@ -11,6 +11,7 @@
 {% block login_buttons %}
 {% if user.is_authenticated %}
 		<div class="topcorner">
+<<<<<<< HEAD
 		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
 		<a href="{% url 'veganation:myaccount' %}" class="button">My Account</a>
 		</div>
@@ -19,6 +20,24 @@
 			<a href="{% url 'veganation:login' %}" class="button">Login Here!</a>
 			<a href="{% url 'veganation:signup' %}" class = "button">Dont't have an account? Sign up!</a>
 			<a href="{% url 'veganation:location' %}" class = "button">Let's find a buddy!</a>
+=======
+		<a href="{% url 'veganation:myaccount' %}" class="button">My Account</a> 
+		<a href="{% url 'veganation:logout' %}" class="signInButton">Log Out!</a>
+		</div>
+		{% else %}
+		<div class="topcorner">
+<<<<<<< HEAD
+			<br>
+			<a href="{% url 'veganation:login' %}" class="signInButton ">Login Here!</a><br>
+			<a href="{% url 'veganation:signup' %}" class="signInButton ">Dont't have an account? Sign up!</a>
+=======
+			<a href="{% url 'veganation:login' %}">Login Here!</a><br>
+			<a href="{% url 'veganation:signup' %}">Dont't have an account? Sign up!</a><br>
+			<a href="{% url 'veganation:location' %}">Let's find a buddy!</a>
+		
+		
+>>>>>>> bb9a206ccbfb8a5c1a1c23c53e7ea59cf1d3874a
+>>>>>>> 9302aa7897127148a77bb4fd37223aac6ec90ecd
 		</div>
 		{% endif %}
 		</div>
