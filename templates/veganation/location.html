@@ -151,6 +151,9 @@ Protests
 		<h1>Arranging a meet up with a buddy!</h1>
 	</div>
 	<form method="POST" action="{% url 'veganation:location' %}" class="form" enctype="multipart/form-data" class="form" id="form1">
+		<form action = "location/" method = "post">
+        {% csrf_token %}
+        {{ form.as_p }}
 		<div id="form-main">
 	  		<div id="form-div">
 	        	Lets find you a buddy!
@@ -164,7 +167,6 @@ Protests
           			<p class="text-secondary">Time 3: {{ meetupID.location.time3 }}</p>
           			<p class="text-secondary">Age: {{ meetupID.location.age}}</p>
           			<p class="text-secondary">gender{{meetupID.location.gender}}
-	        	{% csrf_token %}
 	        	{{location|crispy}} 
 	        	<hr>
 	      		<div class="submit">

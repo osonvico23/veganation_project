@@ -95,14 +95,14 @@ class Location(forms.ModelForm):
 	time3 = forms.TimeField(widget=forms.TimeInput())
 	age = forms.ChoiceField(choices = AGE_CHOICES, required = False)
 	gender = forms.ChoiceField(choices = GENDER_CHOICES, required = False)
-	
-	
-	class meta:
+
+
+	class Meta:
 		model = Location
 		fields = ['date1','time1',
 		'date2','time2',
 		'date3','time3',
-		'age','gender'
+		'age','gender',
 		]
 		
 	def __init__(self, *args, **kwargs):
