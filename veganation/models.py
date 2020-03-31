@@ -63,13 +63,12 @@ class Rental(models.Model):
 
 
 class Location(models.Model):
-	meetupID = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
-	date1 = models.DateField(default=datetime.date.today)
-	time1 = models.TimeField(default=timezone.now)
-	date2 = models.DateField(default=datetime.date.today)
-	time2 = models.TimeField(default=timezone.now)
-	date3 = models.DateField(default=datetime.date.today)
-	time3 = models.TimeField(default=timezone.now)
+	userBuddy = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+	date1 = models.DateField(default=timezone.now)
+	date2 = models.DateField(default=timezone.now)
+	date3 = models.DateField(default=timezone.now)
+	restaurant = models.CharField(max_length=200,default=1)
+
 	age = models.IntegerField(default=5)
 	gender = models.IntegerField(default=2)
 

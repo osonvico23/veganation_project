@@ -22,6 +22,7 @@ CHOICES = (
     )
 
 
+REST_CHOICES=((1,"V&V Café"),(2,"The 78"),(3,"Serenity No"),(4,"The Glasvegan"),(5,"Picnic"),(6,"Puti Vegan Cafe"),(7,"Hug and Pint"),(8,"Mono"))
 
 AGE_CHOICES=((18,25),(25,35),(35,45),(45,55),(55,65),(65,75),(75,85),(95,100))
 GENDER_CHOICES=((1,'Male'),(2,'Female'),(3,'No Preference'))
@@ -85,6 +86,7 @@ class ProfileUpdateForm(forms.ModelForm):
 
 
 class LocationForm(forms.ModelForm):
+	rest = forms.ChoiceField(label="Please choose a restaurant",choices = REST_CHOICES,required =True)
 	date1 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
 	
 	date2 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
@@ -97,7 +99,7 @@ class LocationForm(forms.ModelForm):
 
 	class Meta:
 		model = Location
-		fields = ['date1',
+		fields = ['rest','date1',
 		'date2',
 		'date3',
 		'age','gender',

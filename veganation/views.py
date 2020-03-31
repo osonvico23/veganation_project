@@ -28,6 +28,9 @@ def location(request):
 	if request.method == 'POST':
 		form = LocationForm(request.POST)
 		if form.is_valid():
+			instance=form.save(commit=False)
+			instance.userBuddy=request.user
+			instance.save()
 			form.save()
 			return redirect('http://127.0.0.1:8000/veganation/restaurants/')
 	else:
