@@ -2,29 +2,17 @@
 
 {% extends 'veganation/base.html' %}
 {% load static %}
-
 <style>
+<<<<<<< HEAD
 div.ex1 {
   background-color: white;
   width: 110px;
   height: 110px;
   overflow: auto;
 }
+=======
+>>>>>>> f7f241672883b332f258a55b729b79a5d7bf1b6e
 
-h4{
-	text-align:center;		
-	}
-	
-ul.a{
-	list-style-type: circle;
-}
-
-.wrapper {
-margin: 0 auto;
-width: 110px;
-height: auto;
-position:absolute;
-}
 
 .twitter {
     margin-top: 10px;
@@ -36,54 +24,105 @@ position:absolute;
     position: absolute;
 }
 
-p {
-    margin-bottom: 50px;
-}
 
-#twitter-widget-holder{ 
-max-height:200px; 
-max-width:600px; 
-padding:20px; 
-background:#fff; 
-border-radius:3px; 
-box-shadow:2px 2px 3px rgba(0,0,0,.1); 
-}
+
 </style>
 
 
 {% block title_block %}
-	HomePage
+	Home Page
 {% endblock %}
 
-{% block body_block %}
+{% block login_buttons %}
+{% if user.is_authenticated %}
+		<div class="topcorner">
+		<a href="{% url 'veganation:myaccount' %}" class="button">My Account</a> 
+		<a href="{% url 'veganation:logout' %}" class="signInButton">Log Out!</a>
+		</div>
+		{% else %}
+		<div class="topcorner">
+			<br>
+			<a href="{% url 'veganation:login' %}" class="signInButton ">Login Here!</a><br>
+			<a href="{% url 'veganation:signup' %}" class="signInButton ">Dont't have an account? Sign up!</a>
+		</div>
+		{% endif %}
+		</div>
+{% endblock %}
 
+
+{% block body_block %}
+<div>
+ <div class ="funfactBox">
+		<button class = "funFactButton" id = "factButton" onclick="myFunction()">Click here for the fun fact of the day!</button>
+		
+		</div>
+		<div class = "funfactBox" id ="factBorder">
+		<p id="fact"></p>
+	</div>
+</div>
+<br>
 <div class = "row">
 <div class = "column">
 	<a class="twitter-timeline" href="https://twitter.com/veganation4" data-tweet-limit=10 data-width="100%" data-height="100%"></a>
 	<script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 </div>
 
 <div class="column">
-		<h4>Vegan Tips & Facts!</h4>
-		<div class = "ex1">
-			<ul class ="a">
-			<li>Each vegan saves 30 animal lives per year!</li>
-			<li>Pursuing a vegan diet can cut your carbon footprint in half - animal 
-			agriculture is a huge contributor to the issue of climate change.</br></li>
-			<li>On average, vegans have a longer life span - it can add up to 4 year onto 
-			your life!</li>
-			<li>A vegan saves approximately 1,1000 gallons of water per day - the meat industry watses
-			1/3 of drinkable water!</li>
-			<li>Vegans are less likely to have a stroke or get heart disease.</li>
-			<li>A plant based diet increases your metabolism!</li>
-			<li>The term 'Vegan' was coined less than 100 years go - animal rights activist
-			David Watson created the word in the 1940s.</li>
-			</ul>		
+		<div>
+		<h3 align="center">Veganation's Top Tips</h3>
+			<ul>
+			<li>A great alternative for vegan cheese is violife cheese slices!</li>
+			<li>To make sure you're getting the right vitamins, take a vegan multivitamin once a day.</li>
+			<li>An excellent source of protein is kidney beans, with 24g of protein per 100g!</li>
+			<li>Sick of supermarket vegan chocolate? Cadbury Bourneville chocolate is vegan, and is a great alternative to cadburys dairymilk!</li>
+			<li>Gym bunny? Many companies offer vegan protein powder, a great place to look is Protein World!</li>
+			<li>Craving ice cream? Brands such as Ben&Jerrys as well as Halo Top (who offer low cal options) have created vegan ice cream ranges which are almost as good as the real thing!</li>
+			</ul>
 		</div>
-
-
+		<img class="weelogo" src="{% static 'images/green-leaf.png' %}" />
+		<div>
+		<h4 align="center">Veganation's Favourite Brands</h4>
+		<ul>
+		<li>Makeup : NYX, Jeffree Star Cosmetics and Elf Cosmetics!</li>
+		<li>Food: Linda McCartney's range, Greggs Vegan Range, and Violife!</li>
+		<li>Clothing: Lucy&Yak, Depop and Levi's!</li>
+		<li>Restaurants: Check out our favourite restaurants <a href="{% url 'veganation:restaurants' %}">Here!</a></li> 
+		</ul>
+		</div>
+		
+		
 </div>		
+
 </div>
 
+<script>
+function myFunction() {
+  var d = new Date();
+  var n = d.getDay()
+  document.getElementById("factBorder").style.borderColor = "yellow";
+  
+  if(n == 1){
+  		document.getElementById("fact").innerHTML = "Happy Monday! <br>Did you know that living a vegan lifestyle saves 30 animal lives per year? <br> Come back tomorrow for Tuesdays fun fact of the day! <br> This information has been found on chooseveg.com";
+		document.getElementById("factButton").style.display ="none";
+	} else if( n == 2) {
+  		document.getElementById("fact").innerHTML = "Happy Tuesday! <br>Did you know that the term 'Vegan' was coined less than 100 years go - animal rights activist David Watson created the word in the 1940s? <br> Come back tomorrow for Wednesday's fun fact of the day! <br> This information has been found on chooseveg.com";
+		document.getElementById("factButton").style.display ="none";
+	} else if (n == 3){
+		document.getElementById("fact").innerHTML = "Happy Wednesday!<br> Did you know that a vegan diet can cut your carbon footprint in half - animal agriculture is a huge contributor to the issue of climate change? <br> Come back tomorrow for Thursday's fun fact of the day!  <br> This information has been found on chooseveg.com";
+		document.getElementById("factButton").style.display ="none";
+	} else if (n == 4){
+		document.getElementById("fact").innerHTML = 'Happy Thursday! <br> Did you know that a vegan saves approximately 1,1000 gallons of water per day - the meat industry wastes 1/3 of drinkable water? <br> Come back tomorrow for Fridays fun fact of the day!  <br> This information has been found on chooseveg.com';
+		document.getElementById("factButton").style.display ="none";
+	} else if (n == 5){
+		document.getElementById("fact").innerHTML = "TGIF! <br>Did you know that vegans are less likely to have a stroke or get heart disease? <br> Come back tomorrow for Saturday's fun fact of the day! <br>  This information has been found on chooseveg.com";
+		document.getElementById("factButton").style.display ="none";
+	} else if (n == 6){
+		document.getElementById("fact").innerHTML = "Happy Saturday!<br> Did you know that a plant based diet increases your metabolism? <br>Come back tomorrow for Sunday's fun fact of the day! <br> This information has been found on chooseveg.com";
+		document.getElementById("factButton").style.display ="none";
+	} else {
+		document.getElementById("fact").innerHTML = "Happy Sunday!<br> Did you know that on average, vegans have a longer life span - it can add up to 4 year onto your life? <br> Come back tomorrow for Monday's fun fact of the day!  <br> This information has been found on chooseveg.com";
+		document.getElementById("factButton").style.display ="none";
+	}
+}
+</script>
 {% endblock %}

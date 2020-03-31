@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RenameField(
             model_name='userprofile',
-            old_name='picture',
+            old_name='image',
             new_name='profilePic',
         ),
         migrations.AddField(

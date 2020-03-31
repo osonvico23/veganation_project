@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 {% load static%}
 <html>
 	<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
 			body {
 				background-image: url("{% static 'images/backg.jpeg' %}");
@@ -23,6 +22,13 @@
   				width: 100px;
   				height:100px;
 				border-radius: 50%;
+			}
+			.centre{
+  				display: block;
+ 				margin-left: auto;
+  				margin-right: auto;
+  				width: 45%;
+  				text-align: center;
 			}
 			.centreHeader{
 				text-align:center;
@@ -86,6 +92,7 @@
 			
 			.topcorner{
    				position:absolute;
+<<<<<<< HEAD
 				width: 140px;
    				top:20px;
    				right:20px;
@@ -95,6 +102,18 @@
 				background-color:rgba(255, 255, 255, 0.4);
 				border-radius: 5px;
 				text-align: center;
+=======
+   				top:0;
+   				right:0;
+   				padding: 5px;
+  			}
+  			
+  			.socialLinks{
+   				position:absolute;
+   				top:0;
+   				left:0;
+   				padding: 5px;
+>>>>>>> f7f241672883b332f258a55b729b79a5d7bf1b6e
   			}
   			
   		
@@ -134,10 +153,7 @@
 				margin-bottom: 20px;
             }
             
-            hr {
-    			margin: 20px 0;
-    			border: 1px solid #f00;
-			}
+           
 			
 			.alignLeft{
 				float:left;
@@ -152,6 +168,7 @@
 				color:white;
 			}
 			
+<<<<<<< HEAD
 			.button {
 				background-color:rgba(206,171,158,0.9);
   				color: white;
@@ -176,6 +193,20 @@
 				text-decoration: none;
 			}
 
+=======
+			.signInButton {
+  				background-color: #33ccff;
+  				color: yellow;
+  				padding: 5px 10px;
+  				text-align: center;
+  				font-size: 14px;
+  				margin-left: auto;
+  				margin-right: auto;
+  				display : in-line block;
+			}	
+			
+			
+>>>>>>> f7f241672883b332f258a55b729b79a5d7bf1b6e
 			.foot{
 			position:absolute;
 			bottom : 5px;
@@ -192,6 +223,7 @@
 			}
 			
 			.bod{
+<<<<<<< HEAD
 			margin-top:45px;
 			position:center;
 			background-color:#CEAB9E;
@@ -205,18 +237,41 @@
 			#leftbox{
 				background-color: #CEAB9E;
 				border-radius: 5px;
+=======
+			margin-top:3%;
+			position:relative;
+>>>>>>> f7f241672883b332f258a55b729b79a5d7bf1b6e
 			}
-
-/* Create two equal columns that floats next to each other */
+			
+			.login{
+  				margin: auto;
+  				width: 400px;
+  				border: 3px solid green;
+  				padding: 5px;
+			}
+			
+			.signup{
+  				margin: auto;
+  				width: 75%;
+  				border: 3px solid green;
+  				padding: 10px;
+			}
+			
+			
 			.column {
  			float: left;
   			width: 50%;
+<<<<<<< HEAD
   			padding: 20px;
   			height:400px;
+=======
+  			padding: 10px;
+  			border: 1px solid green;
+  			height:450px;
+>>>>>>> f7f241672883b332f258a55b729b79a5d7bf1b6e
   			overflow: auto;
 			}
 
-/* Clear floats after the columns */
 			.row:after {
   				content: "";
   				display: table;
@@ -224,6 +279,7 @@
 				}
 				
 			.footer {
+<<<<<<< HEAD
   				position:absolute;
   				align-items: center;
 				overflow: hidden;
@@ -235,7 +291,59 @@
   				text-align: center;
 				opacity: 80%;
 				border-radius: 5px;
+=======
+  				background-color: #efefef;
+  				flex: 0 0 50px;/*or just height:50px;*/
+  				margin-top: auto;
 			}
+			
+			body {
+  				display: flex;
+  				flex-direction: column;
+  				min-height: 100vh;
+			}
+			
+			
+			.funFact{
+  				margin: auto;
+  				width: 98%;
+  				border: 3px solid green;
+  				padding: 3px;
+  				text-align: center;
+  				font-size: 14px;
+>>>>>>> f7f241672883b332f258a55b729b79a5d7bf1b6e
+			}
+
+			
+			.funfactBox{
+  				margin: auto;
+  				width: 50%;
+  				padding: 3px;
+  				border: 3px solid white;
+  				font-size: 14px;
+  				text-align: center;
+			}	
+			
+			.funFactButton {
+  				background-color:#f5b5ed;
+  				color: #13cfa8;
+  				padding: 5px 10px;
+  				text-align: center;
+  				font-size: 14px;
+  				margin-left: auto;
+  				margin-right: 0;
+  				display : in-line block;
+  				
+			}
+			
+			.weelogo{
+  		margin: auto;
+  		
+  		width: 40px;
+  		height:40px;
+		display:block;
+		}
+			
 </style>
 
 <title>
@@ -244,8 +352,12 @@
 	{% endblock %}
 		</title>
 	</head>
+
+
 	
 	<body>
+	{% block login_buttons %}
+	{% endblock %}
 		<div id="centerbox">
 		<img src="{% static 'images/logo.jpeg' %}" alt = "Logo" class = "logo"/>
 			
@@ -253,15 +365,17 @@
   				<li><a href="{% url 'veganation:index' %}">Home</a></li>
   				<li><a href="{% url 'veganation:restaurants' %}">Restaurants</a></li>
 				 <li><a href="{% url 'veganation:protests' %}">Protests</a></li>
-				 <li><a href="{% url 'veganation:myaccount' %}">My Account</a></li>
+				 <!-- <li><a href="{% url 'veganation:myaccount' %}">My Account</a></li> -->
+				 
 			</ul>
 		</div>
 		
-		<div>
+		<div class ="socialLinks">
 		<a href="#" class="fa fa-facebook"></a>
 		<a href="https://www.instagram.com/veganation2020/?hl=en" class="fa fa-instagram"></a>
 		<a href="https://twitter.com/veganation4" class="fa fa-twitter"></a>
 		</div>
+<<<<<<< HEAD
 		
 		{% if user.is_authenticated %}
 		<div class="topcorner">
@@ -279,14 +393,31 @@
 		</form>
 		{% endif %}
 		</div>
+=======
+
+		{% if messages %}
+		{% for message in messages %}
+		  <div class="alert alert-{{ message.tags }}">
+			{{ message }}
+		  </div>
+		{% endfor %}
+		{% endif %}
+	
+	
+>>>>>>> f7f241672883b332f258a55b729b79a5d7bf1b6e
 		<div class ="bod">		
 		{% block body_block %}
 		{% endblock %}
 		</div>
 		
 		<div class="footer">
+<<<<<<< HEAD
 		<p class = "alignLeft" style="margin-left: 2%;" > contact@veganation.com</p>
 		<p class = "alignRight" style="margin-right: 2%;">All Rights Reserved ©</p>
+=======
+		<p class = "alignLeft"> veganationglasgirls20@gmail.com</p>
+		<p class = "alignRight">All Rights Reserved </p>
+>>>>>>> f7f241672883b332f258a55b729b79a5d7bf1b6e
 		</div>
 		
 	</body>
