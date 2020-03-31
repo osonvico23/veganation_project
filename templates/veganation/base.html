@@ -14,6 +14,8 @@
 				font-weight: 400;
 				font-family:"Helvetica Neue",sans-serif;
 				color: white;
+  				display: flex;
+  				flex-direction: column;
 			}
 			.logo {
   				display: block;
@@ -212,15 +214,16 @@
 			opacity: 93%;
 			}
 
-			#rightbox {
+			#row {
 				background-color: #CEAB9E;
 				border-radius: 5px;
 			}
-			#leftbox{
+			#column{
 				background-color: #CEAB9E;
 				border-radius: 5px;
 			margin-top:3%;
 			position:relative;
+			border-radius:5px
 			}
 			
 			.login{
@@ -232,24 +235,30 @@
 
 /* Create two equal columns that floats next to each other */
 			.column {
- 			float: left;
-  			width: 50%;
-  			padding: 20px;
-  			height:400px;
-  			padding: 10px;
-  			height:450px;
-  			overflow: auto;
+                float:left;  
+                width:48%; 
+                height:400px; 
+                padding: 10px;
+  				display: inline-block;
+				margin-left: 57pt;
+				margin-bottom: 20px;
+				border-radius:5px
 			}
 
 /* Clear floats after the columns */
 			.row:after {
-  				content: "";
-  				display: table;
-  				clear: both;
+                float: right; 
+                width:38%; 
+                height:400px;
+                padding: 10px;
+  				display: inline-block;
+  				overflow:auto;
+				margin-right: 62pt;	
+				margin-bottom: 20px;
 				}
 				
 			.footer {
-  				position:absolute;
+  				position:fixed;
   				align-items: center;
 				overflow: hidden;
   				bottom: 0;
@@ -262,12 +271,6 @@
 				border-radius: 5px;
   				flex: 0 0 50px;/*or just height:50px;*/
   				margin-top: auto;
-			}
-			
-			body {
-  				display: flex;
-  				flex-direction: column;
-  				min-height: 100vh;
 			}
 			
 			
