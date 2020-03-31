@@ -14,6 +14,7 @@ def restaurants(request):
     context_dict = {}
     return render(request, 'veganation/restaurants.html', context=context_dict)
 
+
 def protests(request):
     context_dict = {}
     return render(request, 'veganation/protests.html', context=context_dict)
@@ -83,3 +84,4 @@ def user_logout(request):
     logout(request)
 # Take the user back to the homepage.
     return redirect(reverse('veganation:index'))
+

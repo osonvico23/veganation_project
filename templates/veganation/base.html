@@ -6,22 +6,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
+			body {
+				background-image: url("{% static 'images/backg.jpeg' %}");
+  				background-repeat: no-repeat;
+  				background-attachment: fixed;
+				background-size: cover;
+				font-weight: 400;
+				font-family:"Helvetica Neue",sans-serif;
+				color: white;
+			}
 			.logo {
   				display: block;
+				margin-top: 5%;
  				margin-left: auto;
   				margin-right: auto;
   				width: 100px;
   				height:100px;
+				border-radius: 50%;
 			}
 			.centreHeader{
 				text-align:center;
+				
 			}
 			
 			.nav{
     			list-style:none;
-    			margin:0;
+				margin-top:25px;
     			padding:0;
     			text-align:center;
+				font-size:larger;
 			}
 			.nav li{
    				display:inline;
@@ -29,6 +42,15 @@
 			.nav a{
     			display:inline-block;
     			padding:10px;
+				text-decoration: none;
+			}
+			.nav a:visited{
+				color:white;
+				text-decoration: none;
+			}
+			.nav a:hover{
+				color:#CEAB9E;
+				text-decoration: none;
 			}
 			
 			.fa {
@@ -38,6 +60,7 @@
   				text-align: center;
   				text-decoration: none;
   				border-radius: 50px;
+				margin-left: 10px;
 			}
 			
 			.fa:hover {
@@ -45,51 +68,56 @@
 			}
 			
 			.fa-facebook {
-  				background: #3B5998;
+  				background: #AB9F93;
   				color: white;
+				margin-left: 3%;
 			}
 
 			.fa-twitter {
-  				background: #55ACEE;
+  				background: #AB9F93;
   				color: white;
 			}
 			
 			.fa-instagram {
-  				background: #125688;
+  				background: #AB9F93;
   				color: white;
 			}
 			
 			
 			.topcorner{
    				position:absolute;
-   				top:0;
-   				right:0;
-   				border: 1px solid gray;
-   				padding: 8px;
+				width: 140px;
+   				top:20px;
+   				right:20px;
+   				padding: 5px;
+				padding-top: 12px;
+				padding-bottom: 10px;
+				background-color:rgba(255, 255, 255, 0.4);
+				border-radius: 5px;
+				text-align: center;
   			}
   			
   		
   			.container {
     			position: relative;
     			top: 50%;
-    			height: 100px;
+    			height: 10px;
     			text-align: center;
-    			
 			}
 			
 			#rightbox{ 
-                float:right; 
-                width:48%; 
-                height:300px;
+                float: right; 
+                width:38%; 
+                height:400px;
                 padding: 10px;
-  				border: 1px solid gray; 
   				display: inline-block;
   				overflow:auto;
+				margin-right: 62pt;	
+				margin-bottom: 20px;
             }
             
             #centerbox{
-            	float:center;
-            	width:80%;
+            	width:50%;
             	height 200px;
             	display: block;
  				margin-left: auto;
@@ -99,10 +127,11 @@
             #leftbox { 
                 float:left;  
                 width:48%; 
-                height:300px; 
+                height:400px; 
                 padding: 10px;
-  				border: 1px solid gray;
   				display: inline-block;
+				margin-left: 57pt;
+				margin-bottom: 20px;
             }
             
             hr {
@@ -112,30 +141,41 @@
 			
 			.alignLeft{
 				float:left;
-				bottom:0;
 			}
 			
 			.alignRight{
 				float:right;
-				bottom:0;
 			}
 			
 			.boxed{
-				border: 1px solid black;
+				border: 1px solid white;
+				color:white;
 			}
 			
 			.button {
-  				background-color: #33ccff;
-  				color: black;
+				background-color:rgba(206,171,158,0.9);
+  				color: white;
   				padding: 7px 12px;
   				text-align: center;
   				text-decoration: none;
-  				display: block;
+  				display: flex;
   				font-size: 14px;
   				margin-left: auto;
   				margin-right: auto;
+				border-radius: 5px;
+				  
 			}	
-			
+			.button a{
+				text-decoration: none;
+			}
+			.button a:visited{
+				color:white;
+				text-decoration: none;
+			}
+			.button a:hover{
+				text-decoration: none;
+			}
+
 			.foot{
 			position:absolute;
 			bottom : 5px;
@@ -143,24 +183,35 @@
 			
 			* {
   			box-sizing: border-box;
+			  
 			}
 			
 			.header {
   			height:200px;
-  			background: #1abc9c;
+  			color:white;
 			}
 			
 			.bod{
-			margin-top:5%;
-			position:relative;
+			margin-top:45px;
+			position:center;
+			background-color:#CEAB9E;
+			opacity: 93%;
+			}
+
+			#rightbox {
+				background-color: #CEAB9E;
+				border-radius: 5px;
+			}
+			#leftbox{
+				background-color: #CEAB9E;
+				border-radius: 5px;
 			}
 
 /* Create two equal columns that floats next to each other */
 			.column {
  			float: left;
   			width: 50%;
-  			padding: 10px;
-  			border: 1px solid black;
+  			padding: 20px;
   			height:400px;
   			overflow: auto;
 			}
@@ -174,12 +225,16 @@
 				
 			.footer {
   				position:absolute;
-  				left: 0;
+  				align-items: center;
+				overflow: hidden;
   				bottom: 0;
-  				width: 100%;
- 				background-color: red;
+  				width: 88%;
+				margin-left:75px;
+				background-color:#AB9F93;
   				color: white;
   				text-align: center;
+				opacity: 80%;
+				border-radius: 5px;
 			}
 </style>
 
@@ -194,7 +249,7 @@
 		<div id="centerbox">
 		<img src="{% static 'images/logo.jpeg' %}" alt = "Logo" class = "logo"/>
 			
-			<ul class = "nav">
+			<ul class = "nav" style="font-weight: 200;">
   				<li><a href="{% url 'veganation:index' %}">Home</a></li>
   				<li><a href="{% url 'veganation:restaurants' %}">Restaurants</a></li>
 				 <li><a href="{% url 'veganation:protests' %}">Protests</a></li>
@@ -215,26 +270,23 @@
 		{% else %}
 		<form class="topcorner">
 		<div id="container">       
-			<br>
-			<a href="{% url 'veganation:login' %}" class="button">Login Here!</a>
+			<a href="{% url 'veganation:login' %}" class="button" style="width: 60%;margin-bottom: 5px;">Login Here!</a>
 			<label class = "centreHeader">Or sign in with:</label></br>
-			<a href="{% url 'veganation:signup' %}" class="button">Dont't have an account? Sign up!</a>
+			<a href="{% url 'veganation:signup' %}" class="button" style="width:80%;margin-top: 5px;">Dont't have an account? Sign up!</a>
 			</div>
 			
 		</div>
 		</form>
 		{% endif %}
-		<br>
 		</div>
-	
 		<div class ="bod">		
 		{% block body_block %}
 		{% endblock %}
 		</div>
 		
 		<div class="footer">
-		<p class = "alignLeft"> contact@veganation.com</p>
-		<p class = "alignRight">All Rights Reserved </p>
+		<p class = "alignLeft" style="margin-left: 2%;" > contact@veganation.com</p>
+		<p class = "alignRight" style="margin-right: 2%;">All Rights Reserved ©</p>
 		</div>
 		
 	</body>

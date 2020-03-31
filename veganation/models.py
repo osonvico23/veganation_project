@@ -7,7 +7,6 @@ from django.utils.timezone import now
 from django_google_maps import fields as map_fields
 # Create your models here.
 
-
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     #firstName = models.CharField(max_length=30, blank = True)
