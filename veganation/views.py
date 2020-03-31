@@ -111,8 +111,8 @@ def signup(request):
 def user_login(request):
 # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
 
         user = authenticate(username=username, password=password)
 

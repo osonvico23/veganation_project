@@ -18,7 +18,7 @@ class UserProfile(models.Model):
 	#username = models.CharField(max_length=40, blank = True)
 	gender = models.IntegerField(blank = True, default = 3)
 	email = models.EmailField(default = 'veganation@gmail.com')
-	veganSince = models.DateTimeField(blank = True, default=datetime.date.today)
+	veganSince = models.DateField(blank = True, default=timezone.now)
 	image = models.ImageField(default='default.jpg', upload_to='profile_images', blank=True)
 	quote = models.TextField(max_length=100, blank=True)
 	occupation = models.CharField(max_length=50, blank = True)
@@ -62,11 +62,11 @@ class Rental(models.Model):
 
 class Location(models.Model):
 	meetupID = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
-	date1 = models.DateField(default=datetime.date.today)
+	date1 = models.DateField(default=timezone.now)
 	time1 = models.TimeField(default=timezone.now)
-	date2 = models.DateField(default=datetime.date.today)
+	date2 = models.DateField(default=timezone.now)
 	time2 = models.TimeField(default=timezone.now)
-	date3 = models.DateField(default=datetime.date.today)
+	date3 = models.DateField(default=timezone.now)
 	time3 = models.TimeField(default=timezone.now)
 	age = models.IntegerField(default=5)
 	gender = models.IntegerField(default=2)

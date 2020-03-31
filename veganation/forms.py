@@ -111,7 +111,6 @@ class LocationForm(forms.ModelForm):
 		
 	
 		
-		
 
 
 		
