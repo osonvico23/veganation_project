@@ -86,20 +86,20 @@ class ProfileUpdateForm(forms.ModelForm):
 
 class LocationForm(forms.ModelForm):
 	date1 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
-	time1 = forms.TimeField(widget=forms.TimeInput())
+	
 	date2 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
-	time2 = forms.TimeField(widget=forms.TimeInput())
+	
 	date3 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
-	time3 = forms.TimeField(widget=forms.TimeInput())
+
 	age = forms.ChoiceField(choices = AGE_CHOICES, required = False)
 	gender = forms.ChoiceField(choices = GENDER_CHOICES, required = False)
 
 
 	class Meta:
 		model = Location
-		fields = ['date1','time1',
-		'date2','time2',
-		'date3','time3',
+		fields = ['date1',
+		'date2',
+		'date3',
 		'age','gender',
 		]
 		

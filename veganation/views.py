@@ -22,18 +22,23 @@ def protests(request):
     context_dict = {}
     return render(request, 'veganation/protests.html', context=context_dict)
     
+
+@login_required(login_url="http://127.0.0.1:8000/veganation/login/")
 def location(request):
 	if request.method == 'POST':
 		form = LocationForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('restaurants')
+			return redirect('http://127.0.0.1:8000/veganation/restaurants/')
 	else:
 		form = LocationForm()
 		return render(request, 'veganation/location.html', 
                       {'form':form})
                       
                       
+                      
+
+
 @login_required
 def myaccount(request): 
     if request.method == 'POST':

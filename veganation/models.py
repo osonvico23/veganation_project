@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from django.utils.timezone import now
 from PIL import Image
 import datetime
+import uuid
 
 
 from django_google_maps import fields as map_fields
@@ -72,7 +73,6 @@ class Location(models.Model):
 	age = models.IntegerField(default=5)
 	gender = models.IntegerField(default=2)
 
-	def __str__(self):
-		return f'{self.meetupID} meetupID'
+
 	
 	
