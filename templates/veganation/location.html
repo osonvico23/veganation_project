@@ -20,7 +20,7 @@ position:absolute;
 	}
 </style>
 {% block title_block %}
-Protests
+Meetup Preferences
 {% endblock %}
 
 {% block login_buttons %}
@@ -159,14 +159,14 @@ Protests
 	        	Lets find you a buddy!
 	        	<hr>
 	        		<h2 class="account-heading">{{ user.username }}</h2>
-          			<p class="text-secondary">Date 1: {{ meetupID.location.date1 }}</p>
-         			<p class="text-secondary">Time 1: {{ meetupID.location.time1}}</p>
-         			<p class="text-secondary"> Date 2:    {{ meetupID.location.date2 }}</p>
+          			<p class="text-secondary">Date 1: </p>
+         			<p class="text-secondary">Time 1:</p>
+         			<p class="text-secondary"> Date 2:</p>
           			<p class="text-secondary">Time 2: {{meetupID.location.time2 }}</p>
           			<p class="text-secondary"> Date 3:    {{ meetupID.location.time3 }}</p>
           			<p class="text-secondary">Time 3: {{ meetupID.location.time3 }}</p>
           			<p class="text-secondary">Age: {{ meetupID.location.age}}</p>
-          			<p class="text-secondary">gender{{meetupID.location.gender}}
+          			<p class="text-secondary">Gender:{{meetupID.location.gender}}
 	        	{{location|crispy}} 
 	        	<hr>
 	      		<div class="submit">
