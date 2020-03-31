@@ -152,9 +152,8 @@ Meetup Preferences
 	</div>
 	<form method="POST" action="{% url 'veganation:location' %}" class="form" enctype="multipart/form-data" class="form" id="form1">
 		<form action = "location/" method = "post">
-        {% csrf_token %}
-        {{ form.as_p }}
 		<div id="form-main">
+		{{form|crispy}} 
 	  		<div id="form-div">
 	        	Lets find you a buddy!
 	        	<hr>
@@ -167,7 +166,7 @@ Meetup Preferences
           			<p class="text-secondary">Time 3: {{ meetupID.location.time3 }}</p>
           			<p class="text-secondary">Age: {{ meetupID.location.age}}</p>
           			<p class="text-secondary">Gender:{{meetupID.location.gender}}
-	        	{{location|crispy}} 
+	        	
 	        	<hr>
 	      		<div class="submit">
 	        		<input type="submit" value="SEND" id="button-blue" onclick="alertFunc()"/>

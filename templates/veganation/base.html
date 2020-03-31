@@ -97,6 +97,13 @@
 				text-align: center;
   			}
   			
+  			.socialLinks{
+   				position:absolute;
+   				top:0;
+   				left:0;
+   				padding: 5px;
+  			}
+  			
   		
   			.container {
     			position: relative;
@@ -176,6 +183,17 @@
 				text-decoration: none;
 			}
 
+			.signInButton {
+  				background-color: #33ccff;
+  				color: yellow;
+  				padding: 5px 10px;
+  				text-align: center;
+  				font-size: 14px;
+  				margin-left: auto;
+  				margin-right: auto;
+  				display : in-line block;
+			}	
+		
 			.foot{
 			position:absolute;
 			bottom : 5px;
@@ -205,6 +223,15 @@
 			#leftbox{
 				background-color: #CEAB9E;
 				border-radius: 5px;
+			margin-top:3%;
+			position:relative;
+			}
+			
+			.login{
+  				margin: auto;
+  				width: 400px;
+  				border: 3px solid green;
+  				padding: 5px;
 			}
 
 /* Create two equal columns that floats next to each other */
@@ -213,6 +240,9 @@
   			width: 50%;
   			padding: 20px;
   			height:400px;
+  			padding: 10px;
+  			border: 1px solid green;
+  			height:450px;
   			overflow: auto;
 			}
 
@@ -235,7 +265,54 @@
   				text-align: center;
 				opacity: 80%;
 				border-radius: 5px;
+  				flex: 0 0 50px;/*or just height:50px;*/
+  				margin-top: auto;
 			}
+			
+			body {
+  				display: flex;
+  				flex-direction: column;
+  				min-height: 100vh;
+			}
+			
+			
+			.funFact{
+  				margin: auto;
+  				width: 98%;
+  				border: 3px solid green;
+  				padding: 3px;
+  				text-align: center;
+  				font-size: 14px;
+			}
+
+			
+			.funfactBox{
+  				margin: auto;
+  				width: 50%;
+  				padding: 3px;
+  				border: 3px solid #CEAB9E;
+  				font-size: 14px;
+  				text-align: center;
+			}	
+			
+			.funFactButton {
+  				background-color:#f5b5ed;
+  				color: #13cfa8;
+  				padding: 5px 10px;
+  				text-align: center;
+  				font-size: 14px;
+  				margin-left: auto;
+  				margin-right: 0;
+  				display : in-line block;
+			}
+			
+			.weelogo{
+  				margin: auto;
+  				width: 40px;
+  				height:40px;
+				display:block;
+			}
+			
 </style>
 
 <title>
@@ -262,30 +339,25 @@
 		<a href="https://twitter.com/veganation4" class="fa fa-twitter"></a>
 		</div>
 		
-		{% if user.is_authenticated %}
-		<div class="topcorner">
-		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
+		
 		</div>
-		{% else %}
-		<form class="topcorner">
-		<div id="container">       
-			<a href="{% url 'veganation:login' %}" class="button" style="width: 60%;margin-bottom: 5px;">Login Here!</a>
-			<label class = "centreHeader">Or sign in with:</label></br>
-			<a href="{% url 'veganation:signup' %}" class="button" style="width:80%;margin-top: 5px;">Dont't have an account? Sign up!</a>
-			</div>
-			
-		</div>
-		</form>
+		{% if messages %}
+		{% for message in messages %}
+		  <div class="alert alert-{{ message.tags }}">
+			{{ message }}
+		  </div>
+		{% endfor %}
 		{% endif %}
-		</div>
+	
 		<div class ="bod">		
 		{% block body_block %}
 		{% endblock %}
 		</div>
 		
 		<div class="footer">
-		<p class = "alignLeft" style="margin-left: 2%;" > contact@veganation.com</p>
+		<p class = "alignLeft" style="margin-left: 2%;" >veganationglasgirls20@gmail.com</p>
 		<p class = "alignRight" style="margin-right: 2%;">All Rights Reserved ©</p>
+
 		</div>
 		
 	</body>

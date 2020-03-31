@@ -3,16 +3,12 @@
 {% extends 'veganation/base.html' %}
 {% load static %}
 <style>
-<<<<<<< HEAD
 div.ex1 {
   background-color: white;
   width: 110px;
   height: 110px;
   overflow: auto;
 }
-=======
->>>>>>> f7f241672883b332f258a55b729b79a5d7bf1b6e
-
 
 .twitter {
     margin-top: 10px;
@@ -36,17 +32,17 @@ div.ex1 {
 {% block login_buttons %}
 {% if user.is_authenticated %}
 		<div class="topcorner">
-		<a href="{% url 'veganation:myaccount' %}" class="button">My Account</a> 
-		<a href="{% url 'veganation:logout' %}" class="signInButton">Log Out!</a>
+		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
 		</div>
 		{% else %}
-		<div class="topcorner">
-			<br>
-			<a href="{% url 'veganation:login' %}" class="signInButton ">Login Here!</a><br>
-			<a href="{% url 'veganation:signup' %}" class="signInButton ">Dont't have an account? Sign up!</a>
+		<form class="topcorner">
+		<div id="container">       
+			<a href="{% url 'veganation:login' %}" style="width: 60%;margin-bottom: 5px;">Login Here!</a>
+			<a href="{% url 'veganation:signup' %}"  style="width:80%;margin-top: 5px;">Dont't have an account? Sign up!</a>
+			</div>
 		</div>
-		{% endif %}
-		</div>
+		</form>
+{% endif %}
 {% endblock %}
 
 
