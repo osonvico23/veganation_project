@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from django.shortcuts import render
 from django.contrib import messages
+from .forms import LocationForm
 
 def index(request):
     return render(request, 'veganation/index.html')
@@ -22,9 +23,17 @@ def protests(request):
     return render(request, 'veganation/protests.html', context=context_dict)
     
 def location(request):
-    context_dict = {}
-    return render(request, 'veganation/location.html', context=context_dict)
-
+	if request.method == 'POST':
+		form = LocationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('restaurants')
+	else:
+		form = LocationForm()
+		return render(request, 'veganation/location.html', 
+                      {'form':form})
+                      
+                      
 @login_required
 def myaccount(request): 
     if request.method == 'POST':
