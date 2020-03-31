@@ -87,11 +87,11 @@ class ProfileUpdateForm(forms.ModelForm):
 
 
 class Location(forms.ModelForm):
-	date1 = forms.DateField(widget=forms.DateInput())
+	date1 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
 	time1 = forms.TimeField(widget=forms.TimeInput())
-	date2 = forms.DateField(widget=forms.DateInput())
+	date2 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
 	time2 = forms.TimeField(widget=forms.TimeInput())
-	date3 = forms.DateField(widget=forms.DateInput())
+	date3 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
 	time3 = forms.TimeField(widget=forms.TimeInput())
 	age = forms.ChoiceField(choices = AGE_CHOICES, required = False)
 	gender = forms.ChoiceField(choices = GENDER_CHOICES, required = False)
@@ -111,8 +111,7 @@ class Location(forms.ModelForm):
 		self.helper.form_method = 'post'
 		self.helper.add_input(Submit('submit', 'Save'))
 		
-		
-		
+	
 		
 		
 		

@@ -36,33 +36,148 @@ Protests
 	<a href="{% url 'veganation:login' %}" class="signInButton">Login Here!</a><br>
 	<a href="{% url 'veganation:signup' %}" class="signInButton">Dont't have an account? Sign up!</a>
  
-</div>
+
 {% endif %}
-</div>
+
 {% endblock %}
 
 {% block body_block %}
 
-<div class = "row">
-<div class = "column">
-Lets find you a buddy!
-<form method="POST" action="{% url 'veganation:location' %}" class="form" enctype="multipart/form-data" class="form" id="form1">
-<div id="form-main">
- 	<div id="form-div">
-       	<hr>
-       	{% csrf_token %}
-       	{{location|crispy}} 
-       	<hr>
-     	<div class="submit">
-       	<input type="submit" value="SEND" id="button-blue" onclick="alertFunc()"/>
-     	</div>
- 	</div>
-</div>
-</form>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>            
+	@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+	#feedback-page {
+		text-align: center;
+	}
+	
+	#form-main {
+		width: 100%;
+		float: left;
+		padding-top: 0px;
+	}
+	
+	#form-div {
+		background-color: rgba(72, 72, 72, 0.4);
+		padding-left: 35px;
+		padding-right: 35px;
+		padding-top: 35px;
+		padding-bottom: 50px;
+		width: 450px;
+		float: left;
+		left: 50%;
+		position: relative;
+		margin-top: 30px;
+		margin-left: -260px;
+		margin-bottom: 50px;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+	}
+	
+	#button-blue {
+		font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+		float: left;
+		width: 100%;
+		border: #fbfbfb solid 4px;
+		cursor: pointer;
+		background-color: #3498db;
+		color: white;
+		font-size: 24px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		transition: all 0.3s;
+		margin-top: 10px;
+		font-weight: 700;
+	}
+	
+	#button-blue:hover {
+		background-color: rgba(0, 0, 0, 0);
+		color: #0493bd;
+	}
+	
+	.submit:hover {
+		color: #3498db;
+	}
+	
+	textarea {
+		width: 100%;
+		height: 150px;
+		line-height: 150%;
+		resize: vertical;
+	}
+	
+	.ease {
+		width: 0px;
+		height: 74px;
+		background-color: #fbfbfb;
+		-webkit-transition: .3s ease;
+		-moz-transition: .3s ease;
+		-o-transition: .3s ease;
+		-ms-transition: .3s ease;
+		transition: .3s ease;
+	}
+	
+	.submit:hover .ease {
+		width: 100%;
+		background-color: white;
+	}
+	
+	@media only screen and (max-width: 580px) {
+		#form-div {
+			left: 3%;
+			margin-right: 3%;
+			width: 88%;
+			margin-left: 0;
+			padding-left: 3%;
+			padding-right: 3%;
+		}
+	}
+	
+	.alert-success {
+		position: relative;
+		height: 38px;
+		border-radius: 5px;
+	}
+	
+	.title h1 {
+		text-align: center;
+		padding: 10px 0px 0px 0px;
+	}
+</style>    
+<body>
+	<div class="title">
+		<h1>Arranging a meet up with a buddy!</h1>
+	</div>
+	<form method="POST" action="{% url 'veganation:location' %}" class="form" enctype="multipart/form-data" class="form" id="form1">
+		<div id="form-main">
+	  		<div id="form-div">
+	        	Lets find you a buddy!
+	        	<hr>
+	        		<h2 class="account-heading">{{ user.username }}</h2>
+          			<p class="text-secondary">Date 1: {{ meetupID.location.date1 }}</p>
+         			<p class="text-secondary">Time 1: {{ meetupID.location.time1}}</p>
+         			<p class="text-secondary"> Date 2:    {{ meetupID.location.date2 }}</p>
+          			<p class="text-secondary">Time 2: {{meetupID.location.time2 }}</p>
+          			<p class="text-secondary"> Date 3:    {{ meetupID.location.time3 }}</p>
+          			<p class="text-secondary">Time 3: {{ meetupID.location.time3 }}</p>
+          			<p class="text-secondary">Age: {{ meetupID.location.age}}</p>
+          			<p class="text-secondary">gender{{meetupID.location.gender}}
+	        	{% csrf_token %}
+	        	{{location|crispy}} 
+	        	<hr>
+	      		<div class="submit">
+	        		<input type="submit" value="SEND" id="button-blue" onclick="alertFunc()"/>
+	        		<div class="ease"></div>
+	      		</div>
+	  		</div>
+		</div>
+    </form>
+</body>
 <script>
 	function alertFunc() {
 		alert("Thank you for your feedback!")
 	}
 </script>
-</div>
 {% endblock %}
