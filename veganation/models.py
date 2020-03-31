@@ -70,5 +70,8 @@ class Location(models.Model):
 	time3 = models.TimeField(default=timezone.now)
 	age = models.IntegerField(default=5)
 	gender = models.IntegerField(default=2)
+
+	def __str__(self):
+		return f'{self.meetupID} meetupID'
 	
 	

@@ -84,7 +84,7 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = ['image']
 
 
-class Location(forms.ModelForm):
+class LocationForm(forms.ModelForm):
 	date1 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
 	time1 = forms.TimeField(widget=forms.TimeInput())
 	date2 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
