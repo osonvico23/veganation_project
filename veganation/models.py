@@ -62,11 +62,12 @@ class Rental(models.Model):
 
 
 class Location(models.Model):
-    date1 = models.DateField(default=timezone.now)
-    date2 = models.DateField(default=timezone.now)
-    date3 = models.DateField(default=timezone.now)
-    age = models.IntegerField(default=5)
-    gender = models.IntegerField(default=2)
+	userBuddy = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+	date1 = models.DateField(default=timezone.now)
+	date2 = models.DateField(default=timezone.now)
+	date3 = models.DateField(default=timezone.now)
+	age = models.IntegerField(default=5)
+	gender = models.IntegerField(default=2)
 
 
 	
