@@ -46,7 +46,7 @@ class UserRegisterForm(UserCreationForm):
     quote = forms.CharField(required = False)
     occupation = forms.CharField(required = False)
     city = forms.CharField()
-    
+
 
     def signup(self, request, user):
         user.firstName = self.cleaned_data['firstName']
@@ -57,26 +57,23 @@ class UserRegisterForm(UserCreationForm):
         user.city = self.cleaned_data['city']
         user.gender = self.cleaned_data['gender']
         user.age = self.calculate_age['age']
+
         user.save()
-	
-    
-    
+
+
+
     #def calculate_age(self):
      #   today = date.today()
       #  return today.year - self.year - ((today.month, today.day) < (self.month, self.day))
-
-
-
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'firstName', 'lastName', 'gender', 'age','veganSince', 
+        fields = ['username', 'email', 'password1', 'password2', 'firstName', 'lastName', 'gender', 'age','veganSince',
         'quote', 'occupation', 'city',]
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        #fields taken out firstName and lastName
-        fields = ('firstName', 'lastName','veganSince', 'gender', 'age',
+        fields = ('email', 'firstName', 'lastName','veganSince', 'gender', 'age',
         'quote', 'occupation', 'city',)
 
 class ProfileUpdateForm(forms.ModelForm):
@@ -88,8 +85,11 @@ class ProfileUpdateForm(forms.ModelForm):
 class LocationForm(forms.ModelForm):
 	rest = forms.ChoiceField(label="Please choose a restaurant",choices = REST_CHOICES,required =True)
 	date1 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
+
 	date2 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
+
 	date3 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
+
 	age = forms.ChoiceField(choices = AGE_CHOICES, required = False)
 	gender = forms.ChoiceField(choices = GENDER_CHOICES, required = False)
 
@@ -101,33 +101,9 @@ class LocationForm(forms.ModelForm):
 		'date3',
 		'age','gender',
 		]
-		
-        
+
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.helper = FormHelper()
 		self.helper.form_method = 'post'
 		self.helper.add_input(Submit('submit', 'Save'))
-		
-		
-		
-	
-		
-
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
