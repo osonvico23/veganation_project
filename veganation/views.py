@@ -39,7 +39,7 @@ def location(request):
 			instance.save()
 			form.save()
 			
-			same_rest=Location.objects.filter(restaurant=instance.restaurant).filter(date1=instance.date1)
+			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1)
 			l = []
 			for r in same_rest:
 				l.append(r.id)
