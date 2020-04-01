@@ -41,7 +41,7 @@ class UserRegisterForm(UserCreationForm):
     firstName = forms.CharField()
     lastName = forms.CharField()
     gender = forms.ChoiceField(choices = CHOICES, required = False)
-    veganSince = forms.DateField(label='When did you become vegan?', initial="1990-06-21", widget=forms.SelectDateWidget(years=YEARS), required = False)
+    veganSince = forms.CharField(required = False)
     age = forms.IntegerField()
     quote = forms.CharField(required = False)
     occupation = forms.CharField(required = False)
