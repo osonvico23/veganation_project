@@ -36,10 +36,6 @@ def location(request):
 		if form.is_valid():
 			instance=form.save(commit=False)
 			instance.userBuddy=request.user
-			restaurant = form.get('rest')
-			date1 = form.cleaned_data.get('date1')
-			date2 = form.cleaned_data.get('date2')
-			date3 = form.cleaned_data.get('date3')
 			instance.save()
 			form.save()
 			
