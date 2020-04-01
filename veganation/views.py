@@ -9,6 +9,12 @@ from django.urls import reverse
 from django.shortcuts import render
 from django.contrib import messages
 from .forms import LocationForm
+from .models import Location
+from django.contrib.auth.models import User
+from .models import UserProfile
+from django.db import models
+from django.core.mail import send_mail
+from django.core import mail
 
 def index(request):
     return render(request, 'veganation/index.html')
@@ -32,6 +38,26 @@ def location(request):
 			instance.userBuddy=request.user
 			instance.save()
 			form.save()
+			
+			same_rest=Location.objects.filter(restaurant=instance.restaurant).filter(date1=instance.date1)
+			l = []
+			for r in same_rest:
+				l.append(r.id)
+			emails=[]
+			for person in l:
+				user = User.objects.get(username="Sonali21")
+				user_email=user.email
+				emails.append(user_email)
+				
+			print(same_rest)
+			print(emails)
+			
+			if(len(emails)>1):
+				if user.email:
+					mail_body = ("hi!") 
+					send_mail('Checking!',mail_body,'veganationglasgirls20@gmail.com',emails,)
+         		
+         	
 			return redirect('http://127.0.0.1:8000/veganation/restaurants/')
 	else:
 		form = LocationForm()
