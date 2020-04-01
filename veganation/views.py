@@ -42,10 +42,12 @@ def location(request):
 			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1)
 			l = []
 			for r in same_rest:
-				l.append(r.id)
+				user1 = Location.objects.get(id=r.id)
+				usernameis=user1.username
+				l.append(idperson.usernameis)
 			emails=[]
 			for person in l:
-				user = User.objects.get(username="Sonali21")
+				user = User.objects.get(username=person)
 				user_email=user.email
 				emails.append(user_email)
 				
