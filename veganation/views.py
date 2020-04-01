@@ -38,7 +38,7 @@ def location(request):
 			instance.userBuddy=request.user
 			instance.save()
 			form.save()
-			
+
 			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1)
 			l = []
 			for r in same_rest:
@@ -48,16 +48,16 @@ def location(request):
 				user = User.objects.get(username="Sonali21")
 				user_email=user.email
 				emails.append(user_email)
-				
+
 			print(same_rest)
 			print(emails)
-			
+
 			if(len(emails)>1):
 				if user.email:
-					mail_body = ("hi!") 
+					mail_body = ("hi!")
 					send_mail('Checking!',mail_body,'veganationglasgirls20@gmail.com',emails,)
-         		
-         	
+
+
 			return redirect('http://127.0.0.1:8000/veganation/restaurants/')
 	else:
 		form = LocationForm()
@@ -141,8 +141,8 @@ def signup(request):
     else:
         form = UserRegisterForm()
         profile_form = UserProfileForm()
-    return render(request, 'veganation/signup.html', {'form': form})
-    
+    return render(request, 'veganation/signup.html', context = {'form': form, 'profile_form':profile_form} )
+
 def user_login(request):
 # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':

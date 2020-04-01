@@ -15,9 +15,7 @@ from django_google_maps import fields as map_fields
 
 class UserProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True, related_name = "myaccount", null=True)
-	#firstName = models.CharField(max_length=30, blank = True)
-	#lastName = models.CharField(max_length=40, blank = True)
-	#username = models.CharField(max_length=40, blank = True)
+	
 	gender = models.IntegerField(blank = True, default = 3)
 	email = models.EmailField(default = 'veganation@gmail.com')
 	veganSince = models.CharField(max_length=30, blank=True)
@@ -58,7 +56,7 @@ def save(self):
 
 
 class Rental(models.Model):
-	address = map_fields.AddressField(max_length=200)	
+	address = map_fields.AddressField(max_length=200)
 	geolocation = map_fields.GeoLocationField(max_length=100)
 
 
@@ -71,7 +69,3 @@ class Location(models.Model):
 
 	age = models.IntegerField(default=5)
 	gender = models.IntegerField(default=2)
-
-
-	
-	

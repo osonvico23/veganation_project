@@ -16,19 +16,19 @@
 {% endblock %}
 
 {% block body_block %}
-<div class = "row">
+<div class = "rowI">
 
 
-<div class = "column">
+<div class = "columnI">
     <div class="content-section">
       <div class="media">
         <img class="rounded-circle account-img" src="{{ user.myaccount.image.url }}"width = '240'>
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">First Name: {{ user.myaccount.firstName }}</p>
+          <p class="text-secondary">First Name: {{ user.firstName }}</p>
           <p class="text-secondary">Last Name: {{ user.myaccount.lastName }}</p>
-          <p class="text-secondary"> Email:    {{ user.email }}</p>
-          <p class="text-secondary">Gender: {{ user.myaccount.gender }}</p>
+          <p class="text-secondary"> Email:  {{ user.email }}</p>
+          <p class="text-secondary">Gender: {{ user.gender }}</p>
           <p class="text-secondary">Age: {{ user.myaccount.age}}</p>
           <p class="text-secondary">Vegan since{{ user.myaccount.veganSince }}
           <p class="text-secondary">Quote: {{ user.myaccount.quote }}</p>
@@ -55,7 +55,7 @@
       -->
     </div>
     </div>
-<div class = "column">
+<div class = "columnI">
 My restaurants
 </div>
 
