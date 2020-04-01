@@ -69,6 +69,7 @@ class Location(models.Model):
 
 class Rate(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+	restaurant = models.CharField(max_length=128)
 	hug_rate = models.IntegerField(null=True, blank=True)
 	seren_rate = models.IntegerField(null=True, blank=True)
 	the78_rate = models.IntegerField(null=True, blank=True)
@@ -77,3 +78,6 @@ class Rate(models.Model):
 	mono_rate = models.IntegerField(null=True, blank=True)
 	picnic_rate = models.IntegerField(null=True, blank=True)
 	vandv_rate = models.IntegerField(null=True, blank=True)
+
+	def __str__(self):
+		return self.user
