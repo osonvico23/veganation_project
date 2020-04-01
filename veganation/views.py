@@ -27,7 +27,7 @@ def restaurants(request):
 def protests(request):
     context_dict = {}
     return render(request, 'veganation/protests.html', context=context_dict)
-    
+
 
 @login_required(login_url="http://127.0.0.1:8000/veganation/login/")
 def location(request):
@@ -65,19 +65,19 @@ def location(request):
 			return redirect('http://127.0.0.1:8000/veganation/restaurants/')
 	else:
 		form = LocationForm()
-		return render(request, 'veganation/location.html', 
+		return render(request, 'veganation/location.html',
                       {'form':form})
-                      
-                      
-                      
+
+
+
 
 
 @login_required
-def myaccount(request): 
+def myaccount(request):
     if request.method == 'POST':
         u_form = UserProfileForm(request.POST, instance= request.user)
-        p_form = ProfileUpdateForm(request.POST, 
-                                   request.FILES, 
+        p_form = ProfileUpdateForm(request.POST,
+                                   request.FILES,
                                    instance = request.user.myaccount)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
@@ -96,9 +96,6 @@ def myaccount(request):
 
     return render(request, 'veganation/myaccount.html',context=context_dict)
 
-def socialsLogin(request):
-    return render(request, 'veganation/socialsLogin.html')
-
 def signup(request):
     #registered = False
 
@@ -108,11 +105,11 @@ def signup(request):
 
         #if user_form.is_valid() and profile_form.is_valid():
             #user = user_form.save()
-            
+
 
             #user.set_password(user.password)
             #user.save()
-            
+
 
             #profile = profile_form.save(commit=False)
             #profile.user = user
@@ -135,7 +132,7 @@ def signup(request):
                 #  context = {'user_form': user_form,
                  #            'profile_form': profile_form,
                   #           'registered':registered})
-    
+
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         profile_form = UserProfileForm(request.POST)
@@ -149,6 +146,7 @@ def signup(request):
         form = UserRegisterForm()
         profile_form = UserProfileForm()
     return render(request, 'veganation/signup.html', {'form': form})
+    
 def user_login(request):
 # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
@@ -177,4 +175,3 @@ def user_logout(request):
     logout(request)
 # Take the user back to the homepage.
     return redirect(reverse('veganation:index'))
-

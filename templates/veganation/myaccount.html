@@ -9,18 +9,10 @@
 <div id = "leftbox">
 
 {% block login_buttons %}
-{% if user.is_authenticated %}
-		<div class="topcorner">  
-		<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
-		</div>
-		{% else %}
-		<div class="topcorner">
-			<br>
-			<a href="{% url 'veganation:login' %}" class="signInButton ">Login Here!</a><br>
-			<a href="{% url 'veganation:signup' %}" class="signInButton ">Dont't have an account? Sign up!</a>
-		</div>
-		{% endif %}
-		</div>
+<div class="topcorner">  
+	<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
+</div>
+		
 {% endblock %}
 
 {% block body_block %}
@@ -39,13 +31,9 @@
           <p class="text-secondary">Gender: {{ user.myaccount.gender }}</p>
           <p class="text-secondary">Age: {{ user.myaccount.age}}</p>
           <p class="text-secondary">Vegan since{{ user.myaccount.veganSince }}
-              <p class="text-secondary">Quote: {{ user.myaccount.quote }}</p>
-              <p class="text-secondary">Occupation: {{ user.myaccount.occupation }}</p>
-              <p class="text-secondary">City: {{ user.myaccount.city }}</p>
-
-          
-          
-
+          <p class="text-secondary">Quote: {{ user.myaccount.quote }}</p>
+          <p class="text-secondary">Occupation: {{ user.myaccount.occupation }}</p>
+          <p class="text-secondary">City: {{ user.myaccount.city }}</p>
         </div>
       </div>
       <!-- 
