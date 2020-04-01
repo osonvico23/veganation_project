@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from django.shortcuts import render
 from django.contrib import messages
-from .forms import LocationForm
+from .forms import LocationForm, RateForm
 from .models import Location
 from django.contrib.auth.models import User
 from .models import UserProfile
@@ -21,6 +21,14 @@ def index(request):
 
 def restaurants(request):
     context_dict = {}
+    if request.method == 'POST':
+    # take care of instance
+        form = RateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            # adding the user here.
+            rate.user = request.user
+            rate.save()
     return render(request, 'veganation/restaurants.html', context=context_dict)
 
 

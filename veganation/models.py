@@ -9,6 +9,7 @@ from PIL import Image
 import datetime
 import uuid
 from django_google_maps import fields as map_fields
+from star_ratings.models import Rating
 
 
 class UserProfile(models.Model):
@@ -65,3 +66,14 @@ class Location(models.Model):
 
 	age = models.IntegerField(default=5)
 	gender = models.IntegerField(default=2)
+
+class Rate(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+	hug_rate = models.IntegerField(null=True, blank=True)
+	seren_rate = models.IntegerField(null=True, blank=True)
+	the78_rate = models.IntegerField(null=True, blank=True)
+	glasvegan_rate = models.IntegerField(null=True, blank=True)
+	puti_rate = models.IntegerField(null=True, blank=True)
+	mono_rate = models.IntegerField(null=True, blank=True)
+	picnic_rate = models.IntegerField(null=True, blank=True)
+	vandv_rate = models.IntegerField(null=True, blank=True)
