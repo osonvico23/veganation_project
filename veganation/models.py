@@ -67,7 +67,7 @@ class Location(models.Model):
 	date1 = models.DateField(default=timezone.now)
 	date2 = models.DateField(default=timezone.now)
 	date3 = models.DateField(default=timezone.now)
-	restaurant = models.CharField(max_length=200,default=1)
+	restaurant = models.CharField(max_length=200)
 
 	age = models.IntegerField(default=5)
 	gender = models.IntegerField(default=2)

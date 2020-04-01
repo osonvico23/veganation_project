@@ -88,11 +88,8 @@ class ProfileUpdateForm(forms.ModelForm):
 class LocationForm(forms.ModelForm):
 	rest = forms.ChoiceField(label="Please choose a restaurant",choices = REST_CHOICES,required =True)
 	date1 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
-	
 	date2 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
-	
 	date3 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
-
 	age = forms.ChoiceField(choices = AGE_CHOICES, required = False)
 	gender = forms.ChoiceField(choices = GENDER_CHOICES, required = False)
 
@@ -105,11 +102,14 @@ class LocationForm(forms.ModelForm):
 		'age','gender',
 		]
 		
+        
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.helper = FormHelper()
 		self.helper.form_method = 'post'
 		self.helper.add_input(Submit('submit', 'Save'))
+		
+		
 		
 	
 		
