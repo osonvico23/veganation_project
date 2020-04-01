@@ -41,6 +41,11 @@ urlpatterns = [
              template_name='veganation/password_reset_done.html'
          ),
          name='password_reset_done'),
+    path('password-reset-confirm/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(
+             template_name='veganation/password_reset_confirm.html'
+         ),
+         name='password_reset_confirm'),
 ]
 
 if settings.DEBUG:
