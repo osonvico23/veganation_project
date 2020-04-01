@@ -39,13 +39,16 @@ def location(request):
 			instance.save()
 			form.save()
 
+
 			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1)
 			l = []
 			for r in same_rest:
 				l.append(r.id)
 			emails=[]
-			for person in l:
-				user = User.objects.get(username="Sonali21")
+			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1)
+			for meet in same_rest:
+				person=meet.userBuddy
+				user = User.objects.get(username=person)
 				user_email=user.email
 				emails.append(user_email)
 
