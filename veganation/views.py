@@ -38,15 +38,10 @@ def location(request):
 			instance.userBuddy=request.user
 			instance.save()
 			form.save()
-			
-			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1)
-			l = []
-			for r in same_rest:
-				user1 = Location.objects.get(id=r.id)
-				usernameis=user1.username
-				l.append(idperson.usernameis)
 			emails=[]
-			for person in l:
+			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1)	
+			for meet in same_rest:
+				person=meet.userBuddy
 				user = User.objects.get(username=person)
 				user_email=user.email
 				emails.append(user_email)
