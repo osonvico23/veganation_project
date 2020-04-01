@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'captcha',
     'crispy_forms',
     'social_django',
-	
 ]
 
 MIDDLEWARE = [
@@ -182,4 +181,4 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'veganationglasgirls20@gmail.com'
 EMAIL_HOST_PASSWORD = 'glasgirls'
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False 
+EMAIL_USE_SSL = False

@@ -8,14 +8,11 @@ from django.utils.timezone import now
 from PIL import Image
 import datetime
 import uuid
-
-
 from django_google_maps import fields as map_fields
-# Create your models here.
+
 
 class UserProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True, related_name = "myaccount", null=True)
-	
 	gender = models.IntegerField(blank = True, default = 3)
 	email = models.EmailField(default = 'veganation@gmail.com')
 	veganSince = models.CharField(max_length=30, blank=True)
@@ -30,11 +27,11 @@ class UserProfile(models.Model):
 	def __str__(self):
 		return f'{self.user.username} UserProfile'
 
-def create_profile(sender, **kwargs):
-	if kwargs['created']:
-		user_profile = UserProfile.objects.create(user = kwargs['instance'])
+#def create_profile(sender, **kwargs):
+#	if kwargs['created']:
+#		user_profile = UserProfile.objects.create(user = kwargs['instance'])
 
-post_save.connect(create_profile, sender = User)
+#post_save.connect(create_profile, sender = User)
 
 def save(self):
 	super().save()
@@ -53,7 +50,6 @@ def save(self):
 #@receiver(post_save, sender = User)
 #def save_user_profile(sender, instance, **kwargs):
  #   instance.profile.save()
-
 
 class Rental(models.Model):
 	address = map_fields.AddressField(max_length=200)

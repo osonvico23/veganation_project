@@ -95,56 +95,49 @@ def myaccount(request):
 
     return render(request, 'veganation/myaccount.html',context=context_dict)
 
-def signup(request):
-    #registered = False
-
-    #if request.method == 'POST':
-        #user_form = UserForm(request.POST)
-        #profile_form = UserProfileForm(request.POST)
-
-        #if user_form.is_valid() and profile_form.is_valid():
-            #user = user_form.save()
-
-
-            #user.set_password(user.password)
-            #user.save()
-
-
-            #profile = profile_form.save(commit=False)
-            #profile.user = user
-
-            #if 'image' in request.FILES:
-                #profile.image = request.FILES['image']
-
-            #profile.save()
-
-            #registered = True
-            #messages.success(request, f'Account created for {user} !')
-            #return redirect('index')
-        #else:
-            #print(user_form.errors, profile_form.errors)
-    #else:
-       # user_form = UserForm()
-        #profile_form = UserProfileForm()
-
-    #return render(request, 'veganation/signup.html',
-                #  context = {'user_form': user_form,
-                 #            'profile_form': profile_form,
-                  #           'registered':registered})
+#called this signup olf as this is original signup
+def signupOLD(request):
 
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        user_form = UserRegisterForm(request.POST)
         profile_form = UserProfileForm(request.POST)
-        if form.is_valid() and profile_form.is_valid():
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            user.save()
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
+
+            registered = True
+            messages.success(request, f'Account created for {user} !')
+            return redirect('index')
+        else:
+            print(user_form.errors, profile_form.errors)
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+
+    return render(request, 'veganation/signup.html',
+                  context = {'user_form': user_form,
+                             'profile_form': profile_form})
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        #profile_form = UserProfileForm(request.POST)
+        if form.is_valid():
+        #and profile_form.is_valid():
             form.save()
-            profile_form.save()
+            #profile_form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Your account has been created! You are now able to log in!')
             return redirect('veganation:login')
     else:
         form = UserRegisterForm()
-        profile_form = UserProfileForm()
-    return render(request, 'veganation/signup.html', context = {'form': form, 'profile_form':profile_form} )
+        #profile_form = UserProfileForm()
+    return render(request, 'veganation/signup.html', context = {'form': form})
 
 def user_login(request):
 # If the request is a HTTP POST, try to pull out the relevant information.
