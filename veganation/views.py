@@ -3,7 +3,7 @@ from django.shortcuts import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import redirect
-from veganation.forms import UserRegisterForm, UserProfileForm, ProfileUpdateForm
+from veganation.forms import UserRegisterForm, UserProfileForm, ProfileUpdateForm, UserUpdateForm
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from django.shortcuts import render
@@ -82,7 +82,7 @@ def location(request):
 @login_required
 def myaccount(request):
     if request.method == 'POST':
-        u_form = UserProfileForm(request.POST, instance= request.user)
+        u_form = UserUpdateForm(request.POST, instance= request.user)
         p_form = ProfileUpdateForm(request.POST,
                                    request.FILES,
                                    instance = request.user.myaccount)
@@ -92,7 +92,7 @@ def myaccount(request):
             messages.success(request, f'Your account has been updated!')
             return redirect('myaccount')
     else:
-        u_form = UserProfileForm(instance= request.user)
+        u_form = UserUpdateForm(instance= request.user)
         p_form = ProfileUpdateForm(instance = request.user.myaccount)
 
 
@@ -101,49 +101,20 @@ def myaccount(request):
         'p_form' : p_form
     }
 
-    return render(request, 'veganation/myaccount.html',context=context_dict)
+    return render(request, 'veganation/myaccount.html',context_dict)
 
-#called this signup olf as this is original signup
-#def signupOLD(request):
-# #if request.method == 'POST':
-  #      user_form = UserRegisterForm(request.POST)
-   #     profile_form = UserProfileForm(request.POST)
-
-    #    if user_form.is_valid() and profile_form.is_valid():
-     #       user = user_form.save()
-      #      user.save()
-
-         #   profile = profile_form.save(commit=False)
-#            profile.user = user
-          #  profile.save()
-
-           # registered = True
-            #messages.success(request, f'Account created for {user} !')
-            #return redirect('index')
-        #else:
-         #   print(user_form.errors, profile_form.errors)
-    #else:
-     #   user_form = UserForm()
-      #  profile_form = UserProfileForm()
-
-    #return render(request, 'veganation/signup.html',
-     #             context = {'user_form': user_form,
-      #                       'profile_form': profile_form})
 
 def signup(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-        profile_form = UserProfileForm(request.POST)
-        if form.is_valid() and profile_form.is_valid():
+        if form.is_valid():
             form.save()
-            profile_form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Your account has been created! You are now able to log in!')
             return redirect('veganation:login')
     else:
         form = UserRegisterForm()
-        profile_form = UserProfileForm()
-    return render(request, 'veganation/signup.html', context = {'form': form, 'profile_form':profile_form} )
+    return render(request, 'veganation/signup.html', context = {'form': form})
 
 def user_login(request):
 # If the request is a HTTP POST, try to pull out the relevant information.

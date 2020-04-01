@@ -25,36 +25,26 @@
         <img class="rounded-circle account-img" src="{{ user.myaccount.image.url }}"width = '240'>
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">First Name: {{ user.firstName }}</p>
-          <p class="text-secondary">Last Name: {{ user.lastName }}</p>
+          
           <p class="text-secondary"> Email:  {{ user.email }}</p>
-          <p class="text-secondary">Gender: {{ user.gender }}</p>
-          <p class="text-secondary">Age: {{ user.age}}</p>
-          <p class="text-secondary">Vegan since{{ user.veganSince }}
-          <p class="text-secondary">Quote: {{ user.quote }}</p>
-          <p class="text-secondary">Occupation: {{ user.occupation }}</p>
-          <p class="text-secondary">City: {{ user.city }}</p>
+          
         </div>
       </div>
-      <!-- 
+      
       <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          <fieldset class="form-group"></fieldset>
-              
-              
-              {{ u_form|crispy }}
-              {{ p_form|crispy }} 
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile Info</legend>
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+        </div>
+    </form>
+  </div>
+</div>
 
-
-              
-          </fieldset>
-          <div class="form-group">
-              <button class="btn btn-outline-info" type="submit">Update</button>
-          </div>
-      </form>
-      -->
-    </div>
-    </div>
 <div class = "columnI">
 My restaurants
 </div>
