@@ -20,7 +20,7 @@ class UserProfile(models.Model):
 	#username = models.CharField(max_length=40, blank = True)
 	gender = models.IntegerField(blank = True, default = 3)
 	email = models.EmailField(default = 'veganation@gmail.com')
-	veganSince = models.DateField(blank = True, default=datetime.date.today)
+	veganSince = models.CharField(max_length=30, blank=True)
 	image = models.ImageField(default='default.jpg', upload_to='profile_images', blank=True)
 	quote = models.TextField(max_length=100, blank=True)
 	occupation = models.CharField(max_length=50, blank = True)
