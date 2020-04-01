@@ -45,6 +45,7 @@ def save(self):
 		img.save(self.image.path)
 
 
+
 class Rental(models.Model):
 	address = map_fields.AddressField(max_length=200)
 	geolocation = map_fields.GeoLocationField(max_length=100)
