@@ -129,6 +129,42 @@
 .rating2 input:checked ~ label:after{ 
   opacity: 1;
 }
+.ease {
+		width: 0px;
+		height: 74px;
+		background-color: #fbfbfb;
+		-webkit-transition: .3s ease;
+		-moz-transition: .3s ease;
+		-o-transition: .3s ease;
+		-ms-transition: .3s ease;
+		transition: .3s ease;
+	}
+#button {
+		font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+		float: left;
+		width: 100%;
+		border: #fbfbfb solid 4px;
+		cursor: pointer;
+		background-color: #3498db;
+		color: white;
+		font-size: 24px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		transition: all 0.3s;
+		margin-top: 10px;
+		font-weight: 700;
+	}
+	
+	#button:hover {
+		background-color: rgba(0, 0, 0, 0);
+		color: #0493bd;
+	}
+	
+	.submit:hover {
+		color: #3498db;
+	}
 
     
 </style>
@@ -148,15 +184,31 @@
 
             Breakfast, desserts | ££</td>
             <td><div class="rating">
-              <input type="radio" id="star1" name="star"><label for="star1"></label>
-              <input type="radio" id="star2" name="star"><label for="star2"></label>
-              <input type="radio" id="star3" name="star"><label for="star3"></label>
-              <input type="radio" id="star4" name="star"><label for="star4"></label>
-              <input type="radio" id="star5" name="star"><label for="star5"></label>
+              <form id="rating_form" method="post" action="/veganation/restaurants/">
+                {% csrf_token %}
+                {% for hidden in form.hidden_fields %}
+                                    {{ hidden }}
+                                {% endfor %}
+                {% for field in form.visible_fields %} {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+                {% endfor %}
+              <input type="radio" id="star1" name="star" onClick="validateRadio();"><label for="star1"></label>
+              <input type="radio" id="star2" name="star" onClick="validateRadio();"><label for="star2"></label>
+              <input type="radio" id="star3" name="star" onClick="validateRadio();"><label for="star3"></label>
+              <input type="radio" id="star4" name="star" onClick="validateRadio();"><label for="star4"></label>
+              <input type="radio" id="star5" name="star" onClick="validateRadio();"><label for="star5"></label>
+            </form>
+            <script>
+              function validateRadio(){
+                return document.getElementById("rating_form").submit();
+                }
+            </script>
             </div></td>
 
-        <td>Choose</td>
-
+        <td><div class="submit">
+          <input type="submit" value="Choose" id="button"/>
+          <div class="ease"></div></td>
       </tr>
 
       <tr>
@@ -296,8 +348,6 @@
     </table>
 
     </div>
-
-
 
 <div id = "leftbox">
 

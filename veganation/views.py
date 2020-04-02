@@ -20,7 +20,7 @@ def index(request):
     return render(request, 'veganation/index.html')
 
 def restaurants(request):
-    context_dict = {}
+    form = RateForm()
     if request.method == 'POST':
     # take care of instance
         form = RateForm(request.POST, instance=request.user)
@@ -29,7 +29,7 @@ def restaurants(request):
             # adding the user here.
             rate.user = request.user
             rate.save()
-    return render(request, 'veganation/restaurants.html', context=context_dict)
+    return render(request, 'veganation/restaurants.html',{'form': form})
 
 
 def protests(request):

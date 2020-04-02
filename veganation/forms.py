@@ -78,7 +78,7 @@ class ProfileUpdateForm(forms.ModelForm):
 
 
 class LocationForm(forms.ModelForm):
-	rest = forms.ChoiceField(label="Please choose a restaurant",choices = REST_CHOICES,required =True)
+	rest = forms.ChoiceField(label="Please confirm the chosen restaurant",choices = REST_CHOICES,required =True)
 	date1 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
 
 	date2 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
@@ -104,6 +104,7 @@ class LocationForm(forms.ModelForm):
 
 
 class RateForm(forms.ModelForm):
+    rating = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     class Meta:
         model = Rate
         fields = ('vandv_rate', 'picnic_rate', 'mono_rate', 'hug_rate', 'seren_rate', 'the78_rate', 'glasvegan_rate', 'puti_rate',)
