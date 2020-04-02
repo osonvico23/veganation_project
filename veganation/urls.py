@@ -6,11 +6,9 @@ from django.conf.urls.static import static
 
 app_name = 'veganation'
 
-#url mappings
 urlpatterns = [
     path('', views.index, name='index'),
     path('restaurants/', views.restaurants, name='restaurants'),
-    path('about/', views.about, name='about'),
     path('restaurants/location', views.location, name='location'),
     path('protests/', views.protests, name='protests'),
     path('signup/', views.signup, name='signup'),
@@ -18,7 +16,7 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('myaccount/', views.myaccount, name='myaccount'),
     path('admin/', admin.site.urls),
-    
+    #path('accounts/', include('allauth.urls')),
 
 
     ]

@@ -6,16 +6,20 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 import datetime
 from django.utils import timezone
-from .models import Location, Restaurant
+from .models import Location, Rate
 from datetime import date
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 
 
-#these variables are used respectively for choices fields in the forms below.
-YEARS= [x for x in range(2020,2060)]
 
+YEARS= [x for x in range(2020,2060)]
+CHOICES = (
+    (1, ('female')),
+    (2, ('male')),
+    (3, ('prefer not to say'))
+    )
 
 
 REST_CHOICES=((1,"V&V Café"),(2,"The 78"),(3,"Serenity No"),(4,"The Glasvegan"),(5,"Picnic"),(6,"Puti Vegan Cafe"),(7,"Hug and Pint"),(8,"Mono"))
@@ -23,7 +27,6 @@ REST_CHOICES=((1,"V&V Café"),(2,"The 78"),(3,"Serenity No"),(4,"The Glasvegan")
 AGE_CHOICES=((18,25),(25,35),(35,45),(45,55),(55,65),(65,75),(75,85),(95,100))
 GENDER_CHOICES=((1,'Male'),(2,'Female'),(3,'No Preference'))
 
-#user form used when a user signs up. Note that username, password1, password2 are built in UserCreationForm
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
 
@@ -31,18 +34,17 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
-#profile form that is displayed and updated in my account page.
 class UserProfileForm(forms.ModelForm):
     firstName = forms.CharField()
     lastName = forms.CharField()
-    gender = forms.CharField(required = False)
+    gender = forms.ChoiceField(choices = CHOICES, required = False)
     veganSince = forms.CharField(required = False)
     age = forms.IntegerField()
     quote = forms.CharField(required = False)
     occupation = forms.CharField(required = False)
     city = forms.CharField()
 
-    #saving the fields.
+
     def signup(self, request, user):
         user.firstName = self.cleaned_data['firstName']
         user.lastName = self.cleaned_data['lastName']
@@ -60,7 +62,6 @@ class UserProfileForm(forms.ModelForm):
         'quote', 'occupation', 'city',]
 
 
-#The next two forms are used to update a user account.
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
     
@@ -100,5 +101,5 @@ class LocationForm(forms.ModelForm):
 class RateForm(forms.ModelForm):
     rating = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     class Meta:
-        model = Restaurant
-        fields = ('name', 'user', 'rating')
+        model = Rate
+        fields = ('vandv_rate', 'picnic_rate', 'mono_rate', 'hug_rate', 'seren_rate', 'the78_rate', 'glasvegan_rate', 'puti_rate',)

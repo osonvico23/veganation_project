@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from veganation.models import UserProfile
-from .models import Location, Restaurant
+from .models import Location, Rate
 from django.contrib.auth.admin import UserAdmin
 from veganation.forms import UserRegisterForm
 
@@ -34,7 +34,7 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 admin.site.register(UserProfile, UserProfileAdmin,)
 admin.site.register(Location)
-admin.site.register(Restaurant)
+admin.site.register(Rate)
 
 from django_google_maps import widgets as map_widgets
 from django_google_maps import fields as map_fields

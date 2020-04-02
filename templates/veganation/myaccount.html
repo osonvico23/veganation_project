@@ -15,17 +15,14 @@
 		
 {% endblock %}
 
-
-<!-- Body block inherited from base --->
 {% block body_block %}
 <div class = "rowI">
 
-<font color = "#ffffe0">
+
 <div class = "columnI">
     <div class="content-section">
       <div class="media">
-        <!-- displaying the username and email of the user just created and signed in --->
-        <img  src="{{ user.myaccount.image.url }}">
+        <img class="rounded-circle account-img" src="{{ user.myaccount.image.url }}"width = '240'>
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           
@@ -37,34 +34,20 @@
       <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset class="form-group">
-          <!-- The user account info is displayed here using the two forms UserUpdateForm(u_form) and ProfileUpdateForm (p_form)--->
             <legend class="border-bottom mb-4">Profile Info</legend>
             {{ u_form|crispy }}
             {{ p_form|crispy }}
         </fieldset>
         <div class="form-group">
-             <!-- button that saves the new info inserted-->
             <button class="btn btn-outline-info" type="submit">Update</button>
         </div>
     </form>
   </div>
-  </font>
 </div>
 
 <div class = "columnI">
-
-
-
-
-
-
-<font color = "#ffffe0">
-<h2 align = "center">These are the restaurants I found a buddy for</h2>
-<p align = "center"></p>
-<font color = "#ffffe0">
-<br>
-<br>
-
+My restaurants
+</div>
 
 
 </div>

@@ -4,15 +4,14 @@
 <html>
 	<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
 			body {
 				background-image: url("{% static 'images/backg.jpeg' %}");
   				background-repeat: no-repeat;
   				background-attachment: fixed;
 				background-size: cover;
-				font-weight: 200;
+				font-weight: 400;
 				font-family:"Helvetica Neue",sans-serif;
 				color: white;
   				display: flex;
@@ -89,14 +88,14 @@
 			
 			.topcorner{
    				position:absolute;
-				width: 120px;
+				width: 140px;
    				top:20px;
    				right:20px;
-				padding-left: 7px;
-				padding-right: 7px;
-				padding-top: 10px;
+   				padding: 5px;
+				padding-top: 12px;
+				padding-bottom: 10px;
 				background-color:rgba(255, 255, 255, 0.4);
-				border-radius: 8px;
+				border-radius: 5px;
 				text-align: center;
   			}
   			
@@ -104,6 +103,7 @@
    				position:absolute;
    				top:0;
    				left:0;
+   				padding: 5px;
   			}
   			
   		
@@ -114,7 +114,7 @@
     			text-align: center;
 			}
 			
-			#row{ 
+			#rightbox{ 
                 float: right; 
                 width:38%; 
                 height:400px;
@@ -133,7 +133,7 @@
   				margin-right: auto;
             }
             
-            #column { 
+            #leftbox { 
                 float:left;  
                 width:48%; 
                 height:400px; 
@@ -171,16 +171,9 @@
   				font-size: 14px;
   				margin-left: auto;
   				margin-right: auto;
-				border-radius: 6px;
-				margin-bottom: 7px;
+				border-radius: 5px;
 				  
 			}	
-			.button:hover {
-				background-color:#B5968B;
-				-webkit-transition: all 0.3s;
-				-moz-transition: all 0.3s;
-				transition: all 0.3s;
-			}
 			.button a{
 				text-decoration: none;
 			}
@@ -190,8 +183,6 @@
 			}
 			.button a:hover{
 				text-decoration: none;
-				background-color: white;
-				color:#CEAB9E;
 			}
 
 			.signInButton {
@@ -217,13 +208,10 @@
 			}
 			
 			.bod{
-			margin-top:30px;
-			width: 89.5%;
-			position:relative;
-			align-self: center;
+			margin-top:45px;
+			position:center;
 			background-color:#CEAB9E;
 			opacity: 93%;
-			border-radius: 6px;
 			}
 
 			#row {
@@ -242,7 +230,7 @@
   				margin: auto;
   				width: 400px;
   				border: 3px solid #CEAB9E;
-				text-align: center;
+  				padding: 5px;
 			}
 
 /* Create two equal columns that floats next to each other */
@@ -252,15 +240,14 @@
                 height:400px; 
                 padding: 10px;
   				display: inline-block;
+				margin-left: 57pt;
 				margin-bottom: 20px;
-				border-radius:5px;
-				position: absolute;
+				border-radius:5px
 			}
 
 /* Clear floats after the columns */
-			.row {
-                float: right;
-				position: relative;
+			.row:after {
+                float: right; 
                 width:38%; 
                 height:400px;
                 padding: 10px;
@@ -272,11 +259,11 @@
 				
 			.footer {
   				position:fixed;
-				align-self: center;
   				align-items: center;
 				overflow: hidden;
   				bottom: 0;
-  				width: 88.5%;
+  				width: 88%;
+				margin-left:75px;
 				background-color:#AB9F93;
   				color: white;
   				text-align: center;
@@ -286,11 +273,11 @@
   				margin-top: auto;
 			}
 			
-/*some css for the fun fact*/
+			
 			.funFact{
   				margin: auto;
   				width: 98%;
-  				border: 3px solid white;
+  				border: 3px solid green;
   				padding: 3px;
   				text-align: center;
   				font-size: 14px;
@@ -306,20 +293,16 @@
 			}	
 			
 			.funFactButton {
-				background-color:rgba(206,171,158,0.9);
-  				color: white;
-  				padding: 7px 12px;
+  				background-color:#ffffe0;
+  				color: #13cfa8;
+  				padding: 5px 10px;
   				text-align: center;
-  				text-decoration: none;
-  				display: flex;
   				font-size: 14px;
   				margin-left: auto;
-  				margin-right: auto;
-				border-radius: 6px;
-				margin-bottom: 7px;
+  				margin-right: 0;
+  				display : in-line block;
 			}
 			
-			/*small leaf image used on index page*/
 			.weelogo{
   				margin: auto;
   				width: 40px;
@@ -332,7 +315,6 @@
 			bottom : 5px;
 			}
 			
-			/*some positional css for pages*/
 			.columnI {
  			float: left;
   			width: 50%;
@@ -348,24 +330,6 @@
   				display: table;
   				clear: both;
 				}
-				
-			div.ex1 {
-  				background-color: white;
-  				width: 110px;
-  				height: 110px;
-  				overflow: auto;
-			}
-			
-			/* css for the twitter feed*/
-			.twitter {
-    			margin-top: 10px;
-    			margin-bottom: 30px;
-    			float: center;
-    			max-height: 250px !important;
-   				z-index: 0;
-    			overflow: auto;
-    			position: absolute;
-			}
 			
 </style>
 
@@ -377,17 +341,13 @@
 	</head>
 	
 	<body>
-	<!-- login buttons block which can be inherited from pages where we want to display these buttons--->
 	{% block login_buttons %}
 	{% endblock %}
-	
-	<!-- Display the logo, navigation bar and social media buttons --->
 		<div id="centerbox">
 		<img src="{% static 'images/logo.png' %}" alt = "Logo" class = "logo"/>
 			
 			<ul class = "nav" style="font-weight: 200;">
   				<li><a href="{% url 'veganation:index' %}">Home</a></li>
-  				<li><a href="{% url 'veganation:about' %}">About</a></li>
   				<li><a href="{% url 'veganation:restaurants' %}">Restaurants</a></li>
 				 <li><a href="{% url 'veganation:protests' %}">Protests</a></li>
 			</ul>
@@ -409,13 +369,10 @@
 		{% endfor %}
 		{% endif %}
 	
-	    <!-- body block which is inherited by all pages and changes accordingly --->
 		<div class ="bod">		
 		{% block body_block %}
 		{% endblock %}
 		</div>
-		
-		<!-- display footer with some basic information e.g. a contact email address --->
 		<br>
 		<div class="footer">
 		<p class = "alignLeft" style="margin-left: 2%;" >veganationglasgirls20@gmail.com</p>

@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    #'captcha',
     'crispy_forms',
     'social_django',
 ]
@@ -63,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'veganation_project.urls'
@@ -163,14 +163,14 @@ RECAPTCHA_PUBLIC_KEY = '6LfRB-QUAAAAACp71U1kBP9zRZMr_GxnVFnpc_3X'
 RECAPTCHA_PRIVATE_KEY = '6LfRB-QUAAAAADveAHeGULVn-oeHUSyefB5vuS6X'
 NOCAPTCHA = True
 
-
+SITE_ID=2
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'index'
 
 LOGIN_URL = 'login'
-SITE_ID = 2
+
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

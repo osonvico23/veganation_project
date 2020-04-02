@@ -11,16 +11,13 @@ from django.contrib import messages
 from .forms import LocationForm, RateForm
 from .models import Location
 from django.contrib.auth.models import User
-from .models import UserProfile, Location
+from .models import UserProfile
 from django.db import models
 from django.core.mail import send_mail
 from django.core import mail
 
 def index(request):
     return render(request, 'veganation/index.html')
-
-def about(request):
-    return render(request, 'veganation/about.html')
 
 def restaurants(request):
     form = RateForm()
@@ -62,7 +59,7 @@ def location(request):
 				for email in emails:
 					if(email== user_email):
 						flag="False";
-
+	
 				if(flag=="True"):
 					emails.append(user_email);
 				flag="True";
@@ -100,7 +97,6 @@ def location(request):
 
 
 
-#view that hanldes the creation of user and account in myaccount page.
 @login_required
 def myaccount(request):
     if request.method == 'POST':
@@ -125,21 +121,13 @@ def myaccount(request):
 
     return render(request, 'veganation/myaccount.html',context_dict)
 
-#view that displays the restaurants chosen by an user.
-@login_required
-def myrestaurants(request):
-    if request.method == 'POST':
-        myrest = Location. objects.filter(user.request.user)
 
-
-
-#view that handles the user's sign up through the UserRegisterForm.
 def signup(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            #flash message of successful sign in.
+            username = form.cleaned_data.get('username')
             messages.success(request, f'Your account has been created! You are now able to log in!')
             return redirect('veganation:login')
     else:
@@ -151,16 +139,14 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
-        #authenticate the user
+
         user = authenticate(username=username, password=password)
 
         if user:
             if user.is_active:
-                #log the user in and redirect to the home page
                 login(request, user)
                 return redirect(reverse('veganation:index'))
             else:
-                #if users account is not active, report that the account is disabled
                 return HttpResponse("Your Veganation account is disabled.")
         else:
             context_dict = {}
