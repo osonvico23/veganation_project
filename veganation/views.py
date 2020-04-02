@@ -11,7 +11,7 @@ from django.contrib import messages
 from .forms import LocationForm, RateForm
 from .models import Location
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import UserProfile, Location
 from django.db import models
 from django.core.mail import send_mail
 from django.core import mail
@@ -124,6 +124,13 @@ def myaccount(request):
     }
 
     return render(request, 'veganation/myaccount.html',context_dict)
+
+#view that displays the restaurants chosen by an user.
+@login_required
+def myrestaurants(request):
+    if request.method == 'POST':
+        myrest = Location. objects.filter(user.request.user)
+
 
 
 #view that handles the user's sign up through the UserRegisterForm.
