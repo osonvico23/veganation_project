@@ -47,7 +47,7 @@ def location(request):
 			instance.save()
 			form.save()
 			l = []
-			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1)
+			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1).filter(age=instance.myage).filter(myage=instance.age).filter(mygender=instance.gender).filter(gender=instance.mygender)
 			for r in same_rest:
 				l.append(r.id)
 			emails=[]
@@ -65,11 +65,26 @@ def location(request):
 				flag="True";
 			print(same_rest)
 			print(emails)
-	
+			if(instance.rest==1):
+				restname="V&V Café"
+			elif(instance.rest==2):
+				restname="The 78"
+			elif(instance.rest==3):
+				restname="Serenity No"
+			elif(instance.rest==4):
+				restname="The Glasvegan"
+			elif(instance.rest==5):
+				restname="Picnic"
+			elif(instance.rest==6):
+				restname="Puti Vegan Cafe"
+			elif(instance.rest==7):
+				restname="Hug and Pint"
+			elif(instance.rest==8):
+				restname="Mono"
 			if(len(emails)>1):
 				if user.email:
-					mail_body = ("hi!")
-					send_mail('Checking!',mail_body,'veganationglasgirls20@gmail.com',emails,)
+					mail_body = ("Hello!" +  "\nYou've recently put in a request for a buddy to visit " + restname +  " on " + str(instance.date1) +". " + "\nYour buddy/ies is/are also reciepents of this email so feel free to email them and arrange a meetin!" + "\n\nFeel free to contact us anytime."+ "\nHppe you enjoy meeting our fellow vegans!" + "\n\nWith love \nVeganation")
+					send_mail("We've found you a buddy!",mail_body,'veganationglasgirls20@gmail.com',emails,)
 
 
 			return redirect('http://127.0.0.1:8000/veganation/restaurants/')

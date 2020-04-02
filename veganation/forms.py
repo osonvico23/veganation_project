@@ -14,7 +14,7 @@ from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 
 
 
-YEARS= [x for x in range(1940,2010)]
+YEARS= [x for x in range(2020,2060)]
 CHOICES = (
     (1, ('female')),
     (2, ('male')),
@@ -79,21 +79,16 @@ class ProfileUpdateForm(forms.ModelForm):
 
 class LocationForm(forms.ModelForm):
 	rest = forms.ChoiceField(label="Please choose a restaurant",choices = REST_CHOICES,required =True)
-	date1 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
-
-	date2 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
-
-	date3 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
-
-	age = forms.ChoiceField(choices = AGE_CHOICES, required = False)
-	gender = forms.ChoiceField(choices = GENDER_CHOICES, required = False)
+	date1 = forms.DateField(label="When are you free?",widget=forms.SelectDateWidget(years=YEARS))
+	age = forms.ChoiceField(label="Let us know what age group you're comfortable meeting?",choices = AGE_CHOICES, required = False)
+	gender = forms.ChoiceField(label="Let us know which gender you're comfortable meeting?",choices = GENDER_CHOICES, required = False)
+	myage = forms.ChoiceField(label="Please enter your age",choices = AGE_CHOICES, required = False)
+	mygender = forms.ChoiceField(label="Please enter your gender",choices = GENDER_CHOICES, required = False)
 
 	class Meta:
 		model = Location
 		fields = ['rest','date1',
-		'date2',
-		'date3',
-		'age','gender',
+		'age','gender','myage','mygender'
 		]
 
 	def __init__(self, *args, **kwargs):

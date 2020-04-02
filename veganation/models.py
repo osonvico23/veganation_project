@@ -54,12 +54,11 @@ class Rental(models.Model):
 class Location(models.Model):
 	userBuddy = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 	date1 = models.DateField(default=timezone.now)
-	date2 = models.DateField(default=timezone.now)
-	date3 = models.DateField(default=timezone.now)
 	rest = models.IntegerField(default=2)
-
 	age = models.IntegerField(default=5)
 	gender = models.IntegerField(default=2)
+	myage = models.IntegerField(default=5)
+	mygender = models.IntegerField(default=2)
 
 class Rate(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
