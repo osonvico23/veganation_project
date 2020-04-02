@@ -54,18 +54,18 @@ def location(request):
 			for r in same_rest:
 				l.append(r.id)
 			emails=[]
-			flag="True";
+			flag="True"
 			for meet in same_rest:
 				person=meet.userBuddy
 				user = User.objects.get(username=person)
 				user_email=user.email
 				for email in emails:
 					if(email== user_email):
-						flag="False";
+						flag="False"
 
 				if(flag=="True"):
-					emails.append(user_email);
-				flag="True";
+					emails.append(user_email)
+				flag="True"
 			print(same_rest)
 			print(emails)
 			if(instance.rest==1):
@@ -124,6 +124,14 @@ def myaccount(request):
     }
 
     return render(request, 'veganation/myaccount.html',context_dict)
+
+#view that displays the restaurants chosen by an user.
+#@login_required
+#def myrestaurants(request):
+ #   if request.method == 'POST':
+  #      form_rests= LocationForm(request.POST, instance = request.user)
+   #     if form.is_valid():
+    #    myrest = Location.objects.filter(user=request.user)
 
 #view that displays the restaurants chosen by an user.
 @login_required

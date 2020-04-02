@@ -25,7 +25,7 @@
     <div class="content-section">
       <div class="media">
         <!-- displaying the username and email of the user just created and signed in --->
-        <img  src="{{ user.myaccount.image.url }}">
+        <img  src="{{ user.myaccount.image.url }}" alt="Avatar" class="avatar">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           
@@ -59,8 +59,13 @@
 
 
 <font color = "#ffffe0">
-<h2 align = "center">These are the restaurants I found a buddy for</h2>
-<p align = "center"></p>
+<h2 align = "center">These are the restaurants I choose</h2>
+
+<p align = "center">{% for userBuddy_location in userBuddy.location_set.all %}
+  {{ userBuddy_location.rest }}
+{% endfor %} </p>
+
+<div class="form-group"> </div>
 <font color = "#ffffe0">
 <br>
 <br>
