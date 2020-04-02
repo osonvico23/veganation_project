@@ -83,7 +83,7 @@ def location(request):
 				restname="Mono"
 			if(len(emails)>1):
 				if user.email:
-					mail_body = ("Hello!" +  "\nYou've recently put in a request to find a buddy to visit " + restname +  " on " + str(instance.date1) +". " + "\nYour buddy/ies is/are also reciepents of this email so feel free to email them and arrange a meetin!" + "\n\nFeel free to contact us anytime."+ "\nHope you enjoy meeting our fellow vegans!" + "\n\nWith love \nVeganation")
+					mail_body = ("Hello!" +  "\nYou've recently put in a request to find a buddy to visit " + restname +  " on " + str(instance.date1) +". " + "\nYour buddy/ies is/are also reciepents of this email so feel free to email them and arrange a meeting!" + "\n\nFYou can contact us anytime."+ "\nHope you enjoy meeting our fellow vegans!" + "\n\nWith love \nVeganation")
 					send_mail("We've found you a buddy!",mail_body,'veganationglasgirls20@gmail.com',emails,)
 
 
