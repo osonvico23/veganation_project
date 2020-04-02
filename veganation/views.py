@@ -58,13 +58,7 @@ def location(request):
 				user_email=user.email
 				for email in emails:
 					if(email== user_email):
-<<<<<<< HEAD
 						flag="False";
-	
-=======
-						flag="False"
-
->>>>>>> 07c4dc649a4e44140c1b4113e820f8cc376ea3ee
 				if(flag=="True"):
 					emails.append(user_email)
 				flag="True"
@@ -126,8 +120,7 @@ def myaccount(request):
 
     return render(request, 'veganation/myaccount.html',context_dict)
 
-<<<<<<< HEAD
-=======
+
 #view that displays the restaurants chosen by an user.
 #@login_required
 #def myrestaurants(request):
@@ -141,7 +134,7 @@ def myaccount(request):
 def myrestaurants(request):
     if request.method == 'POST':
         myrest = Location. objects.filter(user.request.user)
->>>>>>> 07c4dc649a4e44140c1b4113e820f8cc376ea3ee
+
 
 def signup(request):
     if request.method == 'POST':
