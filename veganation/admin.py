@@ -10,9 +10,6 @@ class UserProfileAdmin(admin.ModelAdmin):
     list_display = ["user", "email", "firstName", "lastName", 'veganSince',
         'age', 'gender',  'quote', 'occupation', 'city']
 
-
-
-
 # Register your models here.
 
 #class CustomUserAdmin(admin.ModelAdmin):
