@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'crispy_forms',
-    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -158,10 +157,6 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-
-RECAPTCHA_PUBLIC_KEY = '6LfRB-QUAAAAACp71U1kBP9zRZMr_GxnVFnpc_3X'
-RECAPTCHA_PRIVATE_KEY = '6LfRB-QUAAAAADveAHeGULVn-oeHUSyefB5vuS6X'
-NOCAPTCHA = True
 
 SITE_ID=2
 
