@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 import datetime
 from django.utils import timezone
-from .models import Location, Rate
+from .models import Location, Restaurant
 from datetime import date
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
@@ -104,5 +104,5 @@ class LocationForm(forms.ModelForm):
 class RateForm(forms.ModelForm):
     rating = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     class Meta:
-        model = Rate
-        fields = ('vandv_rate', 'picnic_rate', 'mono_rate', 'hug_rate', 'seren_rate', 'the78_rate', 'glasvegan_rate', 'puti_rate',)
+        model = Restaurant
+        fields = ('name', 'type','image', 'user', 'rating')
