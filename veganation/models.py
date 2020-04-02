@@ -14,9 +14,9 @@ from star_ratings.models import Rating
 
 class UserProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True, related_name = "myaccount", null=True)
-	gender = models.IntegerField(blank = True, default = 3)
+	gender = models.CharField(blank = True, default = 'prefer not to say', max_length=50)
 	email = models.EmailField(default = 'veganation@gmail.com')
-	veganSince = models.CharField(max_length=30, blank=True)
+	veganSince = models.IntegerField( blank=True)
 	image = models.ImageField(default='default.jpg', upload_to='profile_images', blank=True)
 	quote = models.TextField(max_length=100, blank=True)
 	occupation = models.CharField(max_length=50, blank = True)

@@ -22,12 +22,9 @@
 <div class = "columnI">
     <div class="content-section">
       <div class="media">
-<<<<<<< HEAD
+
         <img class="rounded-circle account-img" src="{{ user.myaccount.image.url }}"width = '240'>
-=======
-        <!-- displaying the username and email of the user just created and signed in --->
-        <img  src="{{ user.myaccount.image.url }}" alt="Avatar" class="avatar">
->>>>>>> 07c4dc649a4e44140c1b4113e820f8cc376ea3ee
+
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           
@@ -51,10 +48,10 @@
 </div>
 
 <div class = "columnI">
-<<<<<<< HEAD
-My restaurants
-</div>
-=======
+
+
+
+
 
 
 
@@ -62,7 +59,7 @@ My restaurants
 
 
 <font color = "#ffffe0">
-<h2 align = "center">These are the restaurants I choose</h2>
+<h2 align = "center">The restaurants I chose</h2>
 
 <p align = "center">{% for userBuddy_location in userBuddy.location_set.all %}
   {{ userBuddy_location.rest }}
@@ -73,7 +70,7 @@ My restaurants
 <br>
 <br>
 
->>>>>>> 07c4dc649a4e44140c1b4113e820f8cc376ea3ee
+
 
 
 </div>

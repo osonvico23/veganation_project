@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'social_django',
     'captcha',
+    'reset_migrations',
 ]
 
 MIDDLEWARE = [
