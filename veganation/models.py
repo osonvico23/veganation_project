@@ -53,7 +53,7 @@ class Rental(models.Model):
 	geolocation = map_fields.GeoLocationField(max_length=100)
 
 class Restaurant(models.Model):
-	name = models.CharField(max_length=128, unique=True)
+	name = models.CharField(max_length=128, unique=True, primary_key=True)
 	type = models.CharField(max_length=128)
 	image = models.ImageField(blank=True)
 

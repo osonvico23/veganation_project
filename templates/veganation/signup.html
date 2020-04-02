@@ -9,7 +9,7 @@
 
 
 
-
+<!-- Body block inherited from base-->
 {% block body_block %}
 <div class = "signup">
 {% if registered %}
@@ -27,27 +27,18 @@ Veganation says: <strong>thank you for registering!</strong>
 	{% csrf_token %}
 	<fieldset class="form-group">
 		<legend class="border-bottom mb-4">Join Today</legend>
+		<!-- The UserRegisterForm is displayed here.-->
+
 		{{ form|crispy }}
 	</fieldset>
 	<div class="form-group">
+		<!-- After inserting the username, email and password, clicking the sign up button takes the user to login page as the user is saved-->
 		<button class="btn btn-outline-info" type="submit">Sign Up</button>
 	</div>
 </form>
 
 {% endif %}
 
-
-
-<!-- Just for now
-
-<form id="user_form" method="post" action="{%url 'veganation:signup'%}" enctype="multipart/form-data">
-{% csrf_token %}
-{{ user_form.as_p }}
-{{ profile_form.as_p}}
-
-<input type="submit" name="submit" value="Sign Up" />
-</form>
--->
 
 
 

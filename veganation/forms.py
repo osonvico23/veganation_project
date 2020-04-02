@@ -27,6 +27,7 @@ REST_CHOICES=((1,"V&V Café"),(2,"The 78"),(3,"Serenity No"),(4,"The Glasvegan")
 AGE_CHOICES=((18,25),(25,35),(35,45),(45,55),(55,65),(65,75),(75,85),(95,100))
 GENDER_CHOICES=((1,'Male'),(2,'Female'),(3,'No Preference'))
 
+#user form used when a user signs up. Note that username, password1, password2 are built in UserCreationForm
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
 
@@ -34,6 +35,7 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
+#profile form that is displayed and updated in my account page.
 class UserProfileForm(forms.ModelForm):
     firstName = forms.CharField()
     lastName = forms.CharField()
@@ -44,7 +46,7 @@ class UserProfileForm(forms.ModelForm):
     occupation = forms.CharField(required = False)
     city = forms.CharField()
 
-
+    #saving the fields.
     def signup(self, request, user):
         user.firstName = self.cleaned_data['firstName']
         user.lastName = self.cleaned_data['lastName']
@@ -62,6 +64,7 @@ class UserProfileForm(forms.ModelForm):
         'quote', 'occupation', 'city',]
 
 
+#The next two forms are used to update a user account.
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
     

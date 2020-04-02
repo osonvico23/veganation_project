@@ -100,6 +100,7 @@ def location(request):
 
 
 
+#view that hanldes the creation of user and account in myaccount page.
 @login_required
 def myaccount(request):
     if request.method == 'POST':
@@ -125,12 +126,13 @@ def myaccount(request):
     return render(request, 'veganation/myaccount.html',context_dict)
 
 
+#view that handles the user's sign up through the UserRegisterForm.
 def signup(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
+            #flash message of successful sign in.
             messages.success(request, f'Your account has been created! You are now able to log in!')
             return redirect('veganation:login')
     else:
