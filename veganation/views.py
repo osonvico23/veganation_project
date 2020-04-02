@@ -59,7 +59,7 @@ def location(request):
 				for email in emails:
 					if(email== user_email):
 						flag="False";
-	
+
 				if(flag=="True"):
 					emails.append(user_email);
 				flag="True";
@@ -139,14 +139,16 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
-
+        #authenticate the user
         user = authenticate(username=username, password=password)
 
         if user:
             if user.is_active:
+                #log the user in and redirect to the home page
                 login(request, user)
                 return redirect(reverse('veganation:index'))
             else:
+                #if users account is not active, report that the account is disabled
                 return HttpResponse("Your Veganation account is disabled.")
         else:
             context_dict = {}

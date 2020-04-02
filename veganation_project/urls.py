@@ -29,7 +29,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('myaccount/', user_views.myaccount, name='myaccount'),
     path('admin/', admin.site.urls),
-    path('captcha/', include('captcha.urls')),
     path('ratings/', include('star_ratings.urls', namespace='ratings'), name='ratings'),
     path('password-reset/',
          auth_views.PasswordResetView.as_view(

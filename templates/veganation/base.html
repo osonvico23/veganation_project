@@ -341,8 +341,11 @@
 	</head>
 	
 	<body>
+	<!-- login buttons block which can be inherited from pages where we want to display these buttons--->
 	{% block login_buttons %}
 	{% endblock %}
+	
+	<!-- Display the logo, navigation bar and social media buttons --->
 		<div id="centerbox">
 		<img src="{% static 'images/logo.png' %}" alt = "Logo" class = "logo"/>
 			
@@ -369,10 +372,13 @@
 		{% endfor %}
 		{% endif %}
 	
+	    <!-- body block which is inherited by all pages and changes accordingly --->
 		<div class ="bod">		
 		{% block body_block %}
 		{% endblock %}
 		</div>
+		
+		<!-- display footer with some basic information e.g. a contact email address --->
 		<br>
 		<div class="footer">
 		<p class = "alignLeft" style="margin-left: 2%;" >veganationglasgirls20@gmail.com</p>
