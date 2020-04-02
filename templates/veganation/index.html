@@ -34,6 +34,7 @@ div.ex1 {
 	Home Page
 {% endblock %}
 
+<!-- login and signup buttons appear if user isnt logged in --->
 {% block login_buttons %}
 {% if user.is_authenticated %}
 		<div class="topcorner">
@@ -51,8 +52,9 @@ div.ex1 {
 {% endif %}
 {% endblock %}
 
-
+<!-- Body block inherited from base --->
 {% block body_block %}
+<!-- This first part displays a fun fact for the day --->
 <div id = "factDiv">
 <font color = "#ffffe0">
  <div class ="funfactBox">
@@ -65,6 +67,7 @@ div.ex1 {
 </div>
 
 <br>
+<!-- Now we have the main body of the home page which includes a twitter feed as well as some information related to veganism --->
 <div class = "rowI">
 <div class = "columnI">
 	<a class="twitter-timeline" href="https://twitter.com/veganation4" data-tweet-limit=10 data-width="100%" data-height="100%"></a>
@@ -93,6 +96,7 @@ div.ex1 {
 		<li>Makeup : NYX, Jeffree Star Cosmetics and Elf Cosmetics!</li>
 		<li>Food: Linda McCartney's range, Greggs Vegan Range, and Violife!</li>
 		<li>Clothing: Lucy&Yak, Depop and Levi's!</li>
+		<!-- here we have a small link encouraging users to explore what else the site has to offer on the restaurants page --->
 		<li>Restaurants: Check out our favourite restaurants <a href="{% url 'veganation:restaurants' %}">Here!</a></li> 
 		</ul>
 		</div>
@@ -102,7 +106,9 @@ div.ex1 {
 </div>		
 
 </div>
-
+<!-- The following is javascript used to show the fun fact of the day --->
+<!-- the first function myFunction() displays the fun fact and the second allows the user to close it and a small pop up appears --->
+<!-- encouraging users to come back to the site tomorrow --->
 <script>
 function myFunction() {
   var d = new Date();

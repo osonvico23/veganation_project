@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 
 app_name = 'veganation'
 
+#url mappings
 urlpatterns = [
     path('', views.index, name='index'),
     path('restaurants/', views.restaurants, name='restaurants'),

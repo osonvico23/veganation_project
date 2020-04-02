@@ -16,9 +16,9 @@ from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 
 YEARS= [x for x in range(2020,2060)]
 CHOICES = (
-    (1, ('female')),
-    (2, ('male')),
-    (3, ('prefer not to say'))
+    ('female', ('female')),
+    ('male', ('male')),
+    ('prefer not to say', ('prefer not to say'))
     )
 
 
@@ -37,7 +37,7 @@ class UserRegisterForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     firstName = forms.CharField()
     lastName = forms.CharField()
-    gender = forms.ChoiceField(choices = CHOICES, required = False)
+    gender = forms.CharField(widget=forms.Select(choices = CHOICES), required = False)
     veganSince = forms.CharField(required = False)
     age = forms.IntegerField()
     quote = forms.CharField(required = False)

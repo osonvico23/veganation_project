@@ -7,14 +7,15 @@
 {% endblock %}
 <div id = "leftbox">
 
-
+<!-- Body block inherited from base --->
 {% block body_block %}
-
 	<div class="login">    
 	<p class="centreHeader">Login to Veganation</p>
 	{% if invalid %}
+	<!-- if username and password dont match/arent valid/are empty, return an error message --->
 	<p><strong>Your username and password didn't match. Please try again.</strong></p>
-	{% endif %}   
+	{% endif %}  
+	<!-- show simple login form which offers user option to sign up if they dont already have an account ---> 
 		<form id="login_form" method="post" action="{% url 'veganation:login' %}">
 			{% csrf_token %}
 			<p align="center">Username: <input type="text" name="username" value="" /></p>
