@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 import datetime
 from django.utils import timezone
-from .models import Location, Rate
+from .models import Location, Restaurant
 from datetime import date
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
@@ -15,11 +15,7 @@ from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 
 #these variables are used respectively for choices fields in the forms below.
 YEARS= [x for x in range(2020,2060)]
-CHOICES = (
-    (1, ('female')),
-    (2, ('male')),
-    (3, ('prefer not to say'))
-    )
+
 
 
 REST_CHOICES=((1,"V&V Café"),(2,"The 78"),(3,"Serenity No"),(4,"The Glasvegan"),(5,"Picnic"),(6,"Puti Vegan Cafe"),(7,"Hug and Pint"),(8,"Mono"))
@@ -39,7 +35,7 @@ class UserRegisterForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     firstName = forms.CharField()
     lastName = forms.CharField()
-    gender = forms.ChoiceField(choices = CHOICES, required = False)
+    gender = forms.CharField(required = False)
     veganSince = forms.CharField(required = False)
     age = forms.IntegerField()
     quote = forms.CharField(required = False)
@@ -104,5 +100,5 @@ class LocationForm(forms.ModelForm):
 class RateForm(forms.ModelForm):
     rating = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     class Meta:
-        model = Rate
-        fields = ('vandv_rate', 'picnic_rate', 'mono_rate', 'hug_rate', 'seren_rate', 'the78_rate', 'glasvegan_rate', 'puti_rate',)
+        model = Restaurant
+        fields = ('name', 'user', 'rating')

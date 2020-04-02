@@ -14,7 +14,7 @@ from star_ratings.models import Rating
 #model for the user profile. This info is displayed in My Account.
 class UserProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True, related_name = "myaccount", null=True)
-	gender = models.IntegerField(blank = True, default = 3)
+	gender = models.CharField(blank = True, default = 'prefer not to say', max_length=40)
 	email = models.EmailField(default = 'veganation@gmail.com')
 	veganSince = models.CharField(max_length=30, blank=True)
 	image = models.ImageField(default='default.jpg', upload_to='profile_images', blank=True)
@@ -52,14 +52,6 @@ class Rental(models.Model):
 	address = map_fields.AddressField(max_length=200)
 	geolocation = map_fields.GeoLocationField(max_length=100)
 
-class Restaurant(models.Model):
-	name = models.CharField(max_length=128, unique=True, primary_key=True)
-	type = models.CharField(max_length=128)
-	image = models.ImageField(blank=True)
-
-	def __str__(self):
-		return self.name
-
 
 class Location(models.Model):
 	userBuddy = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -70,17 +62,12 @@ class Location(models.Model):
 	myage = models.IntegerField(default=5)
 	mygender = models.IntegerField(default=2)
 
-class Rate(models.Model):
+class Restaurant(models.Model):
+	name = models.CharField(max_length=128, unique=True, primary_key=True)
+	type = models.CharField(max_length=128)
+	image = models.ImageField(blank=True)
 	user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-	restaurant = models.CharField(max_length=128)
-	hug_rate = models.IntegerField(null=True, blank=True)
-	seren_rate = models.IntegerField(null=True, blank=True)
-	the78_rate = models.IntegerField(null=True, blank=True)
-	glasvegan_rate = models.IntegerField(null=True, blank=True)
-	puti_rate = models.IntegerField(null=True, blank=True)
-	mono_rate = models.IntegerField(null=True, blank=True)
-	picnic_rate = models.IntegerField(null=True, blank=True)
-	vandv_rate = models.IntegerField(null=True, blank=True)
+	rating = models.IntegerField(null=True, blank=True)
 
 	def __str__(self):
-		return self.user
+		return self.name
