@@ -44,7 +44,7 @@
 .rating { 
   position: relative;
   margin-top: 40px;
-  left:36%;
+  left:50%;
   transform:translate(-50%, -50%) rotateY(180deg);
   display: flex;
 }
@@ -129,23 +129,13 @@
 .rating2 input:checked ~ label:after{ 
   opacity: 1;
 }
-.ease {
-		width: 0px;
-		height: 74px;
-		background-color: #fbfbfb;
-		-webkit-transition: .3s ease;
-		-moz-transition: .3s ease;
-		-o-transition: .3s ease;
-		-ms-transition: .3s ease;
-		transition: .3s ease;
-	}
+
 #button {
-		font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 		float: left;
 		width: 100%;
 		border: #fbfbfb solid 4px;
 		cursor: pointer;
-		background-color: #3498db;
+		background-color: #B5968B;
 		color: white;
 		font-size: 24px;
 		padding-top: 10px;
@@ -158,12 +148,24 @@
 	}
 	
 	#button:hover {
-		background-color: rgba(0, 0, 0, 0);
-		color: #0493bd;
+		background-color:#fff;
+		color: #B5968B;
 	}
 	
 	.submit:hover {
-		color: #3498db;
+		color: #B5968B;
+  }
+
+  
+  .ease {
+		width: 0px;
+		height: 74px;
+		background-color: #fbfbfb;
+		-webkit-transition: .3s ease;
+		-moz-transition: .3s ease;
+		-o-transition: .3s ease;
+		-ms-transition: .3s ease;
+		transition: .3s ease;
 	}
 
     
@@ -183,6 +185,7 @@
 
 
             Breakfast, desserts | ££</td>
+            
             <td><div class="rating">
               <form id="rating_form" method="post" action="/veganation/restaurants/">
                 {% csrf_token %}
@@ -193,24 +196,47 @@
                 {{ field.help_text }}
                 {{ field }}
                 {% endfor %}
+                {% if user.is_authenticated %}
               <input type="radio" id="star1" name="star" onClick="validateRadio();"><label for="star1"></label>
               <input type="radio" id="star2" name="star" onClick="validateRadio();"><label for="star2"></label>
               <input type="radio" id="star3" name="star" onClick="validateRadio();"><label for="star3"></label>
               <input type="radio" id="star4" name="star" onClick="validateRadio();"><label for="star4"></label>
               <input type="radio" id="star5" name="star" onClick="validateRadio();"><label for="star5"></label>
+              {% else %}
+              <input type="radio" id="star1" name="star" onClick="alertFunc();"><label for="star1"></label>
+              <input type="radio" id="star2" name="star" onClick="alertFunc();"><label for="star2"></label>
+              <input type="radio" id="star3" name="star" onClick="alertFunc();"><label for="star3"></label>
+              <input type="radio" id="star4" name="star" onClick="alertFunc();"><label for="star4"></label>
+              <input type="radio" id="star5" name="star" onClick="alertFunc();"><label for="star5"></label>
+              {% endif %}
             </form>
             <script>
               function validateRadio(){
-                return document.getElementById("rating_form").submit();
+                document.getElementById("rating_form").submit()
                 }
+              	function alertFunc() {
+                    alert("You can only rate restaurants if you are registered!")
+                  }
             </script>
             </div></td>
-
-        <td><div class="submit">
-          <input type="submit" value="Choose" id="button"/>
-          <div class="ease"></div></td>
+        <td>
+          {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
       </tr>
-
+      <script>
+        function alertFunc2() {
+          alert("You can only choose a restaurants if you are registered!")
+      }
+</script>
       <tr>
 
         <td><a href="#" onclick="myClick(1);"><img src="{% static 'images/the78.jpeg' %}" style="width:100px;border-radius: 5px" /></a></td>
@@ -226,7 +252,17 @@
           <input type="radio" id="star4" name="star"><label for="star4"></label>
           <input type="radio" id="star5" name="star"><label for="star5"></label>
         </div></td>
-        <td>Choose</td>
+        <td>       {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -245,7 +281,17 @@
           <input type="radio" id="star4" name="star"><label for="star4"></label>
           <input type="radio" id="star5" name="star"><label for="star5"></label>
         </div></td>
-        <td>Choose</td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -264,7 +310,17 @@
           <input type="radio" id="star4" name="star"><label for="star4"></label>
           <input type="radio" id="star5" name="star"><label for="star5"></label>
         </div></td>
-        <td>Choose</td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -283,7 +339,17 @@
           <input type="radio" id="star4" name="star"><label for="star4"></label>
           <input type="radio" id="star5" name="star"><label for="star5"></label>
         </div></td>
-        <td>Choose</td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -302,7 +368,17 @@
           <input type="radio" id="star4" name="star"><label for="star4"></label>
           <input type="radio" id="star5" name="star"><label for="star5"></label>
         </div></td>
-        <td>Choose</td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -322,7 +398,17 @@
           <input type="radio" id="star4" name="star"><label for="star4"></label>
           <input type="radio" id="star5" name="star"><label for="star5"></label>
         </div></td>
-        <td>Choose</td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -341,7 +427,17 @@
           <input type="radio" id="star4" name="star"><label for="star4"></label>
           <input type="radio" id="star5" name="star"><label for="star5"></label>
         </div></td>
-        <td>Choose</td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
