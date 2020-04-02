@@ -19,6 +19,9 @@ from django.core import mail
 def index(request):
     return render(request, 'veganation/index.html')
 
+def about(request):
+    return render(request, 'veganation/about.html')
+
 def restaurants(request):
     form = RateForm()
     if request.method == 'POST':
