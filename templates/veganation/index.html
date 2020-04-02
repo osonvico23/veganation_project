@@ -3,33 +3,6 @@
 {% extends 'veganation/base.html' %}
 {% load static %}
 
-<!--
-
-<style>
-div.ex1 {
-  background-color: white;
-  width: 110px;
-  height: 110px;
-  overflow: auto;
-}
-
-.twitter {
-    margin-top: 10px;
-    margin-bottom: 30px;
-    float: center;
-    max-height: 250px !important;
-    z-index: 0;
-    overflow: auto;
-    position: absolute;
-}
-</style>
--->
-
-
-
-
-
-
 {% block title_block %}
 	Home Page
 {% endblock %}
@@ -55,16 +28,7 @@ div.ex1 {
 <!-- Body block inherited from base --->
 {% block body_block %}
 <!-- This first part displays a fun fact for the day --->
-<div id = "factDiv">
-<font color = "#ffffe0">
- <div class ="funfactBox">
-	<button class = "funFactButton" id = "factButton" onclick="myFunction()">Click here for the fun fact of the day!</button>
-  </div>
-	<div class = "funfactBox" id ="factBorder">
-		<p id="fact"></p>
-	</div>
-</font>
-</div>
+
 
 <br>
 <!-- Now we have the main body of the home page which includes a twitter feed as well as some information related to veganism --->
@@ -77,6 +41,11 @@ div.ex1 {
 
 <div class="columnI">
 		<font color = "#ffffe0">
+		<div id = "factDiv">
+ 			<div class ="funfactBox">
+				<button class = "funFactButton" id = "factButton" onclick="factFunction()">Click here for the fun fact of the day!</button>
+  			</div>
+		</div>
 		<div>
 		<h3 align="center">Veganation's Top Tips</h3>
 			<ul>
@@ -106,41 +75,37 @@ div.ex1 {
 </div>		
 
 </div>
+
 <!-- The following is javascript used to show the fun fact of the day --->
-<!-- the first function myFunction() displays the fun fact and the second allows the user to close it and a small pop up appears --->
-<!-- encouraging users to come back to the site tomorrow --->
+<!-- the first function factFunction() displays the fun fact as a pop up  --->
 <script>
-function myFunction() {
+function factFunction() {
   var d = new Date();
   var n = d.getDay()
-  document.getElementById("factBorder").style.borderColor = "#ffffe0";
+  
   if(n == 1){
-  		document.getElementById("fact").innerHTML = 'Happy Monday! <br>Did you know that living a vegan lifestyle saves 30 animal lives per year?<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
+  		alert('Happy Monday! Did you know that living a vegan lifestyle saves 30 animal lives per year? This info is from chooseveg.com, come back tomorrow for the next fun fact of the day!');
 		document.getElementById("factButton").style.display ="none";
 	} else if( n == 2) {
-  		document.getElementById("fact").innerHTML = 'Happy Tuesday! <br>Did you know that the term Vegan was coined less than 100 years go? Animal rights activist David Watson created the word in the 1940s.<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
+  		alert('Happy Tuesday! Did you know that the term Vegan was coined less than 100 years go? Animal rights activist David Watson created the word in the 1940s. This info is from chooseveg.com, come back tomorrow for the next fun fact of the day!');
 		document.getElementById("factButton").style.display ="none";
 	} else if (n == 3){
-		document.getElementById("fact").innerHTML = 'Happy Wednesday!<br> Did you know that a vegan diet can cut your carbon footprint in half? Animal agriculture is a huge contributor to the issue of climate change.<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
+		alert('Happy Wednesday! Did you know that a vegan diet can cut your carbon footprint in half? Animal agriculture is a huge contributor to the issue of climate change. This info is from chooseveg.com, come back tomorrow for the next fun fact of the day!');
 		document.getElementById("factButton").style.display ="none";
 	} else if (n == 4){
-		document.getElementById("fact").innerHTML = 'Happy Thursday! <br> Did you know that a vegan saves approximately 1,1000 gallons of water per day? The meat industry wastes 1/3 of drinkable water.<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
+		alert('Happy Thursday! Did you know that a vegan saves approximately 1,1000 gallons of water per day? The meat industry wastes 1/3 of drinkable water. This info is from chooseveg.com, come back tomorrow for the next fun fact of the day!')
 		document.getElementById("factButton").style.display ="none";
 	} else if (n == 5){
-		document.getElementById("fact").innerHTML = 'TGIF! <br>Did you know that vegans are less likely to have a stroke or get heart disease?<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
+		alert('TGIF! Did you know that vegans are less likely to have a stroke or get heart disease? This info is from chooseveg.com, come back tomorrow for the next fun fact of the day!')
 		document.getElementById("factButton").style.display ="none";
 	} else if (n == 6){
-		document.getElementById("fact").innerHTML = 'Happy Saturday!<br> Did you know that a plant based diet increases your metabolism?<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
+		alert('Happy Saturday! Did you know that a plant based diet increases your metabolism? This info is from chooseveg.com, come back tomorrow for the next fun fact of the day!');
 		document.getElementById("factButton").style.display ="none";
 	} else {
-		document.getElementById("fact").innerHTML = 'Happy Sunday!<br> Did you know that on average, vegans have a longer life span? It can add up to 4 year onto your life.<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
+		alert('Happy Sunday! Did you know that on average, vegans have a longer life span? It can add up to 4 year onto your life. This info is from chooseveg.com, come back tomorrow for the next fun fact of the day!');
 		document.getElementById("factButton").style.display ="none";
 	}
 }
 
-function closeBox(){
-	document.getElementById("factBorder").style.display ="none";
-	alert("Come back tomorrow for another fun fact of the day! This information has been found on chooseveg.com");
-}
 </script>
 {% endblock %}
