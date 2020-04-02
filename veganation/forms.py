@@ -78,7 +78,7 @@ class ProfileUpdateForm(forms.ModelForm):
 
 
 class LocationForm(forms.ModelForm):
-	rest = forms.ChoiceField(label="Please confirm the chosen restaurant",choices = REST_CHOICES,required =True)
+	rest = forms.ChoiceField(label="Please choose a restaurant",choices = REST_CHOICES,required =True)
 	date1 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
 
 	date2 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
