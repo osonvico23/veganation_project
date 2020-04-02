@@ -50,6 +50,14 @@ class Rental(models.Model):
 	address = map_fields.AddressField(max_length=200)
 	geolocation = map_fields.GeoLocationField(max_length=100)
 
+class Restaurant(models.Model):
+	name = models.CharField(max_length=128, unique=True)
+	type = models.CharField(max_length=128)
+	image = models.ImageField(blank=True)
+
+	def __str__(self):
+		return self.name
+
 
 class Location(models.Model):
 	userBuddy = models.ForeignKey(User, on_delete=models.CASCADE, null=True)

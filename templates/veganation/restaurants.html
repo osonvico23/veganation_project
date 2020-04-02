@@ -40,6 +40,13 @@
         text-align : left;
     }
 
+    .desc{
+      text-align: center;
+      text-shadow: black;
+      margin-top: 20px;
+      margin-bottom: 1px;
+    }
+
 /****Rating****/
 .rating { 
   position: relative;
@@ -173,8 +180,7 @@
 <script src="https://maps.google.com/maps/api/js"></script>
 <div id = "rightbox">
     <table>
-
-        Choose a restaurant you wanna try with someone and we will pair you up in accordance with your preferences.
+      <div class="desc">Choose a restaurant you wanna try with someone and we will pair you up in accordance with your preferences and profile.</div>
     
       <tr>
       
@@ -197,7 +203,7 @@
                 {{ field }}
                 {% endfor %}
                 {% if user.is_authenticated %}
-              <input type="radio" id="star1" name="star" onClick="validateRadio();"><label for="star1"></label>
+              <input type="radio" id="star1" name="star" onClick="validateRadio();" value='1'><label for="star1"></label>
               <input type="radio" id="star2" name="star" onClick="validateRadio();"><label for="star2"></label>
               <input type="radio" id="star3" name="star" onClick="validateRadio();"><label for="star3"></label>
               <input type="radio" id="star4" name="star" onClick="validateRadio();"><label for="star4"></label>
