@@ -105,4 +105,4 @@ class RateForm(forms.ModelForm):
     rating = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     class Meta:
         model = Restaurant
-        fields = ('name', 'type','image', 'user', 'rating')
+        fields = ('name', 'user', 'rating')
