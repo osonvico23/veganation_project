@@ -46,23 +46,26 @@ def location(request):
 			instance.userBuddy=request.user
 			instance.save()
 			form.save()
-
-
-			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1)
 			l = []
+			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1)
 			for r in same_rest:
 				l.append(r.id)
 			emails=[]
-			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1)
+			flag="True";
 			for meet in same_rest:
 				person=meet.userBuddy
 				user = User.objects.get(username=person)
 				user_email=user.email
-				emails.append(user_email)
-
+				for email in emails:
+					if(email== user_email):
+						flag="False";
+	
+				if(flag=="True"):
+					emails.append(user_email);
+				flag="True";
 			print(same_rest)
 			print(emails)
-
+	
 			if(len(emails)>1):
 				if user.email:
 					mail_body = ("hi!")
