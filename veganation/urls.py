@@ -10,6 +10,7 @@ app_name = 'veganation'
 urlpatterns = [
     path('', views.index, name='index'),
     path('restaurants/', views.restaurants, name='restaurants'),
+    path('about/', views.about, name='about'),
     path('restaurants/location', views.location, name='location'),
     path('protests/', views.protests, name='protests'),
     path('signup/', views.signup, name='signup'),

@@ -4,7 +4,8 @@
 <html>
 	<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
 			body {
 				background-image: url("{% static 'images/backg.jpeg' %}");
@@ -273,7 +274,7 @@
   				margin-top: auto;
 			}
 			
-			
+/*some css for the fun fact*/
 			.funFact{
   				margin: auto;
   				width: 98%;
@@ -303,6 +304,7 @@
   				display : in-line block;
 			}
 			
+			/*small leaf image used on index page*/
 			.weelogo{
   				margin: auto;
   				width: 40px;
@@ -315,6 +317,7 @@
 			bottom : 5px;
 			}
 			
+			/*some positional css for pages*/
 			.columnI {
  			float: left;
   			width: 50%;
@@ -330,6 +333,24 @@
   				display: table;
   				clear: both;
 				}
+				
+			div.ex1 {
+  				background-color: white;
+  				width: 110px;
+  				height: 110px;
+  				overflow: auto;
+			}
+			
+			/* css for the twitter feed*/
+			.twitter {
+    			margin-top: 10px;
+    			margin-bottom: 30px;
+    			float: center;
+    			max-height: 250px !important;
+   				z-index: 0;
+    			overflow: auto;
+    			position: absolute;
+			}
 			
 </style>
 
@@ -351,6 +372,7 @@
 			
 			<ul class = "nav" style="font-weight: 200;">
   				<li><a href="{% url 'veganation:index' %}">Home</a></li>
+  				<li><a href="{% url 'veganation:about' %}">About</a></li>
   				<li><a href="{% url 'veganation:restaurants' %}">Restaurants</a></li>
 				 <li><a href="{% url 'veganation:protests' %}">Protests</a></li>
 			</ul>
