@@ -78,12 +78,12 @@ class ProfileUpdateForm(forms.ModelForm):
 
 
 class LocationForm(forms.ModelForm):
-	rest = forms.ChoiceField(label="Please choose a restaurant",choices = REST_CHOICES,required =True)
-	date1 = forms.DateField(label="When are you free?",widget=forms.SelectDateWidget(years=YEARS))
-	age = forms.ChoiceField(label="Let us know what age group you're comfortable meeting?",choices = AGE_CHOICES, required = False)
+	rest = forms.ChoiceField(label="Please select a restaurant.",choices = REST_CHOICES,required =True)
+	date1 = forms.DateField(label="When would you like to meet your buddy?",widget=forms.SelectDateWidget(years=YEARS))
+	age = forms.ChoiceField(label="Let us know which age group you're comfortable meeting?",choices = AGE_CHOICES, required = False)
 	gender = forms.ChoiceField(label="Let us know which gender you're comfortable meeting?",choices = GENDER_CHOICES, required = False)
-	myage = forms.ChoiceField(label="Please enter your age",choices = AGE_CHOICES, required = False)
-	mygender = forms.ChoiceField(label="Please enter your gender",choices = GENDER_CHOICES, required = False)
+	myage = forms.ChoiceField(label="Please enter the age group you belong to.",choices = AGE_CHOICES, required = False)
+	mygender = forms.ChoiceField(label="Please enter your gender.",choices = GENDER_CHOICES, required = False)
 
 	class Meta:
 		model = Location
