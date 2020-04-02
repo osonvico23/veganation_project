@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 import datetime
 from django.utils import timezone
-from .models import Location
+from .models import Location, Rate
 from datetime import date
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
@@ -27,17 +27,14 @@ REST_CHOICES=((1,"V&V Café"),(2,"The 78"),(3,"Serenity No"),(4,"The Glasvegan")
 AGE_CHOICES=((18,25),(25,35),(35,45),(45,55),(55,65),(65,75),(75,85),(95,100))
 GENDER_CHOICES=((1,'Male'),(2,'Female'),(3,'No Preference'))
 
-#class UserRegisterForm(forms.ModelForm):
-    #password = forms.CharField(widget=forms.PasswordInput())
-
-    #class Meta:
-        #model = User
-        #fields = ('username', 'email','password')
-#birth_date= forms.DateField(label='What is your birth date?',initial="1990-06-21", widget=forms.SelectDateWidget(years=YEARS), required = False)
-
-#inherits from the userCreationForm, adding extra fields
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+
+class UserProfileForm(forms.ModelForm):
     firstName = forms.CharField()
     lastName = forms.CharField()
     gender = forms.ChoiceField(choices = CHOICES, required = False)
@@ -59,31 +56,29 @@ class UserRegisterForm(UserCreationForm):
         user.age = self.calculate_age['age']
 
         user.save()
-
-
-
-    #def calculate_age(self):
-     #   today = date.today()
-      #  return today.year - self.year - ((today.month, today.day) < (self.month, self.day))
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2', 'firstName', 'lastName', 'gender', 'age','veganSince',
-        'quote', 'occupation', 'city',]
-
-class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('email', 'firstName', 'lastName','veganSince', 'gender', 'age',
-        'quote', 'occupation', 'city',)
+        fields = ['firstName', 'lastName','veganSince', 'gender', 'age',
+        'quote', 'occupation', 'city',]
+
+
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+    
+
+    class Meta:
+        model = User
+        fields = ['username', 'email']
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['image']
+        fields = ['image', 'firstName', 'lastName','veganSince', 'gender', 'age',
+        'quote', 'occupation', 'city',]
 
 
 class LocationForm(forms.ModelForm):
-	rest = forms.ChoiceField(label="Please choose a restaurant",choices = REST_CHOICES,required =True)
+	rest = forms.ChoiceField(label="Please confirm the chosen restaurant",choices = REST_CHOICES,required =True)
 	date1 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
 
 	date2 = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
@@ -92,7 +87,6 @@ class LocationForm(forms.ModelForm):
 
 	age = forms.ChoiceField(choices = AGE_CHOICES, required = False)
 	gender = forms.ChoiceField(choices = GENDER_CHOICES, required = False)
-
 
 	class Meta:
 		model = Location
@@ -107,3 +101,10 @@ class LocationForm(forms.ModelForm):
 		self.helper = FormHelper()
 		self.helper.form_method = 'post'
 		self.helper.add_input(Submit('submit', 'Save'))
+
+
+class RateForm(forms.ModelForm):
+    rating = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    class Meta:
+        model = Rate
+        fields = ('vandv_rate', 'picnic_rate', 'mono_rate', 'hug_rate', 'seren_rate', 'the78_rate', 'glasvegan_rate', 'puti_rate',)

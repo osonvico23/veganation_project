@@ -9,6 +9,7 @@ from PIL import Image
 import datetime
 import uuid
 from django_google_maps import fields as map_fields
+from star_ratings.models import Rating
 
 
 class UserProfile(models.Model):
@@ -27,11 +28,11 @@ class UserProfile(models.Model):
 	def __str__(self):
 		return f'{self.user.username} UserProfile'
 
-#def create_profile(sender, **kwargs):
-#	if kwargs['created']:
-#		user_profile = UserProfile.objects.create(user = kwargs['instance'])
+def create_profile(sender, **kwargs):
+	if kwargs['created']:
+		user_profile = UserProfile.objects.create(user = kwargs['instance'])
 
-#post_save.connect(create_profile, sender = User)
+post_save.connect(create_profile, sender = User)
 
 def save(self):
 	super().save()
@@ -43,13 +44,7 @@ def save(self):
 		img.thumbnail(output_size)
 		img.save(self.image.path)
 
-#@receiver(post_save, sender = User)
-#def create_user_profile(sender, instance, created, **kwargs):
- #   if created:
-  #      UserProfile.objects.created(user = instance)
-#@receiver(post_save, sender = User)
-#def save_user_profile(sender, instance, **kwargs):
- #   instance.profile.save()
+
 
 class Rental(models.Model):
 	address = map_fields.AddressField(max_length=200)
@@ -65,3 +60,18 @@ class Location(models.Model):
 
 	age = models.IntegerField(default=5)
 	gender = models.IntegerField(default=2)
+
+class Rate(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+	restaurant = models.CharField(max_length=128)
+	hug_rate = models.IntegerField(null=True, blank=True)
+	seren_rate = models.IntegerField(null=True, blank=True)
+	the78_rate = models.IntegerField(null=True, blank=True)
+	glasvegan_rate = models.IntegerField(null=True, blank=True)
+	puti_rate = models.IntegerField(null=True, blank=True)
+	mono_rate = models.IntegerField(null=True, blank=True)
+	picnic_rate = models.IntegerField(null=True, blank=True)
+	vandv_rate = models.IntegerField(null=True, blank=True)
+
+	def __str__(self):
+		return self.user

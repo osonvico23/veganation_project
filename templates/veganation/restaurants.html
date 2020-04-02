@@ -26,6 +26,12 @@
 {% endblock %}
 
 {% block body_block %}
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+  </head>
 <style>
     table {
         height: 100%;
@@ -33,48 +39,135 @@
         border-collapse: collapse;
         text-align : left;
     }
-    @import url(//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 
-fieldset, label { margin: 0; padding: 0; position: relative;}
-body{ margin: 20px; }
-h1 { font-size: 1.5em; margin: 10px; }
-
-/****** Style Star Rating Widget *****/
-
+/****Rating****/
 .rating { 
-  border: none;
-  float: left;
+  position: relative;
+  margin-top: 40px;
+  left:50%;
+  transform:translate(-50%, -50%) rotateY(180deg);
+  display: flex;
 }
 
-.rating > input { display: none; } 
-.rating > label:before { 
-  margin: 5px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "*";
+.rating input { 
+  display: none;
+} 
+
+.rating label { 
+  margin: 10px;
+  display: block;
+  cursor:pointer;
+  width: 2px;
 }
 
-.rating > .half:before { 
-  content: "\f089";
+.rating label:before { 
+  display: block;
+  font-size: 20px;
+  font-family: fontAwesome;
+  content: "\f005";
   position: absolute;
+  color: #57554F;
+}
+.rating label:after { 
+  font-size: 20px;
+  font-family: fontAwesome;
+  display: block;
+  content: "\f005";
+  position: relative;
+  color: #FFED85;
+  top:0;
+  opacity: 0;
+  transition: .5s;
+}
+.rating label:hover:after,
+.rating label:hover ~ label:after,
+.rating input:checked ~ label:after{ 
+  opacity: 1;
 }
 
-.rating > label { 
-  color: #ddd; 
- float: right; 
+
+.rating2 { 
+  position: relative;
+  margin-top: 40px;
+  left:36%;
+  transform:translate(-50%, -50%) rotateY(180deg);
+  display: flex;
 }
 
-/***** CSS Magic to Highlight Stars on Hover *****/
+.rating2 input { 
+  display: none;
+} 
 
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+.rating2 label { 
+  margin: 10px;
+  display: block;
+  cursor:pointer;
+  width: 2px;
+}
 
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+.rating2 label:before { 
+  display: block;
+  font-size: 20px;
+  font-family: fontAwesome;
+  content: "\f005";
+  position: absolute;
+  color: #57554F;
+}
+.rating2 label:after { 
+  font-size: 20px;
+  font-family: fontAwesome;
+  display: block;
+  content: "\f005";
+  position: relative;
+  color: #FFED85;
+  top:0;
+  opacity: 0;
+  transition: .5s;
+}
+.rating2 label:hover:after,
+.rating2 label:hover ~ label:after,
+.rating2 input:checked ~ label:after{ 
+  opacity: 1;
+}
+
+#button {
+		float: left;
+		width: 100%;
+		border: #fbfbfb solid 4px;
+		cursor: pointer;
+		background-color: #B5968B;
+		color: white;
+		font-size: 24px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		transition: all 0.3s;
+		margin-top: 10px;
+		font-weight: 700;
+	}
+	
+	#button:hover {
+		background-color:#fff;
+		color: #B5968B;
+	}
+	
+	.submit:hover {
+		color: #B5968B;
+  }
+
+  
+  .ease {
+		width: 0px;
+		height: 74px;
+		background-color: #fbfbfb;
+		-webkit-transition: .3s ease;
+		-moz-transition: .3s ease;
+		-o-transition: .3s ease;
+		-ms-transition: .3s ease;
+		transition: .3s ease;
+	}
+
     
 </style>
 <script src="https://maps.google.com/maps/api/js"></script>
@@ -92,23 +185,58 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 
             Breakfast, desserts | ££</td>
-            <td><fieldset class="rating">
-              <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-              <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-              <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-              <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-              <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-              <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-              <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-              <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-              <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Not good - 1 star"></label>
-              <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Not good - 0.5 stars"></label>
-          </fieldset></td>
-
-        <td>Choose</td>
-
+            
+            <td><div class="rating">
+              <form id="rating_form" method="post" action="/veganation/restaurants/">
+                {% csrf_token %}
+                {% for hidden in form.hidden_fields %}
+                                    {{ hidden }}
+                                {% endfor %}
+                {% for field in form.visible_fields %} {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+                {% endfor %}
+                {% if user.is_authenticated %}
+              <input type="radio" id="star1" name="star" onClick="validateRadio();"><label for="star1"></label>
+              <input type="radio" id="star2" name="star" onClick="validateRadio();"><label for="star2"></label>
+              <input type="radio" id="star3" name="star" onClick="validateRadio();"><label for="star3"></label>
+              <input type="radio" id="star4" name="star" onClick="validateRadio();"><label for="star4"></label>
+              <input type="radio" id="star5" name="star" onClick="validateRadio();"><label for="star5"></label>
+              {% else %}
+              <input type="radio" id="star1" name="star" onClick="alertFunc();"><label for="star1"></label>
+              <input type="radio" id="star2" name="star" onClick="alertFunc();"><label for="star2"></label>
+              <input type="radio" id="star3" name="star" onClick="alertFunc();"><label for="star3"></label>
+              <input type="radio" id="star4" name="star" onClick="alertFunc();"><label for="star4"></label>
+              <input type="radio" id="star5" name="star" onClick="alertFunc();"><label for="star5"></label>
+              {% endif %}
+            </form>
+            <script>
+              function validateRadio(){
+                document.getElementById("rating_form").submit()
+                }
+              	function alertFunc() {
+                    alert("You can only rate restaurants if you are registered!")
+                  }
+            </script>
+            </div></td>
+        <td>
+          {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
       </tr>
-
+      <script>
+        function alertFunc2() {
+          alert("You can only choose a restaurants if you are registered!")
+      }
+</script>
       <tr>
 
         <td><a href="#" onclick="myClick(1);"><img src="{% static 'images/the78.jpeg' %}" style="width:100px;border-radius: 5px" /></a></td>
@@ -117,19 +245,24 @@ h1 { font-size: 1.5em; margin: 10px; }
           text-decoration: none;"><b>The 78</b></a></br>
 
         Late-night food | ££</td>
-        <td><fieldset class="rating">
-          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-          <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-          <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-          <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-          <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Not good - 1 star"></label>
-          <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Not good - 0.5 stars"></label>
-      </fieldset></td>
-        <td>Choose</td>
+        <td><div class="rating2">
+          <input type="radio" id="star1" name="star"><label for="star1"></label>
+          <input type="radio" id="star2" name="star"><label for="star2"></label>
+          <input type="radio" id="star3" name="star"><label for="star3"></label>
+          <input type="radio" id="star4" name="star"><label for="star4"></label>
+          <input type="radio" id="star5" name="star"><label for="star5"></label>
+        </div></td>
+        <td>       {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -141,19 +274,24 @@ h1 { font-size: 1.5em; margin: 10px; }
           text-decoration: none;"><b>Serenity Now</b></a></br>
 
         Brunch, lunch | ££</td>
-        <td><fieldset class="rating">
-          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-          <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-          <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-          <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-          <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Not good - 1 star"></label>
-          <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Not good - 0.5 stars"></label>
-      </fieldset></td>
-        <td>Choose</td>
+        <td><div class="rating">
+          <input type="radio" id="star1" name="star"><label for="star1"></label>
+          <input type="radio" id="star2" name="star"><label for="star2"></label>
+          <input type="radio" id="star3" name="star"><label for="star3"></label>
+          <input type="radio" id="star4" name="star"><label for="star4"></label>
+          <input type="radio" id="star5" name="star"><label for="star5"></label>
+        </div></td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -165,19 +303,24 @@ h1 { font-size: 1.5em; margin: 10px; }
           text-decoration: none;"><b>The Glasvegan</b></a></br>
 
         Fast food | £</td></td>
-        <td><fieldset class="rating">
-          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-          <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-          <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-          <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-          <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Not good - 1 star"></label>
-          <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Not good - 0.5 stars"></label>
-      </fieldset></td>
-        <td>Choose</td>
+        <td><div class="rating">
+          <input type="radio" id="star1" name="star"><label for="star1"></label>
+          <input type="radio" id="star2" name="star"><label for="star2"></label>
+          <input type="radio" id="star3" name="star"><label for="star3"></label>
+          <input type="radio" id="star4" name="star"><label for="star4"></label>
+          <input type="radio" id="star5" name="star"><label for="star5"></label>
+        </div></td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -189,19 +332,24 @@ h1 { font-size: 1.5em; margin: 10px; }
           text-decoration: none;"><b>Picnic</b></a></br>
 
         Health-conscious | ££</td>
-        <td><fieldset class="rating">
-          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-          <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-          <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-          <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-          <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Not good - 1 star"></label>
-          <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Not good - 0.5 stars"></label>
-      </fieldset></td>
-        <td>Choose</td>
+        <td><div class="rating">
+          <input type="radio" id="star1" name="star"><label for="star1"></label>
+          <input type="radio" id="star2" name="star"><label for="star2"></label>
+          <input type="radio" id="star3" name="star"><label for="star3"></label>
+          <input type="radio" id="star4" name="star"><label for="star4"></label>
+          <input type="radio" id="star5" name="star"><label for="star5"></label>
+        </div></td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -213,19 +361,24 @@ h1 { font-size: 1.5em; margin: 10px; }
           text-decoration: none;"><b>Puti Vegan Café</b></a></br>
 
         Asian | ££</td>
-        <td><fieldset class="rating">
-          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-          <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-          <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-          <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-          <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Not good - 1 star"></label>
-          <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Not good - 0.5 stars"></label>
-      </fieldset></td>
-        <td>Choose</td>
+        <td><div class="rating">
+          <input type="radio" id="star1" name="star"><label for="star1"></label>
+          <input type="radio" id="star2" name="star"><label for="star2"></label>
+          <input type="radio" id="star3" name="star"><label for="star3"></label>
+          <input type="radio" id="star4" name="star"><label for="star4"></label>
+          <input type="radio" id="star5" name="star"><label for="star5"></label>
+        </div></td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -238,19 +391,24 @@ h1 { font-size: 1.5em; margin: 10px; }
           text-decoration: none;"><b>Hug and Pint</b></a></br>
 
         Restaurant and bar | ££</td>
-        <td><fieldset class="rating">
-          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-          <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-          <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-          <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-          <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Not good - 1 star"></label>
-          <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Not good - 0.5 stars"></label>
-      </fieldset></td>
-        <td>Choose</td>
+        <td><div class="rating">
+          <input type="radio" id="star1" name="star"><label for="star1"></label>
+          <input type="radio" id="star2" name="star"><label for="star2"></label>
+          <input type="radio" id="star3" name="star"><label for="star3"></label>
+          <input type="radio" id="star4" name="star"><label for="star4"></label>
+          <input type="radio" id="star5" name="star"><label for="star5"></label>
+        </div></td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
@@ -262,27 +420,30 @@ h1 { font-size: 1.5em; margin: 10px; }
         text-decoration: none;"><b>Mono</b></a></br>
 
         Late-night food | ££</td>
-        <td><fieldset class="rating">
-          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-          <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-          <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-          <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-          <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Not good - 1 star"></label>
-          <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Not good - 0.5 stars"></label>
-      </fieldset></td>
-        <td>Choose</td>
+        <td><div class="rating">
+          <input type="radio" id="star1" name="star"><label for="star1"></label>
+          <input type="radio" id="star2" name="star"><label for="star2"></label>
+          <input type="radio" id="star3" name="star"><label for="star3"></label>
+          <input type="radio" id="star4" name="star"><label for="star4"></label>
+          <input type="radio" id="star5" name="star"><label for="star5"></label>
+        </div></td>
+        <td>        {% if user.is_authenticated %}
+          <div class="submit"></div>
+          <a href="{% url 'veganation:location' %}">
+            <input type="submit" value="Choose" id="button"/></a>
+          <div class="ease"></div>
+          {% else %}
+          <div class="submit">
+            <input type="submit" value="Choose" id="button" onclick="alertFunc2()"/>
+            <div class="ease"></div>
+          </div>
+          {% endif %}</td>
 
       </tr>
 
     </table>
 
     </div>
-
-
 
 <div id = "leftbox">
 
