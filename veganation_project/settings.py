@@ -50,9 +50,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
+    #'captcha',
     'crispy_forms',
-    
+    'social_django',
 ]
 
 MIDDLEWARE = [
