@@ -14,7 +14,7 @@ from star_ratings.models import Rating
 #model for the user profile. This info is displayed in My Account.
 class UserProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True, related_name = "myaccount", null=True)
-	gender = models.IntegerField(blank = True, default = 3)
+	gender = models.CharField(blank = True, default = 'prefer not to say', max_length=40)
 	email = models.EmailField(default = 'veganation@gmail.com')
 	veganSince = models.CharField(max_length=30, blank=True)
 	image = models.ImageField(default='default.jpg', upload_to='profile_images', blank=True)

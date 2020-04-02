@@ -15,11 +15,7 @@ from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 
 #these variables are used respectively for choices fields in the forms below.
 YEARS= [x for x in range(2020,2060)]
-CHOICES = (
-    (1, ('female')),
-    (2, ('male')),
-    (3, ('prefer not to say'))
-    )
+
 
 
 REST_CHOICES=((1,"V&V Café"),(2,"The 78"),(3,"Serenity No"),(4,"The Glasvegan"),(5,"Picnic"),(6,"Puti Vegan Cafe"),(7,"Hug and Pint"),(8,"Mono"))
@@ -39,7 +35,7 @@ class UserRegisterForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     firstName = forms.CharField()
     lastName = forms.CharField()
-    gender = forms.ChoiceField(choices = CHOICES, required = False)
+    gender = forms.CharField(required = False)
     veganSince = forms.CharField(required = False)
     age = forms.IntegerField()
     quote = forms.CharField(required = False)
