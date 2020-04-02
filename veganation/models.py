@@ -11,10 +11,10 @@ import uuid
 from django_google_maps import fields as map_fields
 from star_ratings.models import Rating
 
-
+#model for the user profile. This info is displayed in My Account.
 class UserProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True, related_name = "myaccount", null=True)
-	gender = models.CharField(blank = True, default = 'prefer not to say', max_length=40)
+	gender = models.IntegerField(blank = True, default = 3)
 	email = models.EmailField(default = 'veganation@gmail.com')
 	veganSince = models.CharField(max_length=30, blank=True)
 	image = models.ImageField(default='default.jpg', upload_to='profile_images', blank=True)
@@ -28,12 +28,14 @@ class UserProfile(models.Model):
 	def __str__(self):
 		return f'{self.user.username} UserProfile'
 
+#automatically create a user profile after a user signs up
 def create_profile(sender, **kwargs):
 	if kwargs['created']:
 		user_profile = UserProfile.objects.create(user = kwargs['instance'])
 
 post_save.connect(create_profile, sender = User)
 
+#when a user iserts a profile image, it is resized to 300.
 def save(self):
 	super().save()
 
