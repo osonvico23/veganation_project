@@ -53,14 +53,17 @@ div.ex1 {
 
 
 {% block body_block %}
-<div>
+<div id = "factDiv">
+<font color = "#ffffe0">
  <div class ="funfactBox">
-		<button class = "funFactButton" id = "factButton" onclick="myFunction()">Click here for the fun fact of the day!</button>
-		</div>
-		<div class = "funfactBox" id ="factBorder">
+	<button class = "funFactButton" id = "factButton" onclick="myFunction()">Click here for the fun fact of the day!</button>
+  </div>
+	<div class = "funfactBox" id ="factBorder">
 		<p id="fact"></p>
 	</div>
+</font>
 </div>
+
 <br>
 <div class = "rowI">
 <div class = "columnI">
@@ -106,27 +109,32 @@ function myFunction() {
   var n = d.getDay()
   document.getElementById("factBorder").style.borderColor = "#ffffe0";
   if(n == 1){
-  		document.getElementById("fact").innerHTML = "Happy Monday! <br>Did you know that living a vegan lifestyle saves 30 animal lives per year? <br> Come back tomorrow for Tuesdays fun fact of the day! <br> This information has been found on chooseveg.com";
+  		document.getElementById("fact").innerHTML = 'Happy Monday! <br>Did you know that living a vegan lifestyle saves 30 animal lives per year?<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
 		document.getElementById("factButton").style.display ="none";
 	} else if( n == 2) {
-  		document.getElementById("fact").innerHTML = "Happy Tuesday! <br>Did you know that the term 'Vegan' was coined less than 100 years go - animal rights activist David Watson created the word in the 1940s? <br> Come back tomorrow for Wednesday's fun fact of the day! <br> This information has been found on chooseveg.com";
+  		document.getElementById("fact").innerHTML = 'Happy Tuesday! <br>Did you know that the term Vegan was coined less than 100 years go? Animal rights activist David Watson created the word in the 1940s.<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
 		document.getElementById("factButton").style.display ="none";
 	} else if (n == 3){
-		document.getElementById("fact").innerHTML = "Happy Wednesday!<br> Did you know that a vegan diet can cut your carbon footprint in half - animal agriculture is a huge contributor to the issue of climate change? <br> Come back tomorrow for Thursday's fun fact of the day!  <br> This information has been found on chooseveg.com";
+		document.getElementById("fact").innerHTML = 'Happy Wednesday!<br> Did you know that a vegan diet can cut your carbon footprint in half? Animal agriculture is a huge contributor to the issue of climate change.<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
 		document.getElementById("factButton").style.display ="none";
 	} else if (n == 4){
-		document.getElementById("fact").innerHTML = 'Happy Thursday! <br> Did you know that a vegan saves approximately 1,1000 gallons of water per day - the meat industry wastes 1/3 of drinkable water? <br> Come back tomorrow for Fridays fun fact of the day!  <br> This information has been found on chooseveg.com';
+		document.getElementById("fact").innerHTML = 'Happy Thursday! <br> Did you know that a vegan saves approximately 1,1000 gallons of water per day? The meat industry wastes 1/3 of drinkable water.<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
 		document.getElementById("factButton").style.display ="none";
 	} else if (n == 5){
-		document.getElementById("fact").innerHTML = "TGIF! <br>Did you know that vegans are less likely to have a stroke or get heart disease? <br> Come back tomorrow for Saturday's fun fact of the day! <br>  This information has been found on chooseveg.com";
+		document.getElementById("fact").innerHTML = 'TGIF! <br>Did you know that vegans are less likely to have a stroke or get heart disease?<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
 		document.getElementById("factButton").style.display ="none";
 	} else if (n == 6){
-		document.getElementById("fact").innerHTML = "Happy Saturday!<br> Did you know that a plant based diet increases your metabolism? <br>Come back tomorrow for Sunday's fun fact of the day! <br> This information has been found on chooseveg.com";
+		document.getElementById("fact").innerHTML = 'Happy Saturday!<br> Did you know that a plant based diet increases your metabolism?<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
 		document.getElementById("factButton").style.display ="none";
 	} else {
-		document.getElementById("fact").innerHTML = "Happy Sunday!<br> Did you know that on average, vegans have a longer life span - it can add up to 4 year onto your life? <br> Come back tomorrow for Monday's fun fact of the day!  <br> This information has been found on chooseveg.com";
+		document.getElementById("fact").innerHTML = 'Happy Sunday!<br> Did you know that on average, vegans have a longer life span? It can add up to 4 year onto your life.<br><br><button class = "funFactButton" id = "closeButton" onclick="closeBox()">Close</button>';
 		document.getElementById("factButton").style.display ="none";
 	}
+}
+
+function closeBox(){
+	document.getElementById("factBorder").style.display ="none";
+	alert("Come back tomorrow for another fun fact of the day! This information has been found on chooseveg.com");
 }
 </script>
 {% endblock %}
