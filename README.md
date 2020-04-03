@@ -49,6 +49,8 @@ And now you are good to run the server
  
  django_crispy_forms  1.9.0 - https://pypi.org/project/django-crispy-forms/
  
+ django-reset-migrations  0.4.0 -  https://pypi.org/project/django-reset-migrations/
+ 
  Pillow 7.1.1 - https://pypi.org/project/Pillow/
  
  requests  2.23.0 - https://pypi.org/project/requests/
