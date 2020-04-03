@@ -39,8 +39,6 @@ And now you are good to run the server
  
  bcrypt 3.1.7 - https://pypi.org/project/bcrypt/
  
- django-recaptcha 2.0.6 - https://pypi.org/project/django-recaptcha/
- 
  django-allauth 0.41.0 - https://pypi.org/project/django-allauth/
  
  django-bootstrap4  0.0.8 - https://django-bootstrap4.readthedocs.io/en/latest/history.html#id1
