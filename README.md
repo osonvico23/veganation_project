@@ -31,4 +31,4 @@ And now you are good to run the server
     
  And after navigating to http://127.0.0.1:8000/ you will be welcomed to our page!
  
- ![media/homepage.png]
+ ![](media/homepage.png)
