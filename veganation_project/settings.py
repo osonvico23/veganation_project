@@ -26,12 +26,17 @@ MEDIA_URL = '/media/'
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=#ub-w@cv26%&=$-sz@x$(su)ve3pb3au7!fv%i^mw9eqc9$n6'
+
+key = None
+with open('secret.rtf') as f:
+    key = f.read().strip()
+
+SECRET_KEY = key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kamillakurta.pythonanywhere.com']
 
 
 # Application definition
