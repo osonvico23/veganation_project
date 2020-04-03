@@ -119,7 +119,7 @@ class modelTests(TestCase):
         """
         UserProfile_py = UserProfile.objects.get(firstName='veganation')
         location = Location.objects.get(rest=1)
-        self.assertEqual(location.gender, 1, f"{FAILURE_HEADER}Tests on the Location model failed. Check you have all required attributes (including those specified in the exercises!), and try again.{FAILURE_FOOTER}")
-        self.assertEqual(location.age, 2, f"{FAILURE_HEADER}Tests on the Location model failed. Check you have all required attributes (including those specified in the exercises!), and try again.{FAILURE_FOOTER}")
-        self.assertEqual(location.mygender, 1, f"{FAILURE_HEADER}Tests on the Location model failed. Check you have all required attributes (including those specified in the exercises!), and try again.{FAILURE_FOOTER}")
-        self.assertEqual(location.myage, 2, f"{FAILURE_HEADER}Tests on the Location model failed. Check you have all required attributes (including those specified in the exercises!), and try again.{FAILURE_FOOTER}")
+        self.assertEqual(location.gender, 1, f"{FAILURE_HEADER}Tests on the Location model failed. {FAILURE_FOOTER}")
+        self.assertEqual(location.age, 2, f"{FAILURE_HEADER}Tests on the Location model failed. {FAILURE_FOOTER}")
+        self.assertEqual(location.mygender, 1, f"{FAILURE_HEADER}Tests on the Location model failed. {FAILURE_FOOTER}")
+        self.assertEqual(location.myage, 2, f"{FAILURE_HEADER}Tests on the Location model failed. {FAILURE_FOOTER}")
