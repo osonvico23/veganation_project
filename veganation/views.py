@@ -32,6 +32,10 @@ def restaurants(request):
     return render(request, 'veganation/restaurants.html',{'form': form})
 
 
+def about(request):
+    context_dict = {}
+    return render(request, 'veganation/about.html', context=context_dict)
+
 def protests(request):
     context_dict = {}
     return render(request, 'veganation/protests.html', context=context_dict)

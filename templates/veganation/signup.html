@@ -11,6 +11,7 @@
 
 
 {% block body_block %}
+<div class ="bod4">	
 <div class = "signup">
 {% if registered %}
 Veganation says: <strong>thank you for registering!</strong>
@@ -18,11 +19,9 @@ Veganation says: <strong>thank you for registering!</strong>
 {% else %}
 <div>
 <p align="center">
-<a href="{% url 'veganation:login' %}" class="button">Already have an account? Login Here!</a>
+<a href="{% url 'veganation:login' %}" class="button" style="position: absolute; right:50px;">Already have an account? Login Here!</a>
 	</p></div>
-
-<h2>Sign up for Veganation!</h2>
-
+<h2 >Sign up for Veganation!</h2>
 <form method="POST">
 	{% csrf_token %}
 	<fieldset class="form-group">
@@ -36,7 +35,7 @@ Veganation says: <strong>thank you for registering!</strong>
 
 {% endif %}
 
-
+</div>
 
 <!-- Just for now
 
@@ -50,5 +49,5 @@ Veganation says: <strong>thank you for registering!</strong>
 -->
 
 
-
+</div>
 {% endblock %}
