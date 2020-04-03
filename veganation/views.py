@@ -62,7 +62,7 @@ def location(request):
 				user_email=user.email
 				for email in emails:
 					if(email== user_email):
-						flag="False";
+						flag="False"
 				if(flag=="True"):
 					emails.append(user_email)
 				flag="True"

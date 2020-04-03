@@ -17,7 +17,6 @@ urlpatterns = [
     path('myaccount/', views.myaccount, name='myaccount'),
     path('about/', views.about, name='about'),
     path('admin/', admin.site.urls),
-    #path('accounts/', include('allauth.urls')),
 
 
     ]
