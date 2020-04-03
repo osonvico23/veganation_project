@@ -2,7 +2,7 @@ import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'veganation_project.settings')
 import django
 django.setup()
-from veganation.models import Rate, UserProfile, User
+from veganation.models import UserProfile, User
 from django.core.files import File
 import pandas as pd
 from django.contrib.auth.hashers import make_password
