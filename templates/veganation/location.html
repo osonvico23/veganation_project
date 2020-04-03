@@ -155,6 +155,7 @@ Meetup Preferences
 	  		<div id="form-div">
 	        	Let's find you a buddy!
 	        	<hr>
+	        	#location form
 	        		{% csrf_token %}
 	        		{{form|crispy}} 
 	        	<hr>
@@ -168,7 +169,7 @@ Meetup Preferences
 </body>
 <script>
 	function alertFunc() {
-		alert("Thank you for your feedback!")
+		alert("Thank you for your request!")
 	}
 </script>
 </div>

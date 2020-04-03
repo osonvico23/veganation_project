@@ -52,6 +52,7 @@ def location(request):
 			instance.save()
 			form.save()
 			l = []
+			#all the rests where the dates,ages,genders and rest matches
 			same_rest=Location.objects.filter(rest=instance.rest).filter(date1=instance.date1).filter(age=instance.myage).filter(myage=instance.age).filter(mygender=instance.gender).filter(gender=instance.mygender)
 			for r in same_rest:
 				l.append(r.id)
@@ -61,6 +62,7 @@ def location(request):
 				person=meet.userBuddy
 				user = User.objects.get(username=person)
 				user_email=user.email
+				#checking if email is already in the emails list
 				for email in emails:
 					if(email== user_email):
 						flag="False"
@@ -90,7 +92,7 @@ def location(request):
 					mail_body = ("Hello!" +  "\nYou've recently put in a request to find a buddy to visit " + restname +  " on " + str(instance.date1) +". " + "\nYour buddy(ies) is(are) also reciepents of this email so feel free to email them and arrange a meeting!" + "\n\nFeel free to contact us anytime."+ "\nHope you enjoy meeting our fellow vegans!" + "\n\nWith love \nVeganation")
 					send_mail("We've found you a buddy!",mail_body,'veganationglasgirls20@gmail.com',emails,)
 
-
+			#after submitted it redirects to restaurants page
 			return redirect('http://127.0.0.1:8000/veganation/restaurants/')
 	else:
 		form = LocationForm()

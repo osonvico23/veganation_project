@@ -10,6 +10,7 @@ from django.contrib.auth.hashers import make_password
 
 #population script to load the users.
 class Populate():
+
     def __init__(self):
         self.populate_myaccounts()
 
@@ -51,6 +52,9 @@ class Populate():
             user.save()
             profile.save()
 
+			
+
+			
 if __name__ == "__main__":
     Populate()
     
