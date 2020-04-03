@@ -93,7 +93,7 @@ def location(request):
 					send_mail("We've found you a buddy!",mail_body,'veganationglasgirls20@gmail.com',emails,)
 
 			#after submitted it redirects to restaurants page
-			return redirect('http://127.0.0.1:8000/veganation/restaurants/')
+			return redirect('veganation/restaurants.html')
 	else:
 		form = LocationForm()
 		return render(request, 'veganation/location.html',
