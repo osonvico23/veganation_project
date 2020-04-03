@@ -16,6 +16,7 @@ from django.db import models
 from django.core.mail import send_mail
 from django.core import mail
 
+
 def index(request):
     return render(request, 'veganation/index.html')
 
