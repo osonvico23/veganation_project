@@ -53,6 +53,8 @@ And now you are good to run the server
  
  django-reset-migrations  0.4.0 -  https://pypi.org/project/django-reset-migrations/
  
+ JQuery 3.1.0 - https://pypi.org/project/django-jquery/
+ 
  Pillow 7.1.1 - https://pypi.org/project/Pillow/
  
  requests  2.23.0 - https://pypi.org/project/requests/
