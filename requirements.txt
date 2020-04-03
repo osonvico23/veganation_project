@@ -1,0 +1,9 @@
+bcrypt==3.1.7
+Django==2.2.3
+django-allauth===0.41.0
+django-bootstrap4===0.0.8
+django_star_ratings==0.9.1
+django_google_maps==0.12.1
+django_crispy_forms==1.9.0
+Pillow==7.1.1
+requests==2.23.0

@@ -16,7 +16,7 @@ class UserProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, unique = True, related_name = "myaccount", null=True)
 	gender = models.CharField(blank = True, default = 'prefer not to say', max_length=50)
 	email = models.EmailField(default = 'veganation@gmail.com')
-	veganSince = models.IntegerField( blank=True)
+	veganSince = models.CharField( blank=True, max_length = 50)
 	image = models.ImageField(default='default.jpg', upload_to='profile_images', blank=True)
 	quote = models.TextField(max_length=100, blank=True)
 	occupation = models.CharField(max_length=50, blank = True)
