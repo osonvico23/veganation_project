@@ -3,22 +3,7 @@
 {% extends 'veganation/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-<style>
-.wrapper {
-margin: 0 auto;
-width: 110px;
-height: auto;
-position:absolute;
-}
 
-
-
-.alert-success {
-	position: relative;
-	height: 38px;
-	border-radius: 5px;
-	}
-</style>
 {% block title_block %}
 Meetup Preferences
 {% endblock %}
@@ -38,7 +23,7 @@ Meetup Preferences
  
 
 {% endif %}
-
+</div>
 {% endblock %}
 
 {% block body_block %}
@@ -50,7 +35,19 @@ Meetup Preferences
 	#feedback-page {
 		text-align: center;
 	}
-	
+	.wrapper {
+		margin: 0 auto;
+		width: 110px;
+		height: auto;
+		position:absolute;
+	}
+
+	.alert-success {
+		position: relative;
+		height: 38px;
+		border-radius: 5px;
+	}
+
 	#form-main {
 		width: 100%;
 		float: left;
@@ -145,7 +142,8 @@ Meetup Preferences
 		text-align: center;
 		padding: 10px 0px 0px 0px;
 	}
-</style>    
+</style> 
+   
 <body>
 	<div class="title">
 		<h1>Arranging a meetup with a buddy!</h1>

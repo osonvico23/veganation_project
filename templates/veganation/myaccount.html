@@ -6,8 +6,6 @@
 	My Account
 {% endblock %}
 
-<div id = "leftbox">
-
 {% block login_buttons %}
 <div class="topcorner">  
 	<a href="{% url 'veganation:logout' %}" class="button">Log Out!</a>
@@ -16,6 +14,7 @@
 {% endblock %}
 
 {% block body_block %}
+<div class ="bod">	
 <div class = "rowI">
 
 
@@ -23,7 +22,7 @@
     <div class="content-section">
       <div class="media">
 
-        <img class="rounded-circle account-img" src="{{ user.myaccount.image.url }}"width = '240'>
+        <img class="rounded-circle account-img" src="{{ user.myaccount.image.url }}"width = '240'height = '240' style="border-radius: 50%;margin-left: 20px;margin-top: 10px;object-fit: cover;">
 
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
@@ -49,16 +48,6 @@
 
 <div class = "columnI">
 
-
-
-
-
-
-
-
-
-
-<font color = "#ffffe0">
 <h2 align = "center">The restaurants I chose</h2>
 
 <p align = "center">{% for userBuddy_location in userBuddy.location_set.all %}
@@ -66,12 +55,9 @@
 {% endfor %} </p>
 
 <div class="form-group"> </div>
-<font color = "#ffffe0">
-<br>
-<br>
 
 
-
-
+</div>
+</div>
 </div>
 {% endblock %}
