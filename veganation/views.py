@@ -42,7 +42,7 @@ def protests(request):
     return render(request, 'veganation/protests.html', context=context_dict)
 
 
-@login_required(login_url="http://127.0.0.1:8000/veganation/login/")
+@login_required(login_url="veganation/login.html")
 def location(request):
 	if request.method == 'POST':
 		form = LocationForm(request.POST)
