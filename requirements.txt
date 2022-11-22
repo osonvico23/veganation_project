@@ -8,5 +8,5 @@ django_crispy_forms==1.9.0
 django-pandas==0.6.1
 django-reset-migrations==0.4.0
 django-recaptcha==2.0.6
-Pillow==7.1.1
+Pillow==9.3.0
 requests==2.23.0
